@@ -31,7 +31,7 @@
                 @foreach($main_banner as $key=>$banner)
                     <div class="carousel-item {{$key==0?'active':''}}">
                         <a href="{{$banner['url']}}">
-                            <img class="d-block w-100" style="max-height: 372px;"
+                            <img class="d-block w-100" style="max-height: 372px;     border-radius: 10px;"
                                  onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                  src="{{asset('storage/app/public/banner')}}/{{$banner['photo']}}"
                                  alt="">

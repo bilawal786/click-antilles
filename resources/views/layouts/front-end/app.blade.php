@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/home.css"/>
     <link rel="stylesheet" href="{{asset('public/assets/front-end')}}/css/responsive1.css"/>
 
-    
+
     {{--dont touch this--}}
     <meta name="_token" content="{{csrf_token()}}">
     {{--dont touch this--}}
@@ -48,7 +48,9 @@
         body {
             background-color: #f7f8fa94;
         }
-
+        .container, .container-sm, .container-md, .container-lg, .container-xl {
+            max-width: 80%;
+        }
         .rtl {
             direction: {{ Session::get('direction') }};
         }
@@ -629,6 +631,11 @@
 
         html[dir="rtl"] .badge-style {
             left: 0 !important;
+        }
+        @media (max-width: 600px) {
+            .container, .container-sm, .container-md, .container-lg, .container-xl {
+                max-width: 100%;
+            }
         }
     </style>
 
