@@ -247,6 +247,7 @@
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
                             <!-- Pages -->
+                        @if(auth()->guard('admin')->user()->admin_role_id!=7)
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/brand*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -270,6 +271,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            @endif
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/category*') ||Request::is('admin/sub*')) ?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -293,15 +295,17 @@
                                             <span class="text-truncate">{{\App\CPU\translate('sub_category')}}</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{Request::is('admin/sub-sub-category/view')?'active':''}}">
-                                        <a class="nav-link " href="{{route('admin.sub-sub-category.view')}}">
-                                            <span class="tio-circle nav-indicator-icon"></span>
-                                            <span
-                                                class="text-truncate">{{\App\CPU\translate('sub_sub_category')}}</span>
-                                        </a>
-                                    </li>
+
+{{--                                    <li class="nav-item {{Request::is('admin/sub-sub-category/view')?'active':''}}">--}}
+{{--                                        <a class="nav-link " href="{{route('admin.sub-sub-category.view')}}">--}}
+{{--                                            <span class="tio-circle nav-indicator-icon"></span>--}}
+{{--                                            <span--}}
+{{--                                                class="text-truncate">{{\App\CPU\translate('sub_sub_category')}}</span>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
                                 </ul>
                             </li>
+                            @if(auth()->guard('admin')->user()->admin_role_id!=7)
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/attribute*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.attribute.view')}}">
@@ -310,6 +314,7 @@
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Attribute')}}</span>
                                 </a>
                             </li>
+
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/product/list/in_house') || Request::is('admin/product/bulk-import'))?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -356,7 +361,7 @@
                                 </a>
                                 <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                     style="display: {{Request::is('admin/product/list/seller*')||Request::is('admin/product/updated-product-list')?'block':''}}">
-                                    
+
                                     @if (\App\CPU\Helpers::get_business_settings('product_wise_shipping_cost_approval')==1)
                                     <li class="nav-item {{Request::is('admin/product/updated-product-list')?'active':''}}">
                                         <a class="nav-link "
@@ -393,6 +398,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            @endif
                         @endif
                     <!--product management ends-->
 
@@ -409,6 +415,7 @@
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('banners')}}</span>
                                 </a>
                             </li>
+                            @if(auth()->guard('admin')->user()->admin_role_id!=7)
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/coupon*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.coupon.add-new')}}">
@@ -452,7 +459,8 @@
                                     </span>
                                 </a>
                             </li>
-                        @endif
+                            @endif
+                            @endif
                     <!--marketing section ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('business_section'))
@@ -508,6 +516,7 @@
                                 </a>
                             </li>
                         @endif
+
                     <!--business section ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('user_section'))
@@ -595,7 +604,7 @@
                             </li>
                         @endif
                     <!--support section ends here-->
-
+                        @if(auth()->guard('admin')->user()->admin_role_id!=7)
                         @if(\App\CPU\Helpers::module_permission_check('business_settings'))
                             <li class="nav-item {{(Request::is('admin/currency/view') ||Request::is('admin/business-settings/refund*') || Request::is('admin/business-settings/language*') || Request::is('admin/business-settings/shipping-method*') || Request::is('admin/business-settings/payment-method') || Request::is('admin/business-settings/seller-settings*'))?'scroll-here':''}}">
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('business_settings')}}</small>
@@ -623,7 +632,7 @@
                                             </span>
                                         </a>
                                     </li>
-                                    
+
                                     <li class="nav-item {{Request::is('admin/business-settings/refund/list/approved')?'active':''}}">
                                         <a class="nav-link"
                                            href="{{route('admin.business-settings.refund.list',['approved'])}}">
@@ -724,7 +733,7 @@
                                                {{\App\CPU\translate('by_seller')}}
                                             </span>
                                         </a>
-                                    </li> 
+                                    </li>
                                     <li class="nav-item {{Request::is('admin/business-settings/shipping-method/setting')?'active':''}}">
                                         <a class="nav-link"
                                            href="{{route('admin.business-settings.shipping-method.setting')}}">
@@ -764,6 +773,7 @@
                                 </a>
                             </li>
                         @endif
+                        @endif
                     <!--business settings ends here-->
 
                         @if(\App\CPU\Helpers::module_permission_check('web_&_app_settings'))
@@ -782,6 +792,7 @@
                                     </span>
                                 </a>
                             </li>
+                            @if(auth()->guard('admin')->user()->admin_role_id!=7)
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/business-settings/web-config/db-index')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link"
                                    href="{{route('admin.business-settings.web-config.db-index')}}">
@@ -916,6 +927,7 @@
                                     </span>
                                 </a>
                             </li>
+                            @endif
                         @endif
                     <!--web & app settings ends here-->
 

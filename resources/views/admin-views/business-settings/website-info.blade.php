@@ -48,153 +48,153 @@
                 </div>
             </div>
 
-            {{-- Pagination --}}
-            <div class="row col-12">
-                <div class="col-12 col-md-5 mb-1">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="text-center"><i
-                                    class="tio-money"></i> {{\App\CPU\translate('Currency Symbol Position')}}</h5>
-                            <i class="tio-dollar"></i>
-                        </div>
-                        <div class="card-body">
-                            @php($config=\App\CPU\Helpers::get_business_settings('currency_symbol_position'))
-                            <div class="form-row">
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Custom Radio -->
-                                    <div class="form-control">
-                                        <div class="custom-control custom-radio custom-radio-reverse"
-                                             onclick="currency_symbol_position('{{route('admin.business-settings.web-config.currency-symbol-position',['left'])}}')">
-                                            <input type="radio" class="custom-control-input"
-                                                   name="projectViewNewProjectTypeRadio"
-                                                   id="projectViewNewProjectTypeRadio1" {{(isset($config) && $config=='left')?'checked':''}}>
-                                            <label class="custom-control-label media align-items-center"
-                                                   for="projectViewNewProjectTypeRadio1">
-                                                <i class="tio-agenda-view-outlined text-muted mr-2"></i>
-                                                <span class="media-body">
-                                                   {{\App\CPU\BackEndHelper::currency_symbol()}} {{\App\CPU\translate('Left')}}
-                                                  </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!-- End Custom Radio -->
-                                </div>
-    
-                                <div class="col-sm mb-2 mb-sm-0">
-                                    <!-- Custom Radio -->
-                                    <div class="form-control">
-                                        <div class="custom-control custom-radio custom-radio-reverse"
-                                             onclick="currency_symbol_position('{{route('admin.business-settings.web-config.currency-symbol-position',['right'])}}')">
-                                            <input type="radio" class="custom-control-input"
-                                                   name="projectViewNewProjectTypeRadio"
-                                                   id="projectViewNewProjectTypeRadio2" {{(isset($config) && $config=='right')?'checked':''}}>
-                                            <label class="custom-control-label media align-items-center"
-                                                   for="projectViewNewProjectTypeRadio2">
-                                                <i class="tio-table text-muted mr-2"></i>
-                                                <span
-                                                    class="media-body">{{\App\CPU\translate('Right')}} {{\App\CPU\BackEndHelper::currency_symbol()}}</span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!-- End Custom Radio -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            --}}{{-- Pagination --}}
+{{--            <div class="row col-12">--}}
+{{--                <div class="col-12 col-md-5 mb-1">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h5 class="text-center"><i--}}
+{{--                                    class="tio-money"></i> {{\App\CPU\translate('Currency Symbol Position')}}</h5>--}}
+{{--                            <i class="tio-dollar"></i>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            @php($config=\App\CPU\Helpers::get_business_settings('currency_symbol_position'))--}}
+{{--                            <div class="form-row">--}}
+{{--                                <div class="col-sm mb-2 mb-sm-0">--}}
+{{--                                    <!-- Custom Radio -->--}}
+{{--                                    <div class="form-control">--}}
+{{--                                        <div class="custom-control custom-radio custom-radio-reverse"--}}
+{{--                                             onclick="currency_symbol_position('{{route('admin.business-settings.web-config.currency-symbol-position',['left'])}}')">--}}
+{{--                                            <input type="radio" class="custom-control-input"--}}
+{{--                                                   name="projectViewNewProjectTypeRadio"--}}
+{{--                                                   id="projectViewNewProjectTypeRadio1" {{(isset($config) && $config=='left')?'checked':''}}>--}}
+{{--                                            <label class="custom-control-label media align-items-center"--}}
+{{--                                                   for="projectViewNewProjectTypeRadio1">--}}
+{{--                                                <i class="tio-agenda-view-outlined text-muted mr-2"></i>--}}
+{{--                                                <span class="media-body">--}}
+{{--                                                   {{\App\CPU\BackEndHelper::currency_symbol()}} {{\App\CPU\translate('Left')}}--}}
+{{--                                                  </span>--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- End Custom Radio -->--}}
+{{--                                </div>--}}
+{{--    --}}
+{{--                                <div class="col-sm mb-2 mb-sm-0">--}}
+{{--                                    <!-- Custom Radio -->--}}
+{{--                                    <div class="form-control">--}}
+{{--                                        <div class="custom-control custom-radio custom-radio-reverse"--}}
+{{--                                             onclick="currency_symbol_position('{{route('admin.business-settings.web-config.currency-symbol-position',['right'])}}')">--}}
+{{--                                            <input type="radio" class="custom-control-input"--}}
+{{--                                                   name="projectViewNewProjectTypeRadio"--}}
+{{--                                                   id="projectViewNewProjectTypeRadio2" {{(isset($config) && $config=='right')?'checked':''}}>--}}
+{{--                                            <label class="custom-control-label media align-items-center"--}}
+{{--                                                   for="projectViewNewProjectTypeRadio2">--}}
+{{--                                                <i class="tio-table text-muted mr-2"></i>--}}
+{{--                                                <span--}}
+{{--                                                    class="media-body">{{\App\CPU\translate('Right')}} {{\App\CPU\BackEndHelper::currency_symbol()}}</span>--}}
+{{--                                            </label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <!-- End Custom Radio -->--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
-            <div class="row col-12">
-                
-                <div class="col-12 col-md-6 mb-1">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="text-center">{{\App\CPU\translate('apple_store')}} {{\App\CPU\translate('Status')}}</h5>
-                        </div>
-                        <div class="card-body" style="padding: 20px">
-    
-                            @php($config=\App\CPU\Helpers::get_business_settings('download_app_apple_stroe'))
-                            <form style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                  action="{{route('admin.business-settings.web-config.app-store-update',['download_app_apple_stroe'])}}"
-                                  method="post">
-                                @csrf
-                                @if(isset($config))
-    
-                                    <div class="form-group mb-2 mt-2">
-                                        <input type="radio" name="status" value="1" {{$config['status']==1?'checked':''}}>
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Active')}}</label>
-                                        <br>
-                                    </div>
-    
-                                    <div class="form-group mb-2">
-                                        <input type="radio" name="status" value="0" {{$config['status']==0?'checked':''}}>
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Inactive')}}</label>
-                                        <br>
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('link')}}</label><br>
-                                        <input type="text" class="form-control" name="link" value="{{$config['link']}}"
-                                               required>
-                                    </div>
-    
-                                    <button type="submit"
-                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Save')}}</button>
-                                @else
-                                    <button type="submit"
-                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Configure')}}</button>
-                                @endif
-                            </form>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="col-12 col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <h5 class="text-center">{{\App\CPU\translate('google_play_store')}} {{\App\CPU\translate('Status')}}</h5>
-                        </div>
-                        <div class="card-body" style="padding: 20px">
-    
-                            @php($config=\App\CPU\Helpers::get_business_settings('download_app_google_stroe'))
-                            <form style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                  action="{{route('admin.business-settings.web-config.app-store-update',['download_app_google_stroe'])}}"
-                                  method="post">
-                                @csrf
-                                @if(isset($config))
-    
-                                    <div class="form-group mb-2 mt-2">
-                                        <input type="radio" name="status" value="1" {{$config['status']==1?'checked':''}}>
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Active')}}</label>
-                                        <br>
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <input type="radio" name="status" value="0" {{$config['status']==0?'checked':''}}>
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Inactive')}}</label>
-                                        <br>
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('link')}}</label><br>
-                                        <input type="text" class="form-control" name="link" value="{{$config['link']}}"
-                                               required>
-                                    </div>
-    
-                                    <button type="submit"
-                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Save')}}</button>
-                                @else
-                                    <button type="submit"
-                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Configure')}}</button>
-                                @endif
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="row col-12">--}}
+{{--                --}}
+{{--                <div class="col-12 col-md-6 mb-1">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h5 class="text-center">{{\App\CPU\translate('apple_store')}} {{\App\CPU\translate('Status')}}</h5>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body" style="padding: 20px">--}}
+{{--    --}}
+{{--                            @php($config=\App\CPU\Helpers::get_business_settings('download_app_apple_stroe'))--}}
+{{--                            <form style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"--}}
+{{--                                  action="{{route('admin.business-settings.web-config.app-store-update',['download_app_apple_stroe'])}}"--}}
+{{--                                  method="post">--}}
+{{--                                @csrf--}}
+{{--                                @if(isset($config))--}}
+{{--    --}}
+{{--                                    <div class="form-group mb-2 mt-2">--}}
+{{--                                        <input type="radio" name="status" value="1" {{$config['status']==1?'checked':''}}>--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Active')}}</label>--}}
+{{--                                        <br>--}}
+{{--                                    </div>--}}
+{{--    --}}
+{{--                                    <div class="form-group mb-2">--}}
+{{--                                        <input type="radio" name="status" value="0" {{$config['status']==0?'checked':''}}>--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Inactive')}}</label>--}}
+{{--                                        <br>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group mb-2">--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('link')}}</label><br>--}}
+{{--                                        <input type="text" class="form-control" name="link" value="{{$config['link']}}"--}}
+{{--                                               required>--}}
+{{--                                    </div>--}}
+{{--    --}}
+{{--                                    <button type="submit"--}}
+{{--                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Save')}}</button>--}}
+{{--                                @else--}}
+{{--                                    <button type="submit"--}}
+{{--                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Configure')}}</button>--}}
+{{--                                @endif--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--    --}}
+{{--                <div class="col-12 col-md-6">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h5 class="text-center">{{\App\CPU\translate('google_play_store')}} {{\App\CPU\translate('Status')}}</h5>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body" style="padding: 20px">--}}
+{{--    --}}
+{{--                            @php($config=\App\CPU\Helpers::get_business_settings('download_app_google_stroe'))--}}
+{{--                            <form style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"--}}
+{{--                                  action="{{route('admin.business-settings.web-config.app-store-update',['download_app_google_stroe'])}}"--}}
+{{--                                  method="post">--}}
+{{--                                @csrf--}}
+{{--                                @if(isset($config))--}}
+{{--    --}}
+{{--                                    <div class="form-group mb-2 mt-2">--}}
+{{--                                        <input type="radio" name="status" value="1" {{$config['status']==1?'checked':''}}>--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Active')}}</label>--}}
+{{--                                        <br>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group mb-2">--}}
+{{--                                        <input type="radio" name="status" value="0" {{$config['status']==0?'checked':''}}>--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Inactive')}}</label>--}}
+{{--                                        <br>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group mb-2">--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('link')}}</label><br>--}}
+{{--                                        <input type="text" class="form-control" name="link" value="{{$config['link']}}"--}}
+{{--                                               required>--}}
+{{--                                    </div>--}}
+{{--    --}}
+{{--                                    <button type="submit"--}}
+{{--                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Save')}}</button>--}}
+{{--                                @else--}}
+{{--                                    <button type="submit"--}}
+{{--                                            class="btn btn-primary mb-2 float-right">{{\App\CPU\translate('Configure')}}</button>--}}
+{{--                                @endif--}}
+{{--                            </form>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
 
         </div>
@@ -205,43 +205,43 @@
             <form action="{{ route('admin.business-settings.update-info') }}" method="POST"
                   enctype="multipart/form-data">
                 @csrf
-                <div class="row" style="padding-bottom: 20px">
-                    <div class="col-md-12 mt-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="flex-between">
-                                    <div class="flex-between">
-                                        <div class="{{Session::get('direction') === "rtl" ? 'ml-1' : 'mr-1'}}"><i
-                                                class="tio-shop"></i></div>
-                                        <h5>{{\App\CPU\translate('Admin Shop Banner')}}</h5>
-                                    </div>
-                                    <div class="{{Session::get('direction') === "rtl" ? 'mr-1' : 'ml-1'}}"><small
-                                            style="color: red">{{\App\CPU\translate('Ratio')}}
-                                            ( {{\App\CPU\translate('6:1')}} )</small></div>
-                                </div>
-                                <div><i class="tio-panorama-image"></i></div>
-                            </div>
-                            <div class="card-body" style="padding: 20px">
-                                <center>
-                                    <img height="200" style="width: 100%" id="viewerShop"
-                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                         src="{{asset('storage/app/public/shop')}}/{{\App\CPU\Helpers::get_business_settings('shop_banner')}}">
-                                </center>
-                                <hr>
-                                <div class="row pl-4 pr-4">
-                                    <div class="col-12" style="text-align: left">
-                                        <input type="file" name="shop_banner" id="customFileUploadShop"
-                                               class="custom-file-input"
-                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">
-                                        <label class="custom-file-label" for="customFileUploadShop">
-                                            {{\App\CPU\translate('choose')}} {{\App\CPU\translate('file')}}
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="row" style="padding-bottom: 20px">--}}
+{{--                    <div class="col-md-12 mt-3">--}}
+{{--                        <div class="card">--}}
+{{--                            <div class="card-header">--}}
+{{--                                <div class="flex-between">--}}
+{{--                                    <div class="flex-between">--}}
+{{--                                        <div class="{{Session::get('direction') === "rtl" ? 'ml-1' : 'mr-1'}}"><i--}}
+{{--                                                class="tio-shop"></i></div>--}}
+{{--                                        <h5>{{\App\CPU\translate('Admin Shop Banner')}}</h5>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="{{Session::get('direction') === "rtl" ? 'mr-1' : 'ml-1'}}"><small--}}
+{{--                                            style="color: red">{{\App\CPU\translate('Ratio')}}--}}
+{{--                                            ( {{\App\CPU\translate('6:1')}} )</small></div>--}}
+{{--                                </div>--}}
+{{--                                <div><i class="tio-panorama-image"></i></div>--}}
+{{--                            </div>--}}
+{{--                            <div class="card-body" style="padding: 20px">--}}
+{{--                                <center>--}}
+{{--                                    <img height="200" style="width: 100%" id="viewerShop"--}}
+{{--                                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
+{{--                                         src="{{asset('storage/app/public/shop')}}/{{\App\CPU\Helpers::get_business_settings('shop_banner')}}">--}}
+{{--                                </center>--}}
+{{--                                <hr>--}}
+{{--                                <div class="row pl-4 pr-4">--}}
+{{--                                    <div class="col-12" style="text-align: left">--}}
+{{--                                        <input type="file" name="shop_banner" id="customFileUploadShop"--}}
+{{--                                               class="custom-file-input"--}}
+{{--                                               accept=".jpg, .png, .jpeg, .gif, .bmp, .tif, .tiff|image/*">--}}
+{{--                                        <label class="custom-file-label" for="customFileUploadShop">--}}
+{{--                                            {{\App\CPU\translate('choose')}} {{\App\CPU\translate('file')}}--}}
+{{--                                        </label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="row" style="padding-bottom: 20px">
                     <div class="col-md-4">
@@ -339,355 +339,11 @@
                             <label
                                 class="input-label">{{\App\CPU\translate('shop_address')}}</label>
                             <input type="text" value="{{isset($shop_address)!=null?$shop_address:''}}"
-                                   name="shop_address" class="form-control" 
+                                   name="shop_address" class="form-control"
                                    placeholder="{{\App\CPU\translate('Your_shop_address')}}"
                                    required>
                         </div>
                     </div>
-                    <div class="col-md-4 col-12">
-                        @php($billing_input_by_customer=\App\CPU\Helpers::get_business_settings('billing_input_by_customer'))
-                        <div class="form-group">
-                            <label>{{\App\CPU\translate('billing_input_by_customer')}}</label><small
-                                style="color: red">*</small>
-                            <div class="input-group input-group-md-down-break">
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="1"
-                                               name="billing_input_by_customer"
-                                               id="billing_input_by_customer1" {{$billing_input_by_customer==1?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="billing_input_by_customer1">{{\App\CPU\translate('active')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
-
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="0"
-                                               name="billing_input_by_customer"
-                                               id="billing_input_by_customer2" {{$billing_input_by_customer==0?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="billing_input_by_customer2">{{\App\CPU\translate('deactive')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                @php($tz=\App\Model\BusinessSetting::where('type','timezone')->first())
-                @php($tz=$tz?$tz->value:0)
-                <div class="row" style="padding-bottom: 20px">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label
-                                class="input-label d-inline text-capitalize">{{\App\CPU\translate('time')}} {{\App\CPU\translate('zone')}}</label>
-                            <select name="timezone" class="form-control js-select2-custom">
-                                <option value="UTC" {{$tz?($tz==''?'selected':''):''}}>UTC</option>
-                                <option value="Etc/GMT+12" {{$tz?($tz=='Etc/GMT+12'?'selected':''):''}}>(GMT-12:00)
-                                    International Date Line West
-                                </option>
-                                <option value="Pacific/Midway" {{$tz?($tz=='Pacific/Midway'?'selected':''):''}}>
-                                    (GMT-11:00)
-                                    Midway Island, Samoa
-                                </option>
-                                <option value="Pacific/Honolulu" {{$tz?($tz=='Pacific/Honolulu'?'selected':''):''}}>
-                                    (GMT-10:00)
-                                    Hawaii
-                                </option>
-                                <option value="US/Alaska" {{$tz?($tz=='US/Alaska'?'selected':''):''}}>(GMT-09:00) Alaska
-                                </option>
-                                <option
-                                    value="America/Los_Angeles" {{$tz?($tz=='America/Los_Angeles'?'selected':''):''}}>
-                                    (GMT-08:00) Pacific Time (US & Canada)
-                                </option>
-                                <option value="America/Tijuana" {{$tz?($tz=='America/Tijuana'?'selected':''):''}}>
-                                    (GMT-08:00)
-                                    Tijuana, Baja California
-                                </option>
-                                <option value="US/Arizona" {{$tz?($tz=='US/Arizona'?'selected':''):''}}>(GMT-07:00)
-                                    Arizona
-                                </option>
-                                <option value="America/Chihuahua" {{$tz?($tz=='America/Chihuahua'?'selected':''):''}}>
-                                    (GMT-07:00) Chihuahua, La Paz, Mazatlan
-                                </option>
-                                <option value="US/Mountain" {{$tz?($tz=='US/Mountain'?'selected':''):''}}>(GMT-07:00)
-                                    Mountain
-                                    Time (US & Canada)
-                                </option>
-                                <option value="America/Managua" {{$tz?($tz=='America/Managua'?'selected':''):''}}>
-                                    (GMT-06:00)
-                                    Central America
-                                </option>
-                                <option value="US/Central" {{$tz?($tz=='US/Central'?'selected':''):''}}>(GMT-06:00)
-                                    Central Time
-                                    (US & Canada)
-                                </option>
-                                <option
-                                    value="America/Mexico_City" {{$tz?($tz=='America/Mexico_City'?'selected':''):''}}>
-                                    (GMT-06:00) Guadalajara, Mexico City, Monterrey
-                                </option>
-                                <option
-                                    value="Canada/Saskatchewan" {{$tz?($tz=='Canada/Saskatchewan'?'selected':''):''}}>
-                                    (GMT-06:00) Saskatchewan
-                                </option>
-                                <option value="America/Bogota" {{$tz?($tz=='America/Bogota'?'selected':''):''}}>
-                                    (GMT-05:00)
-                                    Bogota, Lima, Quito, Rio Branco
-                                </option>
-                                <option value="US/Eastern" {{$tz?($tz=='US/Eastern'?'selected':''):''}}>(GMT-05:00)
-                                    Eastern Time
-                                    (US & Canada)
-                                </option>
-                                <option value="US/East-Indiana" {{$tz?($tz=='US/East-Indiana'?'selected':''):''}}>
-                                    (GMT-05:00)
-                                    Indiana (East)
-                                </option>
-                                <option value="Canada/Atlantic" {{$tz?($tz=='Canada/Atlantic'?'selected':''):''}}>
-                                    (GMT-04:00)
-                                    Atlantic Time (Canada)
-                                </option>
-                                <option value="America/Caracas" {{$tz?($tz=='America/Caracas'?'selected':''):''}}>
-                                    (GMT-04:00)
-                                    Caracas, La Paz
-                                </option>
-                                <option value="America/Manaus" {{$tz?($tz=='America/Manaus'?'selected':''):''}}>
-                                    (GMT-04:00)
-                                    Manaus
-                                </option>
-                                <option value="America/Santiago" {{$tz?($tz=='America/Santiago'?'selected':''):''}}>
-                                    (GMT-04:00)
-                                    Santiago
-                                </option>
-                                <option
-                                    value="Canada/Newfoundland" {{$tz?($tz=='Canada/Newfoundland'?'selected':''):''}}>
-                                    (GMT-03:30) Newfoundland
-                                </option>
-                                <option value="America/Sao_Paulo" {{$tz?($tz=='America/Sao_Paulo'?'selected':''):''}}>
-                                    (GMT-03:00) Brasilia
-                                </option>
-                                <option
-                                    value="America/Argentina/Buenos_Aires" {{$tz?($tz=='America/Argentina/Buenos_Aires'?'selected':''):''}}>
-                                    (GMT-03:00) Buenos Aires, Georgetown
-                                </option>
-                                <option value="America/Godthab" {{$tz?($tz=='America/Godthab'?'selected':''):''}}>
-                                    (GMT-03:00)
-                                    Greenland
-                                </option>
-                                <option value="America/Montevideo" {{$tz?($tz=='America/Montevideo'?'selected':''):''}}>
-                                    (GMT-03:00) Montevideo
-                                </option>
-                                <option value="America/Noronha" {{$tz?($tz=='America/Noronha'?'selected':''):''}}>
-                                    (GMT-02:00)
-                                    Mid-Atlantic
-                                </option>
-                                <option
-                                    value="Atlantic/Cape_Verde" {{$tz?($tz=='Atlantic/Cape_Verde'?'selected':''):''}}>
-                                    (GMT-01:00) Cape Verde Is.
-                                </option>
-                                <option value="Atlantic/Azores" {{$tz?($tz=='Atlantic/Azores'?'selected':''):''}}>
-                                    (GMT-01:00)
-                                    Azores
-                                </option>
-                                <option value="Africa/Casablanca" {{$tz?($tz=='Africa/Casablanca'?'selected':''):''}}>
-                                    (GMT+00:00) Casablanca, Monrovia, Reykjavik
-                                </option>
-                                <option value="Etc/Greenwich" {{$tz?($tz=='Etc/Greenwich'?'selected':''):''}}>
-                                    (GMT+00:00)
-                                    Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London
-                                </option>
-                                <option value="Europe/Amsterdam" {{$tz?($tz=='Europe/Amsterdam'?'selected':''):''}}>
-                                    (GMT+01:00)
-                                    Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna
-                                </option>
-                                <option value="Europe/Belgrade" {{$tz?($tz=='Europe/Belgrade'?'selected':''):''}}>
-                                    (GMT+01:00)
-                                    Belgrade, Bratislava, Budapest, Ljubljana, Prague
-                                </option>
-                                <option value="Europe/Brussels" {{$tz?($tz=='Europe/Brussels'?'selected':''):''}}>
-                                    (GMT+01:00)
-                                    Brussels, Copenhagen, Madrid, Paris
-                                </option>
-                                <option value="Europe/Sarajevo" {{$tz?($tz=='Europe/Sarajevo'?'selected':''):''}}>
-                                    (GMT+01:00)
-                                    Sarajevo, Skopje, Warsaw, Zagreb
-                                </option>
-                                <option value="Africa/Lagos" {{$tz?($tz=='Africa/Lagos'?'selected':''):''}}>(GMT+01:00)
-                                    West
-                                    Central Africa
-                                </option>
-                                <option value="Asia/Amman" {{$tz?($tz=='Asia/Amman'?'selected':''):''}}>(GMT+02:00)
-                                    Amman
-                                </option>
-                                <option value="Europe/Athens" {{$tz?($tz=='Europe/Athens'?'selected':''):''}}>
-                                    (GMT+02:00)
-                                    Athens, Bucharest, Istanbul
-                                </option>
-                                <option value="Asia/Beirut" {{$tz?($tz=='Asia/Beirut'?'selected':''):''}}>(GMT+02:00)
-                                    Beirut
-                                </option>
-                                <option value="Africa/Cairo" {{$tz?($tz=='Africa/Cairo'?'selected':''):''}}>(GMT+02:00)
-                                    Cairo
-                                </option>
-                                <option value="Africa/Harare" {{$tz?($tz=='Africa/Harare'?'selected':''):''}}>
-                                    (GMT+02:00)
-                                    Harare, Pretoria
-                                </option>
-                                <option value="Europe/Helsinki" {{$tz?($tz=='Europe/Helsinki'?'selected':''):''}}>
-                                    (GMT+02:00)
-                                    Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius
-                                </option>
-                                <option value="Asia/Jerusalem" {{$tz?($tz=='Asia/Jerusalem'?'selected':''):''}}>
-                                    (GMT+02:00)
-                                    Jerusalem
-                                </option>
-                                <option value="Europe/Minsk" {{$tz?($tz=='Europe/Minsk'?'selected':''):''}}>(GMT+02:00)
-                                    Minsk
-                                </option>
-                                <option value="Africa/Windhoek" {{$tz?($tz=='Africa/Windhoek'?'selected':''):''}}>
-                                    (GMT+02:00)
-                                    Windhoek
-                                </option>
-                                <option value="Asia/Kuwait" {{$tz?($tz=='Asia/Kuwait'?'selected':''):''}}>(GMT+03:00)
-                                    Kuwait,
-                                    Riyadh, Baghdad
-                                </option>
-                                <option value="Europe/Moscow" {{$tz?($tz=='Europe/Moscow'?'selected':''):''}}>
-                                    (GMT+03:00)
-                                    Moscow, St. Petersburg, Volgograd
-                                </option>
-                                <option value="Africa/Nairobi" {{$tz?($tz=='Africa/Nairobi'?'selected':''):''}}>
-                                    (GMT+03:00)
-                                    Nairobi
-                                </option>
-                                <option value="Asia/Tbilisi" {{$tz?($tz=='Asia/Tbilisi'?'selected':''):''}}>(GMT+03:00)
-                                    Tbilisi
-                                </option>
-                                <option value="Asia/Tehran" {{$tz?($tz=='Asia/Tehran'?'selected':''):''}}>(GMT+03:30)
-                                    Tehran
-                                </option>
-                                <option value="Asia/Muscat" {{$tz?($tz=='Asia/Muscat'?'selected':''):''}}>(GMT+04:00)
-                                    Abu Dhabi,
-                                    Muscat
-                                </option>
-                                <option value="Asia/Baku" {{$tz?($tz=='Asia/Baku'?'selected':''):''}}>(GMT+04:00) Baku
-                                </option>
-                                <option value="Asia/Yerevan" {{$tz?($tz=='Asia/Yerevan'?'selected':''):''}}>(GMT+04:00)
-                                    Yerevan
-                                </option>
-                                <option value="Asia/Kabul" {{$tz?($tz=='Asia/Kabul'?'selected':''):''}}>(GMT+04:30)
-                                    Kabul
-                                </option>
-                                <option value="Asia/Yekaterinburg" {{$tz?($tz=='Asia/Yekaterinburg'?'selected':''):''}}>
-                                    (GMT+05:00) Yekaterinburg
-                                </option>
-                                <option value="Asia/Karachi" {{$tz?($tz=='Asia/Karachi'?'selected':''):''}}>(GMT+05:00)
-                                    Islamabad, Karachi, Tashkent
-                                </option>
-                                <option value="Asia/Calcutta" {{$tz?($tz=='Asia/Calcutta'?'selected':''):''}}>
-                                    (GMT+05:30)
-                                    Chennai, Kolkata, Mumbai, New Delhi
-                                </option>
-                            <!-- <option value="Asia/Calcutta"  {{$tz?($tz=='Asia/Calcutta'?'selected':''):''}}>(GMT+05:30) Sri Jayawardenapura</option> -->
-                                <option value="Asia/Katmandu" {{$tz?($tz=='Asia/Katmandu'?'selected':''):''}}>
-                                    (GMT+05:45)
-                                    Kathmandu
-                                </option>
-                                <option value="Asia/Almaty" {{$tz?($tz=='Asia/Almaty'?'selected':''):''}}>(GMT+06:00)
-                                    Almaty,
-                                    Novosibirsk
-                                </option>
-                                <option value="Asia/Dhaka" {{$tz?($tz=='Asia/Dhaka'?'selected':''):''}}>(GMT+06:00)
-                                    Astana,
-                                    Dhaka
-                                </option>
-                                <option value="Asia/Rangoon" {{$tz?($tz=='Asia/Rangoon'?'selected':''):''}}>(GMT+06:30)
-                                    Yangon
-                                    (Rangoon)
-                                </option>
-                                <option value="Asia/Bangkok" {{$tz?($tz=='"Asia/Bangkok'?'selected':''):''}}>(GMT+07:00)
-                                    Bangkok, Hanoi, Jakarta
-                                </option>
-                                <option value="Asia/Krasnoyarsk" {{$tz?($tz=='Asia/Krasnoyarsk'?'selected':''):''}}>
-                                    (GMT+07:00)
-                                    Krasnoyarsk
-                                </option>
-                                <option value="Asia/Hong_Kong" {{$tz?($tz=='Asia/Hong_Kong'?'selected':''):''}}>
-                                    (GMT+08:00)
-                                    Beijing, Chongqing, Hong Kong, Urumqi
-                                </option>
-                                <option value="Asia/Kuala_Lumpur" {{$tz?($tz=='Asia/Kuala_Lumpur'?'selected':''):''}}>
-                                    (GMT+08:00) Kuala Lumpur, Singapore
-                                </option>
-                                <option value="Asia/Irkutsk" {{$tz?($tz=='Asia/Irkutsk'?'selected':''):''}}>(GMT+08:00)
-                                    Irkutsk,
-                                    Ulaan Bataar
-                                </option>
-                                <option value="Australia/Perth" {{$tz?($tz=='Australia/Perth'?'selected':''):''}}>
-                                    (GMT+08:00)
-                                    Perth
-                                </option>
-                                <option value="Asia/Taipei" {{$tz?($tz=='Asia/Taipei'?'selected':''):''}}>(GMT+08:00)
-                                    Taipei
-                                </option>
-                                <option value="Asia/Tokyo" {{$tz?($tz=='Asia/Tokyo'?'selected':''):''}}>(GMT+09:00)
-                                    Osaka,
-                                    Sapporo, Tokyo
-                                </option>
-                                <option value="Asia/Seoul" {{$tz?($tz=='Asia/Seoul'?'selected':''):''}}>(GMT+09:00)
-                                    Seoul
-                                </option>
-                                <option value="Asia/Yakutsk" {{$tz?($tz=='Asia/Yakutsk'?'selected':''):''}}>(GMT+09:00)
-                                    Yakutsk
-                                </option>
-                                <option value="Australia/Adelaide" {{$tz?($tz=='Australia/Adelaide'?'selected':''):''}}>
-                                    (GMT+09:30) Adelaide
-                                </option>
-                                <option value="Australia/Darwin" {{$tz?($tz=='Australia/Darwin'?'selected':''):''}}>
-                                    (GMT+09:30)
-                                    Darwin
-                                </option>
-                                <option value="Australia/Brisbane" {{$tz?($tz=='Australia/Brisbane'?'selected':''):''}}>
-                                    (GMT+10:00) Brisbane
-                                </option>
-                                <option value="Australia/Canberra" {{$tz?($tz=='Australia/Canberra'?'selected':''):''}}>
-                                    (GMT+10:00) Canberra, Melbourne, Sydney
-                                </option>
-                                <option value="Australia/Hobart" {{$tz?($tz=='Australia/Hobart'?'selected':''):''}}>
-                                    (GMT+10:00)
-                                    Hobart
-                                </option>
-                                <option value="Pacific/Guam" {{$tz?($tz=='Pacific/Guam'?'selected':''):''}}>(GMT+10:00)
-                                    Guam,
-                                    Port Moresby
-                                </option>
-                                <option value="Asia/Vladivostok" {{$tz?($tz=='Asia/Vladivostok'?'selected':''):''}}>
-                                    (GMT+10:00)
-                                    Vladivostok
-                                </option>
-                                <option value="Asia/Magadan" {{$tz?($tz=='Asia/Magadan'?'selected':''):''}}>(GMT+11:00)
-                                    Magadan,
-                                    Solomon Is., New Caledonia
-                                </option>
-                                <option value="Pacific/Auckland" {{$tz?($tz=='Pacific/Auckland'?'selected':''):''}}>
-                                    (GMT+12:00)
-                                    Auckland, Wellington
-                                </option>
-                                <option value="Pacific/Fiji" {{$tz?($tz=='Pacific/Fiji'?'selected':''):''}}>(GMT+12:00)
-                                    Fiji,
-                                    Kamchatka, Marshall Is.
-                                </option>
-                                <option value="Pacific/Tongatapu" {{$tz?($tz=='Pacific/Tongatapu'?'selected':''):''}}>
-                                    (GMT+13:00) Nuku'alofa
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-
-
                     @php($cc=\App\Model\BusinessSetting::where('type','country_code')->first())
                     @php($cc=$cc?$cc->value:0)
                     <div class="col-md-4">
@@ -995,117 +651,462 @@
                         </div>
                     </div>
 
-                    @php($fpv=\App\CPU\Helpers::get_business_settings('forgot_password_verification'))
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label
-                                class="input-label d-inline text-capitalize">{{\App\CPU\translate('forgot_password_verification_by')}} </label>
-                            <select name="forgot_password_verification" class="form-control  js-select2-custom">
-                                <option value="email" {{ isset($fpv)?($fpv=='email'?'selected':''):'' }} >Email</option>
-                                <option value="phone" {{ isset($fpv)?($fpv=='phone'?'selected':''):'' }} >Phone</option>
-                            </select>
-                        </div>
-                    </div>
+                    {{--                    <div class="col-md-4 col-12">--}}
+{{--                        @php($billing_input_by_customer=\App\CPU\Helpers::get_business_settings('billing_input_by_customer'))--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label>{{\App\CPU\translate('billing_input_by_customer')}}</label><small--}}
+{{--                                style="color: red">*</small>--}}
+{{--                            <div class="input-group input-group-md-down-break">--}}
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="1"--}}
+{{--                                               name="billing_input_by_customer"--}}
+{{--                                               id="billing_input_by_customer1" {{$billing_input_by_customer==1?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="billing_input_by_customer1">{{\App\CPU\translate('active')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="0"--}}
+{{--                                               name="billing_input_by_customer"--}}
+{{--                                               id="billing_input_by_customer2" {{$billing_input_by_customer==0?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="billing_input_by_customer2">{{\App\CPU\translate('deactive')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
 
-                <div class="row">
-                    <div class="col-md-4 col-12">
-                        @php($pv=\App\CPU\Helpers::get_business_settings('phone_verification'))
-                        <div class="form-group">
-                            <label>{{\App\CPU\translate('phone')}} {{\App\CPU\translate('verification')}} ( OTP
-                                )</label><small style="color: red">*</small>
-                            <div class="input-group input-group-md-down-break">
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="1"
-                                               name="phone_verification"
-                                               id="phone_verification_on" {{(isset($pv) && $pv==1)?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="phone_verification_on">{{\App\CPU\translate('on')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
+                @php($tz=\App\Model\BusinessSetting::where('type','timezone')->first())
+                @php($tz=$tz?$tz->value:0)
+                <div class="row" style="padding-bottom: 20px">
+{{--                    <div class="col-md-4">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label--}}
+{{--                                class="input-label d-inline text-capitalize">{{\App\CPU\translate('time')}} {{\App\CPU\translate('zone')}}</label>--}}
+{{--                            <select name="timezone" class="form-control js-select2-custom">--}}
+{{--                                <option value="UTC" {{$tz?($tz==''?'selected':''):''}}>UTC</option>--}}
+{{--                                <option value="Etc/GMT+12" {{$tz?($tz=='Etc/GMT+12'?'selected':''):''}}>(GMT-12:00)--}}
+{{--                                    International Date Line West--}}
+{{--                                </option>--}}
+{{--                                <option value="Pacific/Midway" {{$tz?($tz=='Pacific/Midway'?'selected':''):''}}>--}}
+{{--                                    (GMT-11:00)--}}
+{{--                                    Midway Island, Samoa--}}
+{{--                                </option>--}}
+{{--                                <option value="Pacific/Honolulu" {{$tz?($tz=='Pacific/Honolulu'?'selected':''):''}}>--}}
+{{--                                    (GMT-10:00)--}}
+{{--                                    Hawaii--}}
+{{--                                </option>--}}
+{{--                                <option value="US/Alaska" {{$tz?($tz=='US/Alaska'?'selected':''):''}}>(GMT-09:00) Alaska--}}
+{{--                                </option>--}}
+{{--                                <option--}}
+{{--                                    value="America/Los_Angeles" {{$tz?($tz=='America/Los_Angeles'?'selected':''):''}}>--}}
+{{--                                    (GMT-08:00) Pacific Time (US & Canada)--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Tijuana" {{$tz?($tz=='America/Tijuana'?'selected':''):''}}>--}}
+{{--                                    (GMT-08:00)--}}
+{{--                                    Tijuana, Baja California--}}
+{{--                                </option>--}}
+{{--                                <option value="US/Arizona" {{$tz?($tz=='US/Arizona'?'selected':''):''}}>(GMT-07:00)--}}
+{{--                                    Arizona--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Chihuahua" {{$tz?($tz=='America/Chihuahua'?'selected':''):''}}>--}}
+{{--                                    (GMT-07:00) Chihuahua, La Paz, Mazatlan--}}
+{{--                                </option>--}}
+{{--                                <option value="US/Mountain" {{$tz?($tz=='US/Mountain'?'selected':''):''}}>(GMT-07:00)--}}
+{{--                                    Mountain--}}
+{{--                                    Time (US & Canada)--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Managua" {{$tz?($tz=='America/Managua'?'selected':''):''}}>--}}
+{{--                                    (GMT-06:00)--}}
+{{--                                    Central America--}}
+{{--                                </option>--}}
+{{--                                <option value="US/Central" {{$tz?($tz=='US/Central'?'selected':''):''}}>(GMT-06:00)--}}
+{{--                                    Central Time--}}
+{{--                                    (US & Canada)--}}
+{{--                                </option>--}}
+{{--                                <option--}}
+{{--                                    value="America/Mexico_City" {{$tz?($tz=='America/Mexico_City'?'selected':''):''}}>--}}
+{{--                                    (GMT-06:00) Guadalajara, Mexico City, Monterrey--}}
+{{--                                </option>--}}
+{{--                                <option--}}
+{{--                                    value="Canada/Saskatchewan" {{$tz?($tz=='Canada/Saskatchewan'?'selected':''):''}}>--}}
+{{--                                    (GMT-06:00) Saskatchewan--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Bogota" {{$tz?($tz=='America/Bogota'?'selected':''):''}}>--}}
+{{--                                    (GMT-05:00)--}}
+{{--                                    Bogota, Lima, Quito, Rio Branco--}}
+{{--                                </option>--}}
+{{--                                <option value="US/Eastern" {{$tz?($tz=='US/Eastern'?'selected':''):''}}>(GMT-05:00)--}}
+{{--                                    Eastern Time--}}
+{{--                                    (US & Canada)--}}
+{{--                                </option>--}}
+{{--                                <option value="US/East-Indiana" {{$tz?($tz=='US/East-Indiana'?'selected':''):''}}>--}}
+{{--                                    (GMT-05:00)--}}
+{{--                                    Indiana (East)--}}
+{{--                                </option>--}}
+{{--                                <option value="Canada/Atlantic" {{$tz?($tz=='Canada/Atlantic'?'selected':''):''}}>--}}
+{{--                                    (GMT-04:00)--}}
+{{--                                    Atlantic Time (Canada)--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Caracas" {{$tz?($tz=='America/Caracas'?'selected':''):''}}>--}}
+{{--                                    (GMT-04:00)--}}
+{{--                                    Caracas, La Paz--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Manaus" {{$tz?($tz=='America/Manaus'?'selected':''):''}}>--}}
+{{--                                    (GMT-04:00)--}}
+{{--                                    Manaus--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Santiago" {{$tz?($tz=='America/Santiago'?'selected':''):''}}>--}}
+{{--                                    (GMT-04:00)--}}
+{{--                                    Santiago--}}
+{{--                                </option>--}}
+{{--                                <option--}}
+{{--                                    value="Canada/Newfoundland" {{$tz?($tz=='Canada/Newfoundland'?'selected':''):''}}>--}}
+{{--                                    (GMT-03:30) Newfoundland--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Sao_Paulo" {{$tz?($tz=='America/Sao_Paulo'?'selected':''):''}}>--}}
+{{--                                    (GMT-03:00) Brasilia--}}
+{{--                                </option>--}}
+{{--                                <option--}}
+{{--                                    value="America/Argentina/Buenos_Aires" {{$tz?($tz=='America/Argentina/Buenos_Aires'?'selected':''):''}}>--}}
+{{--                                    (GMT-03:00) Buenos Aires, Georgetown--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Godthab" {{$tz?($tz=='America/Godthab'?'selected':''):''}}>--}}
+{{--                                    (GMT-03:00)--}}
+{{--                                    Greenland--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Montevideo" {{$tz?($tz=='America/Montevideo'?'selected':''):''}}>--}}
+{{--                                    (GMT-03:00) Montevideo--}}
+{{--                                </option>--}}
+{{--                                <option value="America/Noronha" {{$tz?($tz=='America/Noronha'?'selected':''):''}}>--}}
+{{--                                    (GMT-02:00)--}}
+{{--                                    Mid-Atlantic--}}
+{{--                                </option>--}}
+{{--                                <option--}}
+{{--                                    value="Atlantic/Cape_Verde" {{$tz?($tz=='Atlantic/Cape_Verde'?'selected':''):''}}>--}}
+{{--                                    (GMT-01:00) Cape Verde Is.--}}
+{{--                                </option>--}}
+{{--                                <option value="Atlantic/Azores" {{$tz?($tz=='Atlantic/Azores'?'selected':''):''}}>--}}
+{{--                                    (GMT-01:00)--}}
+{{--                                    Azores--}}
+{{--                                </option>--}}
+{{--                                <option value="Africa/Casablanca" {{$tz?($tz=='Africa/Casablanca'?'selected':''):''}}>--}}
+{{--                                    (GMT+00:00) Casablanca, Monrovia, Reykjavik--}}
+{{--                                </option>--}}
+{{--                                <option value="Etc/Greenwich" {{$tz?($tz=='Etc/Greenwich'?'selected':''):''}}>--}}
+{{--                                    (GMT+00:00)--}}
+{{--                                    Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Amsterdam" {{$tz?($tz=='Europe/Amsterdam'?'selected':''):''}}>--}}
+{{--                                    (GMT+01:00)--}}
+{{--                                    Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Belgrade" {{$tz?($tz=='Europe/Belgrade'?'selected':''):''}}>--}}
+{{--                                    (GMT+01:00)--}}
+{{--                                    Belgrade, Bratislava, Budapest, Ljubljana, Prague--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Brussels" {{$tz?($tz=='Europe/Brussels'?'selected':''):''}}>--}}
+{{--                                    (GMT+01:00)--}}
+{{--                                    Brussels, Copenhagen, Madrid, Paris--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Sarajevo" {{$tz?($tz=='Europe/Sarajevo'?'selected':''):''}}>--}}
+{{--                                    (GMT+01:00)--}}
+{{--                                    Sarajevo, Skopje, Warsaw, Zagreb--}}
+{{--                                </option>--}}
+{{--                                <option value="Africa/Lagos" {{$tz?($tz=='Africa/Lagos'?'selected':''):''}}>(GMT+01:00)--}}
+{{--                                    West--}}
+{{--                                    Central Africa--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Amman" {{$tz?($tz=='Asia/Amman'?'selected':''):''}}>(GMT+02:00)--}}
+{{--                                    Amman--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Athens" {{$tz?($tz=='Europe/Athens'?'selected':''):''}}>--}}
+{{--                                    (GMT+02:00)--}}
+{{--                                    Athens, Bucharest, Istanbul--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Beirut" {{$tz?($tz=='Asia/Beirut'?'selected':''):''}}>(GMT+02:00)--}}
+{{--                                    Beirut--}}
+{{--                                </option>--}}
+{{--                                <option value="Africa/Cairo" {{$tz?($tz=='Africa/Cairo'?'selected':''):''}}>(GMT+02:00)--}}
+{{--                                    Cairo--}}
+{{--                                </option>--}}
+{{--                                <option value="Africa/Harare" {{$tz?($tz=='Africa/Harare'?'selected':''):''}}>--}}
+{{--                                    (GMT+02:00)--}}
+{{--                                    Harare, Pretoria--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Helsinki" {{$tz?($tz=='Europe/Helsinki'?'selected':''):''}}>--}}
+{{--                                    (GMT+02:00)--}}
+{{--                                    Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Jerusalem" {{$tz?($tz=='Asia/Jerusalem'?'selected':''):''}}>--}}
+{{--                                    (GMT+02:00)--}}
+{{--                                    Jerusalem--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Minsk" {{$tz?($tz=='Europe/Minsk'?'selected':''):''}}>(GMT+02:00)--}}
+{{--                                    Minsk--}}
+{{--                                </option>--}}
+{{--                                <option value="Africa/Windhoek" {{$tz?($tz=='Africa/Windhoek'?'selected':''):''}}>--}}
+{{--                                    (GMT+02:00)--}}
+{{--                                    Windhoek--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Kuwait" {{$tz?($tz=='Asia/Kuwait'?'selected':''):''}}>(GMT+03:00)--}}
+{{--                                    Kuwait,--}}
+{{--                                    Riyadh, Baghdad--}}
+{{--                                </option>--}}
+{{--                                <option value="Europe/Moscow" {{$tz?($tz=='Europe/Moscow'?'selected':''):''}}>--}}
+{{--                                    (GMT+03:00)--}}
+{{--                                    Moscow, St. Petersburg, Volgograd--}}
+{{--                                </option>--}}
+{{--                                <option value="Africa/Nairobi" {{$tz?($tz=='Africa/Nairobi'?'selected':''):''}}>--}}
+{{--                                    (GMT+03:00)--}}
+{{--                                    Nairobi--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Tbilisi" {{$tz?($tz=='Asia/Tbilisi'?'selected':''):''}}>(GMT+03:00)--}}
+{{--                                    Tbilisi--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Tehran" {{$tz?($tz=='Asia/Tehran'?'selected':''):''}}>(GMT+03:30)--}}
+{{--                                    Tehran--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Muscat" {{$tz?($tz=='Asia/Muscat'?'selected':''):''}}>(GMT+04:00)--}}
+{{--                                    Abu Dhabi,--}}
+{{--                                    Muscat--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Baku" {{$tz?($tz=='Asia/Baku'?'selected':''):''}}>(GMT+04:00) Baku--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Yerevan" {{$tz?($tz=='Asia/Yerevan'?'selected':''):''}}>(GMT+04:00)--}}
+{{--                                    Yerevan--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Kabul" {{$tz?($tz=='Asia/Kabul'?'selected':''):''}}>(GMT+04:30)--}}
+{{--                                    Kabul--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Yekaterinburg" {{$tz?($tz=='Asia/Yekaterinburg'?'selected':''):''}}>--}}
+{{--                                    (GMT+05:00) Yekaterinburg--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Karachi" {{$tz?($tz=='Asia/Karachi'?'selected':''):''}}>(GMT+05:00)--}}
+{{--                                    Islamabad, Karachi, Tashkent--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Calcutta" {{$tz?($tz=='Asia/Calcutta'?'selected':''):''}}>--}}
+{{--                                    (GMT+05:30)--}}
+{{--                                    Chennai, Kolkata, Mumbai, New Delhi--}}
+{{--                                </option>--}}
+{{--                            <!-- <option value="Asia/Calcutta"  {{$tz?($tz=='Asia/Calcutta'?'selected':''):''}}>(GMT+05:30) Sri Jayawardenapura</option> -->--}}
+{{--                                <option value="Asia/Katmandu" {{$tz?($tz=='Asia/Katmandu'?'selected':''):''}}>--}}
+{{--                                    (GMT+05:45)--}}
+{{--                                    Kathmandu--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Almaty" {{$tz?($tz=='Asia/Almaty'?'selected':''):''}}>(GMT+06:00)--}}
+{{--                                    Almaty,--}}
+{{--                                    Novosibirsk--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Dhaka" {{$tz?($tz=='Asia/Dhaka'?'selected':''):''}}>(GMT+06:00)--}}
+{{--                                    Astana,--}}
+{{--                                    Dhaka--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Rangoon" {{$tz?($tz=='Asia/Rangoon'?'selected':''):''}}>(GMT+06:30)--}}
+{{--                                    Yangon--}}
+{{--                                    (Rangoon)--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Bangkok" {{$tz?($tz=='"Asia/Bangkok'?'selected':''):''}}>(GMT+07:00)--}}
+{{--                                    Bangkok, Hanoi, Jakarta--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Krasnoyarsk" {{$tz?($tz=='Asia/Krasnoyarsk'?'selected':''):''}}>--}}
+{{--                                    (GMT+07:00)--}}
+{{--                                    Krasnoyarsk--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Hong_Kong" {{$tz?($tz=='Asia/Hong_Kong'?'selected':''):''}}>--}}
+{{--                                    (GMT+08:00)--}}
+{{--                                    Beijing, Chongqing, Hong Kong, Urumqi--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Kuala_Lumpur" {{$tz?($tz=='Asia/Kuala_Lumpur'?'selected':''):''}}>--}}
+{{--                                    (GMT+08:00) Kuala Lumpur, Singapore--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Irkutsk" {{$tz?($tz=='Asia/Irkutsk'?'selected':''):''}}>(GMT+08:00)--}}
+{{--                                    Irkutsk,--}}
+{{--                                    Ulaan Bataar--}}
+{{--                                </option>--}}
+{{--                                <option value="Australia/Perth" {{$tz?($tz=='Australia/Perth'?'selected':''):''}}>--}}
+{{--                                    (GMT+08:00)--}}
+{{--                                    Perth--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Taipei" {{$tz?($tz=='Asia/Taipei'?'selected':''):''}}>(GMT+08:00)--}}
+{{--                                    Taipei--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Tokyo" {{$tz?($tz=='Asia/Tokyo'?'selected':''):''}}>(GMT+09:00)--}}
+{{--                                    Osaka,--}}
+{{--                                    Sapporo, Tokyo--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Seoul" {{$tz?($tz=='Asia/Seoul'?'selected':''):''}}>(GMT+09:00)--}}
+{{--                                    Seoul--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Yakutsk" {{$tz?($tz=='Asia/Yakutsk'?'selected':''):''}}>(GMT+09:00)--}}
+{{--                                    Yakutsk--}}
+{{--                                </option>--}}
+{{--                                <option value="Australia/Adelaide" {{$tz?($tz=='Australia/Adelaide'?'selected':''):''}}>--}}
+{{--                                    (GMT+09:30) Adelaide--}}
+{{--                                </option>--}}
+{{--                                <option value="Australia/Darwin" {{$tz?($tz=='Australia/Darwin'?'selected':''):''}}>--}}
+{{--                                    (GMT+09:30)--}}
+{{--                                    Darwin--}}
+{{--                                </option>--}}
+{{--                                <option value="Australia/Brisbane" {{$tz?($tz=='Australia/Brisbane'?'selected':''):''}}>--}}
+{{--                                    (GMT+10:00) Brisbane--}}
+{{--                                </option>--}}
+{{--                                <option value="Australia/Canberra" {{$tz?($tz=='Australia/Canberra'?'selected':''):''}}>--}}
+{{--                                    (GMT+10:00) Canberra, Melbourne, Sydney--}}
+{{--                                </option>--}}
+{{--                                <option value="Australia/Hobart" {{$tz?($tz=='Australia/Hobart'?'selected':''):''}}>--}}
+{{--                                    (GMT+10:00)--}}
+{{--                                    Hobart--}}
+{{--                                </option>--}}
+{{--                                <option value="Pacific/Guam" {{$tz?($tz=='Pacific/Guam'?'selected':''):''}}>(GMT+10:00)--}}
+{{--                                    Guam,--}}
+{{--                                    Port Moresby--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Vladivostok" {{$tz?($tz=='Asia/Vladivostok'?'selected':''):''}}>--}}
+{{--                                    (GMT+10:00)--}}
+{{--                                    Vladivostok--}}
+{{--                                </option>--}}
+{{--                                <option value="Asia/Magadan" {{$tz?($tz=='Asia/Magadan'?'selected':''):''}}>(GMT+11:00)--}}
+{{--                                    Magadan,--}}
+{{--                                    Solomon Is., New Caledonia--}}
+{{--                                </option>--}}
+{{--                                <option value="Pacific/Auckland" {{$tz?($tz=='Pacific/Auckland'?'selected':''):''}}>--}}
+{{--                                    (GMT+12:00)--}}
+{{--                                    Auckland, Wellington--}}
+{{--                                </option>--}}
+{{--                                <option value="Pacific/Fiji" {{$tz?($tz=='Pacific/Fiji'?'selected':''):''}}>(GMT+12:00)--}}
+{{--                                    Fiji,--}}
+{{--                                    Kamchatka, Marshall Is.--}}
+{{--                                </option>--}}
+{{--                                <option value="Pacific/Tongatapu" {{$tz?($tz=='Pacific/Tongatapu'?'selected':''):''}}>--}}
+{{--                                    (GMT+13:00) Nuku'alofa--}}
+{{--                                </option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="0"
-                                               name="phone_verification"
-                                               id="phone_verification_off" {{(isset($pv) && $pv==0)?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="phone_verification_off">{{\App\CPU\translate('off')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-12">
-                        @php($ev=\App\CPU\Helpers::get_business_settings('email_verification'))
-                        <div class="form-group">
-                            <label>{{\App\CPU\translate('email')}} {{\App\CPU\translate('verification')}}</label><small
-                                style="color: red">*</small>
-                            <div class="input-group input-group-md-down-break">
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="1"
-                                               name="email_verification"
-                                               id="email_verification_on" {{$ev==1?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="email_verification_on">{{\App\CPU\translate('on')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
 
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="0"
-                                               name="email_verification"
-                                               id="email_verification_off" {{$ev==0?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="email_verification_off">{{\App\CPU\translate('off')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-12">
-                        @php($order_verification=\App\CPU\Helpers::get_business_settings('order_verification'))
-                        <div class="form-group">
-                            <label>{{\App\CPU\translate('order')}} {{\App\CPU\translate('verification')}}</label><small
-                                style="color: red">*</small>
-                            <div class="input-group input-group-md-down-break">
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="1"
-                                               name="order_verification"
-                                               id="order_verification1" {{$order_verification==1?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="order_verification1">{{\App\CPU\translate('on')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
 
-                                <!-- Custom Radio -->
-                                <div class="form-control">
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" value="0"
-                                               name="order_verification"
-                                               id="order_verification2" {{$order_verification==0?'checked':''}}>
-                                        <label class="custom-control-label"
-                                               for="order_verification2">{{\App\CPU\translate('off')}}</label>
-                                    </div>
-                                </div>
-                                <!-- End Custom Radio -->
-                            </div>
-                        </div>
-                    </div>
+{{--                    @php($fpv=\App\CPU\Helpers::get_business_settings('forgot_password_verification'))--}}
+{{--                    <div class="col-md-4">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label--}}
+{{--                                class="input-label d-inline text-capitalize">{{\App\CPU\translate('forgot_password_verification_by')}} </label>--}}
+{{--                            <select name="forgot_password_verification" class="form-control  js-select2-custom">--}}
+{{--                                <option value="email" {{ isset($fpv)?($fpv=='email'?'selected':''):'' }} >Email</option>--}}
+{{--                                <option value="phone" {{ isset($fpv)?($fpv=='phone'?'selected':''):'' }} >Phone</option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
+
+{{--                <div class="row">--}}
+{{--                    <div class="col-md-4 col-12">--}}
+{{--                        @php($pv=\App\CPU\Helpers::get_business_settings('phone_verification'))--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label>{{\App\CPU\translate('phone')}} {{\App\CPU\translate('verification')}} ( OTP--}}
+{{--                                )</label><small style="color: red">*</small>--}}
+{{--                            <div class="input-group input-group-md-down-break">--}}
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="1"--}}
+{{--                                               name="phone_verification"--}}
+{{--                                               id="phone_verification_on" {{(isset($pv) && $pv==1)?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="phone_verification_on">{{\App\CPU\translate('on')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="0"--}}
+{{--                                               name="phone_verification"--}}
+{{--                                               id="phone_verification_off" {{(isset($pv) && $pv==0)?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="phone_verification_off">{{\App\CPU\translate('off')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-12">--}}
+{{--                        @php($ev=\App\CPU\Helpers::get_business_settings('email_verification'))--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label>{{\App\CPU\translate('email')}} {{\App\CPU\translate('verification')}}</label><small--}}
+{{--                                style="color: red">*</small>--}}
+{{--                            <div class="input-group input-group-md-down-break">--}}
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="1"--}}
+{{--                                               name="email_verification"--}}
+{{--                                               id="email_verification_on" {{$ev==1?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="email_verification_on">{{\App\CPU\translate('on')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="0"--}}
+{{--                                               name="email_verification"--}}
+{{--                                               id="email_verification_off" {{$ev==0?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="email_verification_off">{{\App\CPU\translate('off')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-md-4 col-12">--}}
+{{--                        @php($order_verification=\App\CPU\Helpers::get_business_settings('order_verification'))--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label>{{\App\CPU\translate('order')}} {{\App\CPU\translate('verification')}}</label><small--}}
+{{--                                style="color: red">*</small>--}}
+{{--                            <div class="input-group input-group-md-down-break">--}}
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="1"--}}
+{{--                                               name="order_verification"--}}
+{{--                                               id="order_verification1" {{$order_verification==1?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="order_verification1">{{\App\CPU\translate('on')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+
+{{--                                <!-- Custom Radio -->--}}
+{{--                                <div class="form-control">--}}
+{{--                                    <div class="custom-control custom-radio">--}}
+{{--                                        <input type="radio" class="custom-control-input" value="0"--}}
+{{--                                               name="order_verification"--}}
+{{--                                               id="order_verification2" {{$order_verification==0?'checked':''}}>--}}
+{{--                                        <label class="custom-control-label"--}}
+{{--                                               for="order_verification2">{{\App\CPU\translate('off')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- End Custom Radio -->--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="row" style="padding-bottom: 20px">
                     <div class="col-md-6">
@@ -1242,47 +1243,47 @@
 
                 <div class="row" style="padding-bottom: 20px">
 
-                    @php($announcement=\App\CPU\Helpers::get_business_settings('announcement'))
-                    @if (isset($announcement))
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body" style="padding: 20px">
+{{--                    @php($announcement=\App\CPU\Helpers::get_business_settings('announcement'))--}}
+{{--                    @if (isset($announcement))--}}
+{{--                        <div class="col-md-6">--}}
+{{--                            <div class="card">--}}
+{{--                                <div class="card-body" style="padding: 20px">--}}
 
-                                    <h4>{{\App\CPU\translate('announcement_setup')}}</h4>
-                                    <div class="form-group mb-2 mt-2">
-                                        <input type="radio" name="announcement_status"
-                                               value="1" {{$announcement['status']==1?'checked':''}}>
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Active')}}</label>
-                                        <br>
-                                    </div>
-                                    <div class="form-group mb-2">
-                                        <input type="radio" name="announcement_status"
-                                               value="0" {{$announcement['status']==0?'checked':''}}>
-                                        <label
-                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Inactive')}}</label>
-                                        <br>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{{\App\CPU\translate('background_color')}}</label>
-                                        <input type="color" name="announcement_color"
-                                               value="{{ $announcement['color'] }}"
-                                               class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{{\App\CPU\translate('text_color')}}</label>
-                                        <input type="color" name="text_color" value="{{ $announcement['text_color'] }}"
-                                               class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>{{\App\CPU\translate('text')}}</label>
-                                        <input class="form-control" type="text" name="announcement"
-                                               value="{{ $announcement['announcement'] }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endif
+{{--                                    <h4>{{\App\CPU\translate('announcement_setup')}}</h4>--}}
+{{--                                    <div class="form-group mb-2 mt-2">--}}
+{{--                                        <input type="radio" name="announcement_status"--}}
+{{--                                               value="1" {{$announcement['status']==1?'checked':''}}>--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Active')}}</label>--}}
+{{--                                        <br>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group mb-2">--}}
+{{--                                        <input type="radio" name="announcement_status"--}}
+{{--                                               value="0" {{$announcement['status']==0?'checked':''}}>--}}
+{{--                                        <label--}}
+{{--                                            style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 10px">{{\App\CPU\translate('Inactive')}}</label>--}}
+{{--                                        <br>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>{{\App\CPU\translate('background_color')}}</label>--}}
+{{--                                        <input type="color" name="announcement_color"--}}
+{{--                                               value="{{ $announcement['color'] }}"--}}
+{{--                                               class="form-control">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>{{\App\CPU\translate('text_color')}}</label>--}}
+{{--                                        <input type="color" name="text_color" value="{{ $announcement['text_color'] }}"--}}
+{{--                                               class="form-control">--}}
+{{--                                    </div>--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label>{{\App\CPU\translate('text')}}</label>--}}
+{{--                                        <input class="form-control" type="text" name="announcement"--}}
+{{--                                               value="{{ $announcement['announcement'] }}">--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    @endif--}}
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body" style="padding: 20px">
@@ -1315,7 +1316,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
 
                 </div>
                 <hr>

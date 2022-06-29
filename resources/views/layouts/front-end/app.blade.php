@@ -48,9 +48,6 @@
         body {
             background-color: #f7f8fa94;
         }
-        .container, .container-sm, .container-md, .container-lg, .container-xl {
-            max-width: 80%;
-        }
         .rtl {
             direction: {{ Session::get('direction') }};
         }

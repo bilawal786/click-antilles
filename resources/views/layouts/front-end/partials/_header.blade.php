@@ -378,6 +378,7 @@
                                                     <ul class="dropdown-menu"
                                                         style="right: 100%; text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
                                                         @foreach($category['childes'] as $subCategory)
+
                                                             <li class="dropdown">
                                                                 <a class="dropdown-item flex-between"
                                                                    <?php if ($subCategory->childes->count() > 0) echo "data-toggle='dropdown'"?> href="javascript:"
