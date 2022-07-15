@@ -40,18 +40,18 @@
                 {{\App\CPU\Helpers::currency_converter($sub_total)}}
             </span>
         </div>
-        <div class="d-flex justify-content-between">
-            <span class="cart_title">{{\App\CPU\translate('tax')}}</span>
-            <span class="cart_value">
-                {{\App\CPU\Helpers::currency_converter($total_tax)}}
-            </span>
-        </div>
-        <div class="d-flex justify-content-between">
-            <span class="cart_title">{{\App\CPU\translate('shipping')}}</span>
-            <span class="cart_value">
-                {{\App\CPU\Helpers::currency_converter($total_shipping_cost)}}
-            </span>
-        </div>
+{{--        <div class="d-flex justify-content-between">--}}
+{{--            <span class="cart_title">{{\App\CPU\translate('tax')}}</span>--}}
+{{--            <span class="cart_value">--}}
+{{--                {{\App\CPU\Helpers::currency_converter($total_tax)}}--}}
+{{--            </span>--}}
+{{--        </div>--}}
+{{--        <div class="d-flex justify-content-between">--}}
+{{--            <span class="cart_title">{{\App\CPU\translate('shipping')}}</span>--}}
+{{--            <span class="cart_value">--}}
+{{--                {{\App\CPU\Helpers::currency_converter($total_shipping_cost)}}--}}
+{{--            </span>--}}
+{{--        </div>--}}
         <div class="d-flex justify-content-between">
             <span class="cart_title">{{\App\CPU\translate('discount_on_product')}}</span>
             <span class="cart_value">

@@ -116,7 +116,7 @@
                                 <td>
                                     <div>
                                         <select name="quantity[{{ $cartItem['id'] }}]" id="cartQuantity{{$cartItem['id']}}"
-                                                onchange="updateCartQuantity('{{$cartItem['id']}}')">
+                                                onchange="updateCartQuantity('{{$cartItem['id']}}')" disabled>
                                             @for ($i = 1; $i <= 10; $i++)
                                                 <option
                                                     value="{{$i}}" {{$cartItem['quantity'] == $i?'selected':''}}>
@@ -210,19 +210,19 @@
                     @if(isset($choosen_shipping)==false)
                         @php($choosen_shipping['shipping_method_id']=0)
                     @endif
-{{--                    <div class="row">--}}
-{{--                        <div class="col-12">--}}
-{{--                            <select class="form-control" onchange="set_shipping_id(this.value,'all_cart_group')">--}}
-{{--                                <option>{{\App\CPU\translate('choose_shipping_method')}}</option>--}}
-{{--                                @foreach($shippings as $shipping)--}}
-{{--                                    <option--}}
-{{--                                        value="{{$shipping['id']}}" {{$choosen_shipping['shipping_method_id']==$shipping['id']?'selected':''}}>--}}
-{{--                                        {{$shipping['title'].' ( '.$shipping['duration'].' ) '.\App\CPU\Helpers::currency_converter($shipping['cost'])}}--}}
-{{--                                    </option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="row">
+                        <div class="col-12">
+                            <select class="form-control" onchange="set_shipping_id(this.value,'all_cart_group')">
+                                <option>{{\App\CPU\translate('choose_shipping_method')}}</option>
+                                @foreach($shippings as $shipping)
+                                    <option
+                                        value="{{$shipping['id']}}" {{$choosen_shipping['shipping_method_id']==$shipping['id']?'selected':''}}>
+                                        {{$shipping['title'].' ( '.$shipping['duration'].' ) '.\App\CPU\Helpers::currency_converter($shipping['cost'])}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 @endif
             @endif
 

@@ -49,11 +49,11 @@
                         <h1 class="page-header-title" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">{{\App\CPU\translate('Dashboard')}}</h1>
                         <p>{{ \App\CPU\translate('Welcome_message')}}.</p>
                     </div>
-                    <div style="height: 25px">
-                        <label class="badge badge-soft-success">
-                            {{\App\CPU\translate('Software version')}} : {{ env('SOFTWARE_VERSION') }}
-                        </label>
-                    </div>
+{{--                    <div style="height: 25px">--}}
+{{--                        <label class="badge badge-soft-success">--}}
+{{--                            {{\App\CPU\translate('Software version')}} : {{ env('SOFTWARE_VERSION') }}--}}
+{{--                        </label>--}}
+{{--                    </div>--}}
                 </div>
             </div>
             <!-- End Page Header -->
