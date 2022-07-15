@@ -92,7 +92,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="name">{{\App\CPU\translate('Category')}}</label>
                                         <select
                                             class="js-example-basic-multiple js-states js-example-responsive form-control"
@@ -106,7 +106,7 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <label for="name">{{\App\CPU\translate('Sub Category')}}</label>
                                         <select
                                             class="js-example-basic-multiple js-states js-example-responsive form-control"
@@ -115,16 +115,16 @@
                                             onchange="getRequest('{{url('/')}}/admin/product/get-categories?parent_id='+this.value,'sub-sub-category-select','select')">
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="name">{{\App\CPU\translate('Sub Sub Category')}}</label>
+{{--                                    <div class="col-md-4">--}}
+{{--                                        <label for="name">{{\App\CPU\translate('Sub Sub Category')}}</label>--}}
 
-                                        <select
-                                            class="js-example-basic-multiple js-states js-example-responsive form-control"
-                                            data-id="{{count($product_category)>=3?$product_category[2]->id:''}}"
-                                            name="sub_sub_category_id" id="sub-sub-category-select">
+{{--                                        <select--}}
+{{--                                            class="js-example-basic-multiple js-states js-example-responsive form-control"--}}
+{{--                                            data-id="{{count($product_category)>=3?$product_category[2]->id:''}}"--}}
+{{--                                            name="sub_sub_category_id" id="sub-sub-category-select">--}}
 
-                                        </select>
-                                    </div>
+{{--                                        </select>--}}
+{{--                                    </div>--}}
                                 </div>
 
                             </div>
@@ -192,25 +192,25 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <label for="attributes" style="padding-bottom: 3px">
-                                            {{\App\CPU\translate('Attributes')}} :
-                                        </label>
-                                        <select
-                                            class="js-example-basic-multiple js-states js-example-responsive form-control"
-                                            name="choice_attributes[]" id="choice_attributes" multiple="multiple">
-                                            @foreach (\App\Model\Attribute::orderBy('name', 'asc')->get() as $key => $a)
-                                                @if($product['attributes']!='null')
-                                                    <option
-                                                        value="{{ $a['id']}}" {{in_array($a->id,json_decode($product['attributes'],true))?'selected':''}}>
-                                                        {{$a['name']}}
-                                                    </option>
-                                                @else
-                                                    <option value="{{ $a['id']}}">{{$a['name']}}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
+{{--                                    <div class="col-md-6">--}}
+{{--                                        <label for="attributes" style="padding-bottom: 3px">--}}
+{{--                                            {{\App\CPU\translate('Attributes')}} :--}}
+{{--                                        </label>--}}
+{{--                                        <select--}}
+{{--                                            class="js-example-basic-multiple js-states js-example-responsive form-control"--}}
+{{--                                            name="choice_attributes[]" id="choice_attributes" multiple="multiple">--}}
+{{--                                            @foreach (\App\Model\Attribute::orderBy('name', 'asc')->get() as $key => $a)--}}
+{{--                                                @if($product['attributes']!='null')--}}
+{{--                                                    <option--}}
+{{--                                                        value="{{ $a['id']}}" {{in_array($a->id,json_decode($product['attributes'],true))?'selected':''}}>--}}
+{{--                                                        {{$a['name']}}--}}
+{{--                                                    </option>--}}
+{{--                                                @else--}}
+{{--                                                    <option value="{{ $a['id']}}">{{$a['name']}}</option>--}}
+{{--                                                @endif--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                    </div>--}}
 
                                     <div class="col-md-12 mt-2 mb-2">
                                         <div class="customer_choice_options" id="customer_choice_options">
@@ -245,7 +245,7 @@
                                                value={{ \App\CPU\Convert::default($product->purchase_price) }} required>
                                     </div>
 
-                                    <div class="col-md-5">
+                                    <div class="col-md-6" style="display: none">
                                         <label class="control-label">{{\App\CPU\translate('Tax')}}</label>
                                         <label class="badge badge-info">{{\App\CPU\translate('Percent')}} ( % )</label>
                                         <input type="number" min="0" value={{ $product->tax }} step="0.01"
@@ -254,7 +254,7 @@
                                         <input name="tax_type" value="percent" style="display: none">
                                     </div>
 
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <label class="control-label">{{\App\CPU\translate('Discount')}}</label>
                                         <input type="number" min="0"
                                                value={{ $product->discount_type=='flat'?\App\CPU\Convert::default($product->discount): $product->discount}} step="0.01"
@@ -276,25 +276,25 @@
                                     <div class="col-12 pt-4 sku_combination" id="sku_combination">
                                         @include('admin-views.product.partials._edit_sku_combinations',['combinations'=>json_decode($product['variation'],true)])
                                     </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4" id="quantity">
+                                    <div class="col-sm-6 col-md-6 col-lg-6" id="quantity">
                                         <label
                                             class="control-label">{{\App\CPU\translate('total')}} {{\App\CPU\translate('Quantity')}}</label>
                                         <input type="number" min="0" value={{ $product->current_stock }} step="1"
                                                placeholder="{{\App\CPU\translate('Quantity') }}"
                                                name="current_stock" class="form-control" required>
                                     </div>
-                                    <div class="col-sm-6 col-md-6 col-lg-4" id="shipping_cost">
+                                    <div style="display: none" class="col-sm-6 col-md-6 col-lg-4" id="shipping_cost">
                                         <label
                                             class="control-label">{{\App\CPU\translate('shipping_cost')}} </label>
                                         <input type="number" min="0" value="{{\App\CPU\Convert::default($product->shipping_cost)}}" step="1"
                                                placeholder="{{\App\CPU\translate('shipping_cost')}}"
                                                name="shipping_cost" class="form-control" required>
                                     </div>
-                                    <div class="col-md-6 col-lg-4 mt-sm-1" id="shipping_cost_multy">
+                                    <div style="display: none" class="col-md-6 col-lg-4 mt-sm-1" id="shipping_cost_multy">
                                         <div>
                                             <label
                                             class="control-label">{{\App\CPU\translate('shipping_cost_multiply_with_quantity')}} </label>
-                                        
+
                                         </div>
                                         <div>
                                             <label class="switch">
@@ -310,44 +310,44 @@
                         </div>
                     </div>
 
-                    <div class="card mt-2 mb-2 rest-part">
-                        <div class="card-header">
-                            <h4>{{\App\CPU\translate('seo_section')}}</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12 mb-4">
-                                    <label class="control-label">{{\App\CPU\translate('Meta Title')}}</label>
-                                    <input type="text" name="meta_title" value="{{$product['meta_title']}}" placeholder="" class="form-control">
-                                </div>
+{{--                    <div class="card mt-2 mb-2 rest-part">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <h4>{{\App\CPU\translate('seo_section')}}</h4>--}}
+{{--                        </div>--}}
+{{--                        <div class="card-body">--}}
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12 mb-4">--}}
+{{--                                    <label class="control-label">{{\App\CPU\translate('Meta Title')}}</label>--}}
+{{--                                    <input type="text" name="meta_title" value="{{$product['meta_title']}}" placeholder="" class="form-control">--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-8 mb-4">
-                                    <label class="control-label">{{\App\CPU\translate('Meta Description')}}</label>
-                                    <textarea rows="10" type="text" name="meta_description" class="form-control">{{$product['meta_description']}}</textarea>
-                                </div>
+{{--                                <div class="col-md-8 mb-4">--}}
+{{--                                    <label class="control-label">{{\App\CPU\translate('Meta Description')}}</label>--}}
+{{--                                    <textarea rows="10" type="text" name="meta_description" class="form-control">{{$product['meta_description']}}</textarea>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-4">
-                                    <div class="form-group mb-0">
-                                        <label>{{\App\CPU\translate('Meta Image')}}</label>
-                                    </div>
-                                    <div class="border-dashed">
-                                        <div class="row" id="meta_img">
-                                            <div class="col-6">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <img style="width: 100%" height="auto"
-                                                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                                             src="{{asset("storage/app/public/product/meta")}}/{{$product['meta_image']}}"
-                                                             alt="Meta image">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                                <div class="col-md-4">--}}
+{{--                                    <div class="form-group mb-0">--}}
+{{--                                        <label>{{\App\CPU\translate('Meta Image')}}</label>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="border-dashed">--}}
+{{--                                        <div class="row" id="meta_img">--}}
+{{--                                            <div class="col-6">--}}
+{{--                                                <div class="card">--}}
+{{--                                                    <div class="card-body">--}}
+{{--                                                        <img style="width: 100%" height="auto"--}}
+{{--                                                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"--}}
+{{--                                                             src="{{asset("storage/app/public/product/meta")}}/{{$product['meta_image']}}"--}}
+{{--                                                             alt="Meta image">--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="card mt-2 rest-part">
                         <div class="card-body">
