@@ -1948,4 +1948,12 @@
   'days_free_delivery' => 'Days free delivery',
   'access_denied!!' => 'Access denied!!',
   'shipping_input_by_customer' => 'Shipping input by customer',
+  'card_holder_name' => 'Card holder name',
+  'card_holder_email' => 'Card holder email',
+  'card_number' => 'Card number',
+  'security_code' => 'Security code',
+  'installments' => 'Installments',
+  'identification_number' => 'Identification number',
+  'issuer' => 'Issuer',
+  'configuration_invalid' => 'Configuration invalid',
 );

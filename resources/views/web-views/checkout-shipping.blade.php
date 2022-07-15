@@ -150,14 +150,14 @@
                                                               name="address" {{$shipping_addresses->count()==0?'required':''}}></textarea>
                                                 </div>
                                                 @php($default_location=\App\CPU\Helpers::get_business_settings('default_location'))
-                                                <div class="form-group">
-                                                    <input id="pac-input" class="controls rounded"
-                                                           style="height: 3em;width:fit-content;"
-                                                           title="{{\App\CPU\translate('search_your_location_here')}}"
-                                                           type="text"
-                                                           placeholder="{{\App\CPU\translate('search_here')}}"/>
-                                                    <div style="height: 200px;" id="location_map_canvas"></div>
-                                                </div>
+{{--                                                <div class="form-group">--}}
+{{--                                                    <input id="pac-input" class="controls rounded"--}}
+{{--                                                           style="height: 3em;width:fit-content;"--}}
+{{--                                                           title="{{\App\CPU\translate('search_your_location_here')}}"--}}
+{{--                                                           type="text"--}}
+{{--                                                           placeholder="{{\App\CPU\translate('search_here')}}"/>--}}
+{{--                                                    <div style="height: 200px;" id="location_map_canvas"></div>--}}
+{{--                                                </div>--}}
                                                  <div class="form-check" style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 1.25rem;">
                                                     <input type="checkbox" name="save_address" class="form-check-input"
                                                            id="exampleCheck1">
@@ -186,7 +186,7 @@
                         </div>
                     </form>
                     @php($billing_input_by_customer=\App\CPU\Helpers::get_business_settings('billing_input_by_customer'))
-                        
+
                     <div style="display: {{$billing_input_by_customer==1?'':'none'}}">
                         <!-- billing methods table-->
                         <h2 class="h4 pb-3 mb-2 mt-5">{{ \App\CPU\translate('choose_billing_address')}}</h2>
@@ -299,14 +299,14 @@
                                                                 name="billing_address" {{$billing_addresses->count()==0?'required':''}}></textarea>
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <input id="pac-input-billing" class="controls rounded"
-                                                            style="height: 3em;width:fit-content;"
-                                                            title="{{\App\CPU\translate('search_your_location_here')}}"
-                                                            type="text"
-                                                            placeholder="{{\App\CPU\translate('search_here')}}"/>
-                                                        <div style="height: 200px;" id="location_map_canvas_billing"></div>
-                                                    </div>
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <input id="pac-input-billing" class="controls rounded"--}}
+{{--                                                            style="height: 3em;width:fit-content;"--}}
+{{--                                                            title="{{\App\CPU\translate('search_your_location_here')}}"--}}
+{{--                                                            type="text"--}}
+{{--                                                            placeholder="{{\App\CPU\translate('search_here')}}"/>--}}
+{{--                                                        <div style="height: 200px;" id="location_map_canvas_billing"></div>--}}
+{{--                                                    </div>--}}
                                                     <div class="form-check" style="padding-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}: 1.25rem;">
                                                         <input type="checkbox" name="save_address_billing" class="form-check-input"
                                                             id="save_address_billing">
@@ -335,9 +335,9 @@
                             </div>
                         </form>
                     </div>
-                    
-                        
-                    
+
+
+
 
                     <!-- Navigation (desktop)-->
                     <div class="row">
