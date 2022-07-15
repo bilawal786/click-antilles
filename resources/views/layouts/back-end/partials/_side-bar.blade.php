@@ -314,7 +314,7 @@
                                         class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Attribute')}}</span>
                                 </a>
                             </li>
-
+                            @endif
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/product/list/in_house') || Request::is('admin/product/bulk-import'))?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -337,6 +337,7 @@
                                             <span class="text-truncate">{{\App\CPU\translate('stock_limit_products')}}</span>
                                         </a>
                                     </li>
+                                    @if(auth()->guard('admin')->user()->admin_role_id!=7)
                                     <li class="nav-item {{Request::is('admin/product/bulk-import')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.product.bulk-import')}}">
                                             <span class="tio-circle nav-indicator-icon"></span>
@@ -349,8 +350,10 @@
                                             <span class="text-truncate">{{\App\CPU\translate('bulk_export')}}</span>
                                         </a>
                                     </li>
+                                    @endif
                                 </ul>
                             </li>
+                            @if(auth()->guard('admin')->user()->admin_role_id!=7)
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/product/list/seller*')||Request::is('admin/product/updated-product-list')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
