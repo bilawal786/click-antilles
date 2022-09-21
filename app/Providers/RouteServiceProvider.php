@@ -50,6 +50,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapCustomerRoutes();
         $this->mapWebRoutes();
         $this->mapSharedRoutes();
+        $this->mapWebsite();
 
         //$this->mapInstallRoutes();
         //$this->mapUpdateRoutes();
@@ -139,5 +140,11 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api/v2/api.php'));
+    }
+    protected function mapWebsite()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/website.php'));
     }
 }

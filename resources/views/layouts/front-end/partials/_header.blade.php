@@ -120,23 +120,128 @@
     </div>
 @endif
 
-
 <header class="box-shadow-sm rtl">
     <!-- Topbar-->
     <div class="topbar">
-        <div class="container">
+        <div class="container-fluid">
 
             <div>
-                <div class="topbar-text dropdown d-md-none {{Session::get('direction') === "rtl" ? 'mr-auto' : 'ml-auto'}}">
-                    <a class="topbar-link" href="tel: {{$web_config['phone']->value}}">
-                        <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
-                    </a>
-                </div>
-                <div class="d-none d-md-block {{Session::get('direction') === "rtl" ? 'mr-2' : 'ml-2'}} text-nowrap">
-                    <a class="topbar-link d-none d-md-inline-block" href="tel:{{$web_config['phone']->value}}">
-                        <i class="fa fa-phone"></i> {{$web_config['phone']->value}}
-                    </a>
-                </div>
+                <div class="navbar navbar-expand-md navbar-light">
+
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand d-none d-sm-block {{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}} flex-shrink-0"
+                           href="{{route('home')}}"
+                           style="min-width: 7rem;">
+                            <img style="height: 40px!important; width:auto;"
+                                 src="{{asset("storage/app/public/company")."/".$web_config['web_logo']->value}}"
+                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                 alt="{{$web_config['name']->value}}"/>
+                        </a>
+                        <a class="navbar-brand d-sm-none {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+                           href="{{route('home')}}">
+                            <img style="height: 38px!important;width:auto;" class="mobile-logo-img"
+                                 src="{{asset("storage/app/public/company")."/".$web_config['mob_logo']->value}}"
+                                 onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                 alt="{{$web_config['name']->value}}"/>
+                        </a>
+                        <!-- Search-->
+                        <div class="input-group-overlay d-none d-md-block mx-4"
+                             style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}">
+                            <form action="{{route('products')}}" type="submit" class="search_form">
+                                <input class="form-control appended-form-control search-bar-input" type="text"
+                                       autocomplete="off"
+                                       placeholder="{{\App\CPU\translate('search')}}"
+                                       name="name" style="width: 770px!important;">
+                                <button class="input-group-append-overlay search_button" type="submit"
+                                        style="border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};top:0">
+                                <span class="input-group-text" style="font-size: 20px;">
+                                    <i class="czi-search text-white"></i>
+                                </span>
+                                </button>
+                                <input name="data_from" value="search" hidden>
+                                <input name="page" value="1" hidden>
+                                <diV class="card search-card"
+                                     style="position: absolute;background: white;z-index: 999;width: 100%;display: none">
+                                    <div class="card-body search-result-box"
+                                         style="overflow:scroll; height:400px;overflow-x: hidden"></div>
+                                </diV>
+                            </form>
+                        </div>
+                        <!-- Toolbar-->
+                        <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center" style="margin-right: 10px;">
+                            <a class="navbar-tool navbar-stuck-toggler" href="#">
+                                <span class="navbar-tool-tooltip">{{\App\CPU\translate('Expand menu')}}</span>
+                                <div class="navbar-tool-icon-box">
+                                    <i class="navbar-tool-icon czi-menu"></i>
+                                </div>
+                            </a>
+                            <div class="navbar-tool dropdown {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}">
+                                <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
+                            <span class="navbar-tool-label">
+                                <span
+                                    class="countWishlist">{{session()->has('wish_list')?count(session('wish_list')):0}}</span>
+                           </span>
+                                    <i class="navbar-tool-icon czi-heart"></i>
+                                </a>
+                            </div>
+                            @if(auth('customer')->check())
+                                <div class="dropdown">
+                                    <a class="navbar-tool ml-2 mr-2 " type="button" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        <div class="navbar-tool-icon-box bg-secondary">
+                                            <div class="navbar-tool-icon-box bg-secondary">
+                                                <img style="width: 40px;height: 40px"
+                                                     src="{{asset('storage/app/public/profile/'.auth('customer')->user()->image)}}"
+                                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
+                                                     class="img-profile rounded-circle">
+                                            </div>
+                                        </div>
+                                        <div class="navbar-tool-text">
+                                            <small>{{\App\CPU\translate('hello')}}, {{auth('customer')->user()->f_name}}</small>
+                                            {{\App\CPU\translate('dashboard')}}
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item"
+                                           href="{{route('account-oder')}}"> {{ \App\CPU\translate('my_order')}} </a>
+                                        <a class="dropdown-item"
+                                           href="{{route('user-account')}}"> {{ \App\CPU\translate('my_profile')}}</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item"
+                                           href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="dropdown">
+                                    <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}"
+                                       type="button" data-toggle="dropdown" aria-haspopup="true"
+                                       aria-expanded="false">
+                                        <div class="navbar-tool-icon-box bg-secondary">
+                                            <div class="navbar-tool-icon-box bg-secondary">
+                                                <i class="navbar-tool-icon czi-user"></i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}" aria-labelledby="dropdownMenuButton"
+                                         style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
+                                        <a class="dropdown-item" href="{{route('customer.auth.login')}}">
+                                            <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i> {{\App\CPU\translate('sing_in')}}
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{route('customer.auth.register')}}">
+                                            <i class="fa fa-user-circle {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>{{\App\CPU\translate('sing_up')}}
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
+                            <div id="cart_items">
+                                @include('layouts.front-end.partials.cart')
+                            </div>
+                        </div>
+                    </div>
+
             </div>
 
             <div>
@@ -192,126 +297,10 @@
         </div>
     </div>
 
-
     <div class="navbar-sticky bg-light mobile-head">
-        <div class="navbar navbar-expand-md navbar-light">
-            <div class="container ">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand d-none d-sm-block {{Session::get('direction') === "rtl" ? 'ml-3' : 'mr-3'}} flex-shrink-0"
-                   href="{{route('home')}}"
-                   style="min-width: 7rem;">
-                    <img style="height: 40px!important; width:auto;"
-                         src="{{asset("storage/app/public/company")."/".$web_config['web_logo']->value}}"
-                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                         alt="{{$web_config['name']->value}}"/>
-                </a>
-                <a class="navbar-brand d-sm-none {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
-                   href="{{route('home')}}">
-                    <img style="height: 38px!important;width:auto;" class="mobile-logo-img"
-                         src="{{asset("storage/app/public/company")."/".$web_config['mob_logo']->value}}"
-                         onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                         alt="{{$web_config['name']->value}}"/>
-                </a>
-                <!-- Search-->
-                <div class="input-group-overlay d-none d-md-block mx-4"
-                     style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}">
-                    <form action="{{route('products')}}" type="submit" class="search_form">
-                        <input class="form-control appended-form-control search-bar-input" type="text"
-                               autocomplete="off"
-                               placeholder="{{\App\CPU\translate('search')}}"
-                               name="name">
-                        <button class="input-group-append-overlay search_button" type="submit"
-                                style="border-radius: {{Session::get('direction') === "rtl" ? '7px 0px 0px 7px; right: unset; left: 0' : '0px 7px 7px 0px; left: unset; right: 0'}};top:0">
-                                <span class="input-group-text" style="font-size: 20px;">
-                                    <i class="czi-search text-white"></i>
-                                </span>
-                        </button>
-                        <input name="data_from" value="search" hidden>
-                        <input name="page" value="1" hidden>
-                        <diV class="card search-card"
-                             style="position: absolute;background: white;z-index: 999;width: 100%;display: none">
-                            <div class="card-body search-result-box"
-                                 style="overflow:scroll; height:400px;overflow-x: hidden"></div>
-                        </diV>
-                    </form>
-                </div>
-                <!-- Toolbar-->
-                <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center" style="margin-right: 10px;">
-                    <a class="navbar-tool navbar-stuck-toggler" href="#">
-                        <span class="navbar-tool-tooltip">{{\App\CPU\translate('Expand menu')}}</span>
-                        <div class="navbar-tool-icon-box">
-                            <i class="navbar-tool-icon czi-menu"></i>
-                        </div>
-                    </a>
-                    <div class="navbar-tool dropdown {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}">
-                        <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="{{route('wishlists')}}">
-                            <span class="navbar-tool-label">
-                                <span
-                                    class="countWishlist">{{session()->has('wish_list')?count(session('wish_list')):0}}</span>
-                           </span>
-                            <i class="navbar-tool-icon czi-heart"></i>
-                        </a>
-                    </div>
-                    @if(auth('customer')->check())
-                        <div class="dropdown">
-                            <a class="navbar-tool ml-2 mr-2 " type="button" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-secondary">
-                                    <div class="navbar-tool-icon-box bg-secondary">
-                                        <img style="width: 40px;height: 40px"
-                                             src="{{asset('storage/app/public/profile/'.auth('customer')->user()->image)}}"
-                                             onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
-                                             class="img-profile rounded-circle">
-                                    </div>
-                                </div>
-                                <div class="navbar-tool-text">
-                                    <small>{{\App\CPU\translate('hello')}}, {{auth('customer')->user()->f_name}}</small>
-                                    {{\App\CPU\translate('dashboard')}}
-                                </div>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item"
-                                   href="{{route('account-oder')}}"> {{ \App\CPU\translate('my_order')}} </a>
-                                <a class="dropdown-item"
-                                   href="{{route('user-account')}}"> {{ \App\CPU\translate('my_profile')}}</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item"
-                                   href="{{route('customer.auth.logout')}}">{{ \App\CPU\translate('logout')}}</a>
-                            </div>
-                        </div>
-                    @else
-                        <div class="dropdown">
-                            <a class="navbar-tool {{Session::get('direction') === "rtl" ? 'mr-3' : 'ml-3'}}"
-                               type="button" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false">
-                                <div class="navbar-tool-icon-box bg-secondary">
-                                    <div class="navbar-tool-icon-box bg-secondary">
-                                        <i class="navbar-tool-icon czi-user"></i>
-                                    </div>
-                                </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-{{Session::get('direction') === "rtl" ? 'right' : 'left'}}" aria-labelledby="dropdownMenuButton"
-                                 style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-                                <a class="dropdown-item" href="{{route('customer.auth.login')}}">
-                                    <i class="fa fa-sign-in {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i> {{\App\CPU\translate('sing_in')}}
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{route('customer.auth.register')}}">
-                                    <i class="fa fa-user-circle {{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"></i>{{\App\CPU\translate('sing_up')}}
-                                </a>
-                            </div>
-                        </div>
-                    @endif
-                    <div id="cart_items">
-                        @include('layouts.front-end.partials.cart')
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <div class="navbar navbar-expand-md navbar-stuck-menu"  >
-            <div class="container" style="padding-left: 10px;padding-right: 10px;">
+            <div class="container-fluid" style="padding-left: 10px;padding-right: 10px;">
                 <div class="collapse navbar-collapse" id="navbarCollapse"
                     style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}}; ">
 
