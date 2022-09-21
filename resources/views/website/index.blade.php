@@ -293,10 +293,7 @@
                                                                         </a>
                                                                         <div class="hover-area">
 
-                                                                            <button class="button add_to_cart_button"
-                                                                                    onclick="addToCart()" type="button">
-                                                                                {{\App\CPU\translate('add_to_cart')}}
-                                                                            </button>
+                                                                            <button class="button add_to_cart_button" onclick="addToCart()" type="button">{{\App\CPU\translate('add_to_cart')}}</button>
 
                                                                             {{--                                                                    <a class="add-to-compare-link" href="compare.html">Add to compare</a>--}}
                                                                         </div>
