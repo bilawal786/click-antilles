@@ -1956,4 +1956,5 @@
   'identification_number' => 'Identification number',
   'issuer' => 'Issuer',
   'configuration_invalid' => 'Configuration invalid',
+  'Billing Details' => 'Billing Details',
 );

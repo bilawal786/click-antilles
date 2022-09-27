@@ -14,6 +14,7 @@
             }
     </style>
     <meta charset="UTF-8">
+    <meta name="_token" content="{{csrf_token()}}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>Click Antilles</title>
 
@@ -32,6 +33,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/web/assets/css/animate.min.css')}}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{{asset('public/web/assets/css/style.css')}}" media="all"/>
     <link rel="stylesheet" type="text/css" href="{{asset('public/web/assets/css/colors/blue.css')}}" media="all"/>
+    {{--Toastr--}}
+    <script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
+    <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+    {!! Toastr::message() !!}
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,900" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset('public/web/assets/logo click antilles.png')}}">
@@ -1056,10 +1061,18 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
         <script type="text/javascript" src="{{asset('public/web/assets/js/pace.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('public/web/assets/js/slick.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('public/web/assets/js/scripts.js')}}"></script>
+        {{--Toastr--}}
+        <script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
+
+        <script src="{{asset('public/assets/front-end')}}/js/sweet_alert.js"></script>
+        {{--Toastr--}}
+        <script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
+        {!! Toastr::message() !!}
+
 
         <script>
             function removeFromCart(key) {
-
+                   alert(key);
                 $.post('{{ route('cart.remove') }}', {_token: '{{ csrf_token() }}', key: key}, function (response) {
                     console.log(response)
                     updateNavCart();
@@ -1087,12 +1100,13 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
             }
 
             function updateNavCart() {
-                $.post('{{route('cart.nav-cart')}}', {_token: '{{csrf_token()}}'}, function (response) {
+                $.post('{{route('nav.cart')}}', {_token: '{{csrf_token()}}'}, function (response) {
                     $('#cart_items').html(response.data);
                 });
             }
 
             function addToCart(form_id = 'add-to-cart-form', redirect_to_checkout = false) {
+
                 if (checkAddToCartValidity()) {
                     $.ajaxSetup({
                         headers: {
@@ -1106,6 +1120,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                             $('#loading').show();
                         },
                         success: function (response) {
+
                             console.log(response);
                             if (response.status == 1) {
                                 updateNavCart();
@@ -1115,7 +1130,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                 });
                                 $('.call-when-done').click();
                                 if (redirect_to_checkout) {
-                                    location.href = "{{route('checkout-details')}}";
+                                    location.href = "{{route('product-checkout')}}";
                                 }
                                 return false;
                             } else if (response.status == 0) {
@@ -1140,6 +1155,129 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                     });
                 }
             }
+
+            function cartQuantityInitialize() {
+
+                $('.btn-number').click(function (e) {
+                    e.preventDefault();
+
+                    fieldName = $(this).attr('data-field');
+                    type = $(this).attr('data-type');
+
+                    var input = $("input[name='" + fieldName + "']");
+                    var currentVal = parseInt(input.val());
+
+                    if (!isNaN(currentVal)) {
+                        if (type == 'minus') {
+
+                            if (currentVal > input.attr('min')) {
+                                input.val(currentVal - 1).change();
+                            }
+                            if (parseInt(input.val()) == input.attr('min')) {
+                                $(this).attr('disabled', true);
+                            }
+
+                        } else if (type == 'plus') {
+                            if (currentVal < input.attr('max')) {
+                                input.val(currentVal + 1).change();
+                            }
+                            if (parseInt(input.val()) == input.attr('max')) {
+                                $(this).attr('disabled', true);
+                            }
+
+                        }
+                    } else {
+                        input.val(0);
+                    }
+                });
+
+                $('.input-number').focusin(function () {
+                    $(this).data('oldValue', $(this).val());
+                });
+
+                $('.input-number').change(function () {
+
+                    minValue = parseInt($(this).attr('min'));
+                    maxValue = parseInt($(this).attr('max'));
+                    valueCurrent = parseInt($(this).val());
+
+                    var name = $(this).attr('name');
+                    if (valueCurrent >= minValue) {
+                        $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Cart',
+                            text: '{{\App\CPU\translate('Sorry, the minimum value was reached')}}'
+                        });
+                        $(this).val($(this).data('oldValue'));
+                    }
+                    if (valueCurrent <= maxValue) {
+                        $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Cart',
+                            text: '{{\App\CPU\translate('Sorry, stock limit exceeded')}}.'
+                        });
+                        $(this).val($(this).data('oldValue'));
+                    }
+
+
+                });
+                $(".input-number").keydown(function (e) {
+                    // Allow: backspace, delete, tab, escape, enter and .
+                    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 190]) !== -1 ||
+                        // Allow: Ctrl+A
+                        (e.keyCode == 65 && e.ctrlKey === true) ||
+                        // Allow: home, end, left, right
+                        (e.keyCode >= 35 && e.keyCode <= 39)) {
+                        // let it happen, don't do anything
+                        return;
+                    }
+                    // Ensure that it is a number and stop the keypress
+                    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+                        e.preventDefault();
+                    }
+                });
+            }
+
+            function updateQuantity(key, element) {
+                $.post('<?php echo e(route('cart.updateQuantity')); ?>', {
+                    _token: '<?php echo e(csrf_token()); ?>',
+                    key: key,
+                    quantity: element.value
+                }, function (data) {
+                    updateNavCart();
+                    $('#cart-summary').empty().html(data);
+                });
+            }
+
+            function updateCartQuantity(key) {
+                var quantity = $("#cartQuantity" + key).children("option:selected").val();
+                $.post('{{route('cart.updateQuantity')}}', {
+                    _token: '{{csrf_token()}}',
+                    key: key,
+                    quantity: quantity
+                }, function (response) {
+                    if (response.status == 0) {
+                        toastr.error(response.message, {
+                            CloseButton: true,
+                            ProgressBar: true
+                        });
+                        $("#cartQuantity" + key).val(response['qty']);
+                    } else {
+                        updateNavCart();
+                        $('#cart-summary').empty().html(response);
+                    }
+                });
+            }
+            function buy_now() {
+                addToCart('add-to-cart-form',true);
+                /* location.href = "{{route('checkout-details')}}"; */
+            }
+
         </script>
+
         </body>
 </html>

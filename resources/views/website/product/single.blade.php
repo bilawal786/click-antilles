@@ -1,5 +1,32 @@
 @extends('website.layouts.master')
 @section('content')
+    <style>
+
+        .some-class {
+            float: left;
+            clear: none;
+        }
+
+        .label {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            content: '';
+            border-radius: 12px;
+            top: -8px !important;
+            left: -14px !important;
+            display: inline-block;
+            visibility: visible;
+            border: 2px solid white;
+            float: left;
+            clear: none;
+            display: block;
+            padding: 0px 1em 0px 8px;
+        }
+
+    </style>
+
+    <!------ Include the above in your HEAD tag ---------->
     <!-- ============================================================= Header End ============================================================= -->
     <div id="content" class="site-content" tabindex="-1">
         <div class="col-full">
@@ -152,16 +179,44 @@
                                                 </ins>
                                             </p>
                                             <!-- .single-product-header -->
-                                            <form enctype="multipart/form-data" method="post" class="cart">
+                                            <form enctype="multipart/form-data" id="add-to-cart-form" method="post"
+                                                  class="cart">
+                                                @csrf
+                                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                                @if (count(json_decode($product->colors)) > 0)
+                                                    <div class="checkbox accessory-checkbox quantity some-class">
+
+                                                        @foreach (json_decode($product->colors) as $key => $color)
+                                                            <label class="label"
+                                                                   style="background: {{ $color }};margin: -6px 22px 0px 8px!important; "
+                                                                   for="{{ $product->id }}-color-{{ $key }}"
+                                                                   data-toggle="tooltip">
+                                                                <input type="radio" value="{{$color}}"
+                                                                       id="{{ $product->id }}-color-{{ $key }}"
+                                                                       data-order_button_text="" @if($key == 0) checked
+                                                                       @endif name="color" class="input-radio">
+                                                            </label>
+                                                        @endforeach
+
+                                                    </div>
+                                                @endif
+
                                                 <div class="quantity">
                                                     <label for="quantity-input">Quantité</label>
-                                                    <input type="number" size="4" class="input-text qty text"
+                                                    <input type="number" size="4" class="input-text qty text btn-number"
                                                            title="Qty" value="1" name="quantity" id="quantity-input">
                                                 </div>
                                                 <!-- .quantity -->
 
-                                                <button  value="185"
-                                                        name="add-to-cart" type="submit">Ajouter au panier
+                                                <button value="185"
+                                                        onclick="addToCart()" name="add-to-cart" type="button">Ajouter
+                                                    au panier
+                                                </button><br>
+                                                <button
+                                                    type="button"
+                                                    onclick="buy_now()"
+                                                    style=" background: #FFA825 !important; color: #ffffff;margin: 0px 10px;">
+                                                    <span class="string-limit">{{\App\CPU\translate('buy_now')}}</span>
                                                 </button>
                                             </form>
                                             <!-- .cart -->
@@ -243,5 +298,6 @@
         <!-- .col-full -->
     </div>
     <!-- #content -->
+
 
 @endsection

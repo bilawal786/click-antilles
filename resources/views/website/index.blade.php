@@ -292,8 +292,9 @@
                                                                             <h2 class="woocommerce-loop-product__title">{{ Str::limit($product['name'], 23) }}</h2>
                                                                         </a>
                                                                         <div class="hover-area">
-
-                                                                            <button class="button add_to_cart_button" onclick="addToCart()" type="button">{{\App\CPU\translate('add_to_cart')}}</button>
+                                                                            <a href="{{route('product.single',['id'=>$product->id])}}"
+                                                                               rel="nofollow"
+                                                                               class="button add_to_cart_button"> {{\App\CPU\translate('add_to_cart')}}</a>
 
                                                                             {{--                                                                    <a class="add-to-compare-link" href="compare.html">Add to compare</a>--}}
                                                                         </div>

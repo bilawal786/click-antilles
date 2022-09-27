@@ -924,7 +924,6 @@
                     }
 
                 } else if (type == 'plus') {
-
                     if (currentVal < input.attr('max')) {
                         input.val(currentVal + 1).change();
                     }

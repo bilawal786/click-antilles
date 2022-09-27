@@ -206,6 +206,7 @@ class WebController extends Controller
     public function checkout_details(Request $request)
     {
         $cart_group_ids = CartManager::get_cart_group_ids();
+
         // return count($ cart_group_ids);
         $shippingMethod = Helpers::get_business_settings('shipping_method');
         $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
@@ -223,7 +224,7 @@ class WebController extends Controller
                     $shipping_type = isset($seller_shipping)==true?$seller_shipping->shipping_type:'order_wise';
                 }
             }
-            
+
             if($shipping_type == 'order_wise'){
                 $cart_shipping = CartShipping::where('cart_group_id', $cart->cart_group_id)->first();
                 if (!isset($cart_shipping)) {
@@ -232,7 +233,7 @@ class WebController extends Controller
                 }
             }
         }
-        
+
 
         if (count($cart_group_ids) > 0) {
             return view('web-views.checkout-shipping');
@@ -246,7 +247,7 @@ class WebController extends Controller
     public function checkout_payment()
     {
         $cart_group_ids = CartManager::get_cart_group_ids();
-        
+
         $shippingMethod = Helpers::get_business_settings('shipping_method');
         $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
         foreach($carts as $cart)
@@ -321,7 +322,7 @@ class WebController extends Controller
     public function seller_shop(Request $request, $id)
     {
         $business_mode=Helpers::get_business_settings('business_mode');
-        
+
         if($id!=0 && $business_mode == 'single')
         {
             Toastr::error(translate('access_denied!!'));
@@ -337,7 +338,7 @@ class WebController extends Controller
             })
             ->pluck('id')->toArray();
 
-        
+
         $avg_rating = Review::whereIn('product_id', $product_ids)->avg('rating');
         $total_review = Review::whereIn('product_id', $product_ids)->count();
         if($id == 0){
@@ -346,7 +347,7 @@ class WebController extends Controller
             $seller = Seller::find($id);
             $total_order = $seller->orders->where('seller_is','seller')->where('order_type','default_type')->count();
         }
-        
+
 
         //finding category ids
         $products = Product::whereIn('id', $product_ids)->paginate(12);
@@ -849,7 +850,7 @@ class WebController extends Controller
         //recaptcha validation
         $recaptcha = Helpers::get_business_settings('recaptcha');
         if (isset($recaptcha) && $recaptcha['status'] == 1) {
-            
+
             try {
                 $request->validate([
                     'g-recaptcha-response' => [
@@ -942,14 +943,14 @@ class WebController extends Controller
             return back();
 
         }
-        
+
     }
     public function review_list_product(Request $request)
     {
-        
+
         $productReviews =Review::where('product_id',$request->product_id)->latest()->paginate(2, ['*'], 'page', $request->offset);
-        
-        
+
+
         return response()->json([
             'productReview'=> view('web-views.partials.product-reviews',compact('productReviews'))->render(),
             'not_empty'=>$productReviews->count()
