@@ -20,6 +20,7 @@ class StripePaymentController extends Controller
 {
     public function payment_process_3d()
     {
+
         $currency_model = Helpers::get_business_settings('currency_model');
         if ($currency_model == 'multi_currency') {
             $currency_code = 'USD';
@@ -64,7 +65,6 @@ class StripePaymentController extends Controller
             'success_url' => $YOUR_DOMAIN . '/pay-stripe/success',
             'cancel_url' => url()->previous(),
         ]);
-
         return response()->json(['id' => $checkout_session->id]);
     }
 
@@ -87,7 +87,7 @@ class StripePaymentController extends Controller
         CartManager::cart_clean();
         if (auth('customer')->check()) {
             Toastr::success('Payment success.');
-            return view('web-views.checkout-complete');
+            return view('website.product.checkout-complete');
         }
         return response()->json(['message' => 'Payment succeeded'], 200);
     }

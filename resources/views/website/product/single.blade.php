@@ -121,7 +121,7 @@
                                 <div class="summary entry-summary">
                                     <div class="single-product-header">
                                         <h1 class="product_title entry-title">{{ $product['name']}}</h1>
-                                        <a class="add-to-wishlist" href="#"> Ajouter à la liste de souhaits</a>
+                                        <a class="add-to-wishlist" href="#"> {{\App\CPU\translate('add_to_cart')}}</a>
                                     </div>
                                     <!-- .single-product-header -->
                                     <div class="single-product-meta">
@@ -139,11 +139,7 @@
                             <span class="sku"><b>FP{{rand(100000, 900000)}}</b></span>
                         </span>
                                         </div>
-                                        <div class="product-label">
-                                            <div class="ribbon label green-label">
-                                                <span>A+</span>
-                                            </div>
-                                        </div>
+
                                     </div>
                                     <!-- .single-product-meta -->
                                     <div class="rating-and-sharing-wrapper">
@@ -209,8 +205,7 @@
                                                 <!-- .quantity -->
 
                                                 <button value="185"
-                                                        onclick="addToCart()" name="add-to-cart" type="button">Ajouter
-                                                    au panier
+                                                        onclick="addToCart()" name="add-to-cart" style="color: white!important;" type="button">{{\App\CPU\translate('add_to_cart')}}
                                                 </button><br>
                                                 <button
                                                     type="button"
@@ -245,8 +240,7 @@
                                                 <div class="product">
                                                     <div class="yith-wcwl-add-to-wishlist">
                                                         <a href="#" rel="nofollow"
-                                                           class="add_to_wishlist"> Ajouter à la
-                                                            liste de souhaits</a>
+                                                           class="add_to_wishlist">{{\App\CPU\translate('add_to_cart')}}</a>
                                                     </div>
                                                     <a href="#"
                                                        class="woocommerce-LoopProduct-link">

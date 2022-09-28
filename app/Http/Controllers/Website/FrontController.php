@@ -8,6 +8,8 @@ use App\Model\Banner;
 use App\Model\Cart;
 use App\Model\Category;
 use App\Model\Product;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 use function App\CPU\translate;
 
 class FrontController extends Controller
@@ -42,5 +44,13 @@ class FrontController extends Controller
         }
         Toastr::info(translate('You Cart Empty'));
         return redirect()->back();
+    }
+    public function productCart()
+    {
+        if (auth('customer')->check() && Cart::where(['customer_id' => auth('customer')->id()])->count() > 0) {
+            return view('website.product.shop-cart');
+        }
+        Toastr::info(translate('no_items_in_basket'));
+        return redirect('/');
     }
 }

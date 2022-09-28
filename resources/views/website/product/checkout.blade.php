@@ -1,5 +1,8 @@
 @extends('website.layouts.master')
 @section('content')
+    {{--stripe--}}
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 <div id="content" class="site-content">
     <div class="col-full">
         <div class="row">
@@ -55,6 +58,7 @@
                                 <form action="#" class="checkout woocommerce-checkout" method="post" name="checkout">
                                     <div id="customer_details" class="col2-set">
                                         <div class="col-1">
+
                                             <div class="woocommerce-billing-fields">
                                                 <h3>{{\App\CPU\translate('Billing Details')}}</h3>
                                                 <div class="woocommerce-billing-fields__field-wrapper-outer">
@@ -311,21 +315,6 @@
                                             <!-- /.woocommerce-checkout-review-order-table -->
                                             <div class="woocommerce-checkout-payment" id="payment">
                                                 <ul class="wc_payment_methods payment_methods methods">
-                                                    <li class="wc_payment_method payment_method_bacs">
-                                                        <input type="radio" data-order_button_text="" checked="checked" value="bacs" name="payment_method" class="input-radio" id="payment_method_bacs">
-                                                        <label for="payment_method_bacs">Direct bank transfer</label>
-
-                                                    </li>
-                                                    <li class="wc_payment_method payment_method_cheque">
-                                                        <input type="radio" data-order_button_text="" value="cheque" name="payment_method" class="input-radio" id="payment_method_cheque">
-                                                        <label for="payment_method_cheque">Check payments </label>
-
-                                                    </li>
-                                                    <li class="wc_payment_method payment_method_cod">
-                                                        <input type="radio" data-order_button_text="" value="cod" name="payment_method" class="input-radio" id="payment_method_cod">
-                                                        <label for="payment_method_cod">Cash on delivery </label>
-
-                                                    </li>
                                                 </ul>
                                                 <div class="form-row place-order">
                                                     <p class="form-row terms wc-terms-and-conditions woocommerce-validated">
@@ -336,7 +325,34 @@
                                                         </label>
                                                         <input type="hidden" value="1" name="terms-field">
                                                     </p>
-                                                    <a href="order-received.html" class="button wc-forward text-center">Place order</a>
+                                                    @php($config=\App\CPU\Helpers::get_business_settings('stripe'))
+
+                                                    @if($config['status'])
+                                                    <button href="order-received.html"type="button" id="checkout-button" class="button wc-forward text-center">Place order</button>
+                                                        <script type="text/javascript">
+                                                            // Create an instance of the Stripe object with your publishable API
+
+                                                            var stripe = Stripe('{{$config['published_key']}}');
+                                                            var checkoutButton = document.getElementById("checkout-button");
+                                                            checkoutButton.addEventListener("click", function () {
+                                                                fetch("{{route('pay-stripe')}}", {
+                                                                    method: "GET",
+                                                                }).then(function (response) {
+                                                                    console.log(response)
+                                                                    return response.text();
+                                                                }).then(function (session) {
+                                                                    /*console.log(JSON.parse(session).id)*/
+                                                                    return stripe.redirectToCheckout({sessionId: JSON.parse(session).id});
+                                                                }).then(function (result) {
+                                                                    if (result.error) {
+                                                                        alert(result.error.message);
+                                                                    }
+                                                                }).catch(function (error) {
+                                                                    console.error("{{\App\CPU\translate('Error')}}:", error);
+                                                                });
+                                                            });
+                                                        </script>
+                                                    @endif
                                                 </div>
                                             </div>
                                             <!-- /.woocommerce-checkout-payment -->

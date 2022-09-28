@@ -102,7 +102,8 @@
                                             src="{{asset('public/assets/front-end/img/stripe.png')}}"/>
                                         </button>
                                         <script type="text/javascript">
-                                            // Create an instance of the Stripe object with your publishable API key
+                                            // Create an instance of the Stripe object with your publishable API
+
                                             var stripe = Stripe('{{$config['published_key']}}');
                                             var checkoutButton = document.getElementById("checkout-button");
                                             checkoutButton.addEventListener("click", function () {
@@ -132,7 +133,7 @@
                         @php($inr=\App\Model\Currency::where(['symbol'=>'₹'])->first())
                         @php($usd=\App\Model\Currency::where(['code'=>'USD'])->first())
                         @if(isset($inr) && isset($usd) && $config['status'])
-                        
+
                             <div class="col-md-6 mb-4" style="cursor: pointer">
                                 <div class="card">
                                     <div class="card-body" style="height: 100px">

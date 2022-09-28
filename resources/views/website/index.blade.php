@@ -265,8 +265,7 @@
                                                                         <div class="yith-wcwl-add-to-wishlist">
                                                                             <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                                rel="nofollow"
-                                                                               class="add_to_wishlist"> Ajouter à la
-                                                                                liste de souhaits</a>
+                                                                               class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}s</a>
                                                                         </div>
                                                                         <a href="#"
                                                                            class="woocommerce-LoopProduct-link">
@@ -321,8 +320,7 @@
                                                                     <div class="yith-wcwl-add-to-wishlist">
                                                                         <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                            rel="nofollow"
-                                                                           class="add_to_wishlist"> Ajouter à la liste
-                                                                            de souhaits</a>
+                                                                           class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}</a>
                                                                     </div>
                                                                     <a href="#"
                                                                        class="woocommerce-LoopProduct-link">
@@ -348,7 +346,7 @@
                                                                     <div class="hover-area">
                                                                         <a class="button add_to_cart_button"
                                                                            href="{{route('product.single',['id'=>$product->id])}}"
-                                                                           rel="nofollow">Ajouter à la liste</a>
+                                                                           rel="nofollow">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                         {{--                                                                    <a class="add-to-compare-link" href="compare.html">Add to compare</a>--}}
                                                                     </div>
                                                                 </div>
@@ -376,7 +374,7 @@
                                                                     <div class="yith-wcwl-add-to-wishlist">
                                                                         <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                            rel="nofollow"
-                                                                           class="add_to_wishlist"> Ajouter à la liste
+                                                                           class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}
                                                                             de souhaits</a>
                                                                     </div>
                                                                     <a href="#"
@@ -403,7 +401,7 @@
                                                                     <div class="hover-area">
                                                                         <a class="button add_to_cart_button"
                                                                            href="{{route('product.single',['id'=>$product->id])}}"
-                                                                           rel="nofollow">Ajouter à la liste</a>
+                                                                           rel="nofollow">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                         {{--                                                                    <a class="add-to-compare-link" href="compare.html">Add to compare</a>--}}
                                                                     </div>
                                                                 </div>
@@ -431,7 +429,7 @@
                                                                     <div class="yith-wcwl-add-to-wishlist">
                                                                         <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                            rel="nofollow"
-                                                                           class="add_to_wishlist"> Ajouter à la liste
+                                                                           class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}
                                                                             de souhaits</a>
                                                                     </div>
                                                                     <a href="#"
@@ -458,7 +456,7 @@
                                                                     <div class="hover-area">
                                                                         <a class="button add_to_cart_button"
                                                                            href="{{route('product.single',['id'=>$product->id])}}"
-                                                                           rel="nofollow">Ajouter à la liste</a>
+                                                                           rel="nofollow">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                         {{--                                                                    <a class="add-to-compare-link" href="compare.html">Add to compare</a>--}}
                                                                     </div>
                                                                 </div>
@@ -564,8 +562,7 @@
                                                                     <div class="yith-wcwl-add-to-wishlist">
                                                                         <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                            rel="nofollow"
-                                                                           class="add_to_wishlist"> Ajouter à la liste
-                                                                            de souhaits</a>
+                                                                           class="add_to_wishlist">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                     </div>
                                                                     <a class="woocommerce-LoopProduct-link" href="#">
                                                                         <img class="wp-post-image"
@@ -605,8 +602,7 @@
                                                                         </a>
                                                                         <div class="hover-area">
                                                                             <a class="button add_to_cart_button"
-                                                                               href="{{route('product.single',['id'=>$product->id])}}">Ajouter
-                                                                                au panier</a>
+                                                                               href="{{route('product.single',['id'=>$product->id])}}">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                             {{--                                                                        <a href="compare.html" class="add-to-compare-link">Add to compare</a>--}}
                                                                         </div>
                                                                         <!-- .hover-area -->
@@ -653,8 +649,7 @@
                                                                 <div class="yith-wcwl-add-to-wishlist">
                                                                     <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        rel="nofollow"
-                                                                       class="add_to_wishlist"> Ajouter à la liste
-                                                                        de souhaits</a>
+                                                                       class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}</a>
                                                                 </div>
                                                                 <a href="#"
                                                                    class="woocommerce-LoopProduct-link">
@@ -680,7 +675,7 @@
                                                                 <div class="hover-area">
                                                                     <a class="button add_to_cart_button"
                                                                        href="{{route('product.single',['id'=>$product->id])}}"
-                                                                       rel="nofollow">Ajouter à la liste</a>
+                                                                       rel="nofollow">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                     {{--                                                                    <a class="add-to-compare-link" href="compare.html">Add to compare</a>--}}
                                                                 </div>
                                                             </div>
@@ -768,8 +763,7 @@
                                                         <div class="yith-wcwl-add-to-wishlist">
                                                             <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                rel="nofollow"
-                                                               class="add_to_wishlist"> Ajouter à la liste
-                                                                de souhaits</a>
+                                                               class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}</a>
                                                         </div>
                                                         <a class="woocommerce-LoopProduct-link" href="#">
                                                             <img class="wp-post-image"
@@ -809,8 +803,7 @@
                                                             </a>
                                                             <div class="hover-area">
                                                                 <a class="button add_to_cart_button"
-                                                                   href="{{route('product.single',['id'=>$product->id])}}">Ajouter
-                                                                    au panier</a>
+                                                                   href="{{route('product.single',['id'=>$product->id])}}">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                 {{--                                                                        <a href="compare.html" class="add-to-compare-link">Add to compare</a>--}}
                                                             </div>
                                                             <!-- .hover-area -->
@@ -869,8 +862,7 @@
                                                                 <div class="yith-wcwl-add-to-wishlist">
                                                                     <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        rel="nofollow"
-                                                                       class="add_to_wishlist"> Ajouter à la liste
-                                                                        de souhaits</a>
+                                                                       class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}</a>
                                                                 </div>
                                                                 <a href="#"
                                                                    class="woocommerce-LoopProduct-link">
@@ -896,7 +888,7 @@
                                                                 <div class="hover-area">
                                                                     <a class="button add_to_cart_button"
                                                                        href="{{route('product.single',['id'=>$product->id])}}"
-                                                                       rel="nofollow">Ajouter à la liste</a>
+                                                                       rel="nofollow">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                     {{--                                                                    <a class="add-to-compare-link" href="compare.html">Add to compare</a>--}}
                                                                 </div>
                                                             </div>

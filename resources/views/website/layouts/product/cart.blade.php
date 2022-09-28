@@ -6,7 +6,7 @@
 
         <span class="count"> {{$cart->count()}}</span>
         <span class="amount">
-                                        <span class="price-label">Votre panier</span> {{\App\CPU\Helpers::currency_converter(\App\CPU\CartManager::cart_total_applied_discount(\App\CPU\CartManager::get_cart()))}}</span>
+        <span class="price-label">{{\App\CPU\translate('basket')}}</span> {{\App\CPU\Helpers::currency_converter(\App\CPU\CartManager::cart_total_applied_discount(\App\CPU\CartManager::get_cart()))}}</span>
     </a>
     <ul class="dropdown-menu dropdown-menu-mini-cart">
         <li>
@@ -48,8 +48,8 @@
                                                         {{\App\CPU\Helpers::currency_converter($sub_total) ?? 0}}</span>
                     </p>
                     <p class="woocommerce-mini-cart__buttons buttons">
-                        <a href="" class="button wc-forward">Voir le panier</a>
-                        <a href="" class="button checkout wc-forward">Vérifier</a>
+                        <a href="" class="button wc-forward">{{\App\CPU\translate('basket')}}</a>
+                        <a href="" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
                     </p>
                 </div>
                 <!-- .widget_shopping_cart_content -->

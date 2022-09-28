@@ -1952,4 +1952,8 @@
   'No_data_to_show<' => 'Aucune donnée
    à afficher',
   'Billing Details' => 'Billing Details',
+
+    'basket' => 'Votre panier',
+    'check' => 'Vérifier',
+
 );

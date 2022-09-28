@@ -297,8 +297,8 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                                         {{\App\CPU\Helpers::currency_converter($sub_total) ?? 0}}</span>
                                                 </p>
                                                 <p class="woocommerce-mini-cart__buttons buttons">
-                                                    <a href="" class="button wc-forward">Voir le panier</a>
-                                                    <a href="" class="button checkout wc-forward">Vérifier</a>
+                                                    <a href="{{route('product-cart')}}" class="button wc-forward">{{\App\CPU\translate('basket')}}</a>
+                                                    <a href="{{route('product-cart')}}" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
                                                 </p>
                                             </div>
                                             <!-- .widget_shopping_cart_content -->
@@ -1277,6 +1277,48 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                 /* location.href = "{{route('checkout-details')}}"; */
             }
 
+        </script>
+        <script>
+            function couponCode() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "POST",
+                    url: '{{ route('coupon.apply') }}',
+                    data: $('#coupon-code-ajax').serializeArray(),
+                    success: function (data) {
+                        /* console.log(data);
+                        return false; */
+                        if (data.status == 1) {
+                            let ms = data.messages;
+                            ms.forEach(
+                                function (m, index) {
+                                    toastr.success(m, index, {
+                                        CloseButton: true,
+                                        ProgressBar: true
+                                    });
+                                }
+                            );
+                        } else {
+                            let ms = data.messages;
+                            ms.forEach(
+                                function (m, index) {
+                                    toastr.error(m, index, {
+                                        CloseButton: true,
+                                        ProgressBar: true
+                                    });
+                                }
+                            );
+                        }
+                        setInterval(function () {
+                            location.reload();
+                        }, 2000);
+                    }
+                });
+            }
         </script>
 
         </body>
