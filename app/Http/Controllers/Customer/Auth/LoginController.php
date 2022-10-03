@@ -49,7 +49,8 @@ class LoginController extends Controller
     public function login()
     {
         session()->put('keep_return_url', url()->previous());
-        return view('customer-view.auth.login');
+        return view('website.auth.login');
+//        return view('customer-view.auth.login');
     }
 
     public function submit(Request $request)
@@ -58,7 +59,7 @@ class LoginController extends Controller
             'user_id' => 'required',
             'password' => 'required|min:8'
         ]);
-        
+
         //recaptcha validation
         $recaptcha = Helpers::get_business_settings('recaptcha');
         if (isset($recaptcha) && $recaptcha['status'] == 1) {

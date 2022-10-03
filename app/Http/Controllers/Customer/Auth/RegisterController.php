@@ -28,7 +28,7 @@ class RegisterController extends Controller
     public function register()
     {
         session()->put('keep_return_url', url()->previous());
-        return view('customer-view.auth.register');
+        return view('website.auth.register');
     }
 
     public function submit(Request $request)

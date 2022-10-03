@@ -8,7 +8,7 @@
                 <div class="card-header">{{ \App\CPU\translate('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST"  action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">

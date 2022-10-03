@@ -14,17 +14,14 @@
                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                     src="{{asset('public/web/img/home-v1-img-1.png')}}" alt="">
                                 <div class="caption">
-                                    <div class="title">Tour. Cliquez sur. Développer. La conception modulaire
-                                        intelligente simplifie l'ajout de stockage pour les supports de culture.
+                                    <div class="title">{{\App\CPU\translate('slide1')}}
                                     </div>
-                                    <div class="sub-title">Puissant processeur Six Core, sortie d'affichage 4KUHD
-                                        dynamique et SSD rapide élégamment enveloppé dans un design en alliage
-                                        souple.
+                                    <div class="sub-title">{{\App\CPU\translate('slide2')}}
                                     </div>
-                                    <div class="button">Obtenez le vôtre maintenant
+                                    <div class="button">{{\App\CPU\translate('slide3')}}
                                         <i class="tm tm-long-arrow-right"></i>
                                     </div>
-                                    <div class="bottom-caption">Livraison gratuite sur US Terority</div>
+                                    <div class="bottom-caption">{{\App\CPU\translate('slide4')}}</div>
                                 </div>
                             </div>
 
@@ -32,17 +29,18 @@
                                  style="background-image: url({{asset('public/web/img/home-v1-background.jpg')}});">
                                 <img src="public/web/img/home-v1-img-2.png" alt="">
                                 <div class="caption">
-                                    <div class="title">The new-tech gift you
-                                        <br> are wishing for is
-                                        <br> right here
+                                    <div class="title">{{\App\CPU\translate('s1')}}
+                                        <br> {{\App\CPU\translate('s2')}}
+                                        <br> {{\App\CPU\translate('s3')}}
                                     </div>
-                                    <div class="sub-title">Big screens in incredibly slim designs
-                                        <br>that in your hand.
+                                    <div class="sub-title">{{\App\CPU\translate('s4')}}
+                                        <br>{{\App\CPU\translate('s5')}}
                                     </div>
-                                    <div class="button">Browse now
+                                    <div class="button">{{\App\CPU\translate('s6')}}
                                         <i class="tm tm-long-arrow-right"></i>
                                     </div>
-                                    <div class="bottom-caption">Free shipping on US Terority</div>
+                                    <div class="bottom-caption">{{\App\CPU\translate('s7')}}</div>
+
                                 </div>
                             </div>
 
@@ -54,8 +52,8 @@
                                     <div class="media">
                                         <i class="feature-icon d-flex mr-3 tm tm-free-delivery"></i>
                                         <div class="media-body feature-text">
-                                            <h5 class="mt-0">Livraison gratuite</h5>
-                                            <span>from $50</span>
+                                            <h5 class="mt-0">{{\App\CPU\translate('p1')}}/h5>
+                                            <span>{{\App\CPU\translate('from')}} $50</span>
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +63,7 @@
                                         <i class="feature-icon d-flex mr-3 tm tm-feedback"></i>
                                         <div class="media-body feature-text">
                                             <h5 class="mt-0">99% Cliente</h5>
-                                            <span>Commentaires</span>
+                                            <span>{{\App\CPU\translate('p2')}}</span>
                                         </div>
                                     </div>
                                     <!-- .media -->
@@ -75,8 +73,8 @@
                                     <div class="media">
                                         <i class="feature-icon d-flex mr-3 tm tm-free-return"></i>
                                         <div class="media-body feature-text">
-                                            <h5 class="mt-0">365 Journées</h5>
-                                            <span>pour un retour gratuit</span>
+                                            <h5 class="mt-0">365 {{\App\CPU\translate('p3')}}</h5>
+                                            <span>{{\App\CPU\translate('p4')}}</span>
                                         </div>
                                     </div>
                                     <!-- .media -->
@@ -86,8 +84,8 @@
                                     <div class="media">
                                         <i class="feature-icon d-flex mr-3 tm tm-safe-payments"></i>
                                         <div class="media-body feature-text">
-                                            <h5 class="mt-0">Paiement</h5>
-                                            <span>Système sécurisé</span>
+                                            <h5 class="mt-0">{{\App\CPU\translate('pai')}}</h5>
+                                            <span>{{\App\CPU\translate('sys')}}</span>
                                         </div>
                                     </div>
                                     <!-- .media -->
@@ -97,8 +95,8 @@
                                     <div class="media">
                                         <i class="feature-icon d-flex mr-3 tm tm-best-brands"></i>
                                         <div class="media-body feature-text">
-                                            <h5 class="mt-0">Seul le meilleur</h5>
-                                            <span>Marques</span>
+                                            <h5 class="mt-0">{{\App\CPU\translate('seul')}}</h5>
+                                            <span>{{\App\CPU\translate('marq')}}</span>
                                         </div>
                                     </div>
                                     <!-- .media -->
@@ -113,7 +111,7 @@
                                 <div class="deals-carousel-inner-block">
                                     <header class="section-header">
                                         <h2 class="section-title">
-                                            <strong>Deals</strong> du pipik</h2>
+                                            <strong>Deals</strong> {{\App\CPU\translate('du')}}</h2>
                                         <nav class="custom-slick-nav"></nav>
                                     </header>
                                     <!-- /.section-header -->
@@ -152,7 +150,7 @@
                                                                         <!-- /.price-and-title -->
                                                                         <div class="sale-label-outer">
                                                                             <div class="sale-saved-label">
-                                                                                <span class="saved-label-text">Sauvegarder</span>
+                                                                                <span class="saved-label-text">{{\App\CPU\translate('save')}}</span>
                                                                                 <span class="saved-label-amount">
                                                                                         <span
                                                                                             class="woocommerce-Price-amount amount">
@@ -175,10 +173,10 @@
                                                                          onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'">
                                                                     <div class="deal-progress">
                                                                         <div class="deal-stock">
-                                                                            <div class="stock-sold">Déjà vendu:
+                                                                            <div class="stock-sold">{{\App\CPU\translate('ven')}}:
                                                                                 <strong>0</strong>
                                                                             </div>
-                                                                            <div class="stock-available">Disponible:
+                                                                            <div class="stock-available">{{\App\CPU\translate('dis')}}:
                                                                                 <strong>1000</strong>
                                                                             </div>
                                                                         </div>
@@ -191,8 +189,8 @@
                                                                     <!-- /.deal-progress -->
                                                                     <div class="deal-countdown-timer">
                                                                         <div class="marketing-text">
-                                                                            <span class="line-1">Acheter</span>
-                                                                            <span class="line-2">cette offre:</span>
+                                                                            <span class="line-1">{{\App\CPU\translate('Acheter')}}</span>
+                                                                            <span class="line-2">{{\App\CPU\translate('offer')}}:</span>
                                                                         </div>
                                                                         <!-- /.marketing-text -->
                                                                         <span class="deal-time-diff"
@@ -221,9 +219,9 @@
                                         <nav class="custom-slick-pagination">
                                             <a class="slider-prev left" href="#"
                                                data-target="#sale-with-timer-carousel .products">
-                                                <i class="tm tm-arrow-left"></i>Précédente</a>
+                                                <i class="tm tm-arrow-left"></i>{{\App\CPU\translate('previous')}}</a>
                                             <a class="slider-next right" href="#"
-                                               data-target="#sale-with-timer-carousel .products">Suivante<i
+                                               data-target="#sale-with-timer-carousel .products">{{\App\CPU\translate('next')}}<i
                                                     class="tm tm-arrow-right"></i></a>
                                         </nav>
                                     </footer>
@@ -237,16 +235,15 @@
                                     <header class="section-header">
                                         <ul role="tablist" class="nav justify-content-end">
                                             <li class="nav-item">
-                                                <a class="nav-link active" href="#tab-59f89f0881f930" data-toggle="tab">Nouvelles
-                                                    Arrivées</a>
+                                                <a class="nav-link active" href="#tab-59f89f0881f930" data-toggle="tab">{{\App\CPU\translate('new_arrivals')}}
+                                                    </a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link " href="#tab-59f89f0881f931" data-toggle="tab">En
-                                                    soldes</a>
+                                                <a class="nav-link " href="#tab-59f89f0881f931" data-toggle="tab">{{\App\CPU\translate('enn')}}</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link " href="#tab-59f89f0881f932" data-toggle="tab">Les
-                                                    mieux notés</a>
+                                                <a class="nav-link " href="#tab-59f89f0881f932" data-toggle="tab">
+                                                    {{\App\CPU\translate('miee')}}</a>
                                             </li>
                                         </ul>
                                     </header>
@@ -267,7 +264,7 @@
                                                                                rel="nofollow"
                                                                                class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}s</a>
                                                                         </div>
-                                                                        <a href="#"
+                                                                        <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                            class="woocommerce-LoopProduct-link">
                                                                             <img
                                                                                 src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
@@ -322,7 +319,7 @@
                                                                            rel="nofollow"
                                                                            class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}</a>
                                                                     </div>
-                                                                    <a href="#"
+                                                                    <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        class="woocommerce-LoopProduct-link">
                                                                         <img src="{{asset($product->photo1)}}"
                                                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
@@ -377,7 +374,7 @@
                                                                            class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}
                                                                             de souhaits</a>
                                                                     </div>
-                                                                    <a href="#"
+                                                                    <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        class="woocommerce-LoopProduct-link">
                                                                         <img src="{{asset($product->photo1)}}"
                                                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
@@ -432,7 +429,7 @@
                                                                            class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}
                                                                             de souhaits</a>
                                                                     </div>
-                                                                    <a href="#"
+                                                                    <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        class="woocommerce-LoopProduct-link">
                                                                         <img src="{{asset($product->photo1)}}"
                                                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
@@ -481,20 +478,19 @@
                         </div>
                         <div class="fullwidth-notice stretch-full-width">
                             <div class="col-full">
-                                <p class="message">Téléchargez notre nouvelle application dès aujourd'hui ! Ne manquez
-                                    pas nos offres réservées aux mobiles et magasinez avec Android Play..</p>
+                                <p class="message">{{\App\CPU\translate('titlee')}}</p>
                             </div>
                             <!-- .col-full -->
                         </div>
                         <!-- .fullwidth-notice -->
                         <section class="section-top-categories section-categories-carousel" id="categories-carousel-1">
                             <header class="section-header">
-                                <h4 class="pre-title">Mis en exergue</h4>
-                                <h2 class="section-title">Catégories principales
-                                    <br>cette semaine</h2>
+                                <h4 class="pre-title">{{\App\CPU\translate('c1')}}</h4>
+                                <h2 class="section-title">{{\App\CPU\translate('c2')}}
+                                    <br>{{\App\CPU\translate('c3')}}</h2>
                                 <nav class="custom-slick-nav"></nav>
                                 <!-- .custom-slick-nav -->
-                                <a class="readmore-link" href="#">Catalogue complet</a>
+                                <a class="readmore-link" href="#">{{\App\CPU\translate('c4')}}</a>
                             </header>
                             <!-- .section-header -->
                             <div class="product-categories-1 product-categories-carousel" data-ride="tm-slick-carousel"
@@ -544,7 +540,7 @@
                             <div class="col-full">
                                 <header class="section-header">
                                     <h2 class="section-title">
-                                        <strong>Power Audio &amp; Visual </strong>entertainment
+                                        <strong>{{\App\CPU\translate('title4')}}</strong>{{\App\CPU\translate('title5')}}
                                     </h2>
                                 </header>
                                 <!-- .section-header -->
@@ -573,7 +569,7 @@
                                                                     </a>
                                                                     <div class="media-body">
                                                                         <a class="woocommerce-LoopProduct-link "
-                                                                           href="#">
+                                                                           href="{{route('product.single',['id'=>$product->id])}}">
                                                                                 <span class="price">
                                                                                     <ins>
                                                                                         <span
@@ -632,7 +628,7 @@
                         <section class="section-hot-new-arrivals section-products-carousel-tabs techmarket-tabs">
                             <div class="section-products-carousel-tabs-wrap">
                                 <header class="section-header">
-                                    <h2 class="section-title">Meilleur produit chaud</h2>
+                                    <h2 class="section-title">{{\App\CPU\translate('meil')}}</h2>
 
                                 </header>
                                 <!-- .section-header -->
@@ -651,7 +647,7 @@
                                                                        rel="nofollow"
                                                                        class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}</a>
                                                                 </div>
-                                                                <a href="#"
+                                                                <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                    class="woocommerce-LoopProduct-link">
                                                                     <img src="{{asset($product->photo1)}}"
                                                                          src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
@@ -708,12 +704,12 @@
                                             <div class="caption">
                                                 <div class="banner-info">
                                                     <h3 class="title">
-                                                        <strong>Achetez maintenant</strong> pour trouver des économies
-                                                        sur tout ce dont vous avez besoin
-                                                        <br> pour le grand jeu.</h3>
+                                                        <strong>{{\App\CPU\translate('e1')}}</strong> {{\App\CPU\translate('e2')}}
+                                                        {{\App\CPU\translate('e3')}}
+                                                        <br> {{\App\CPU\translate('e4')}}.</h3>
                                                 </div>
                                                 <!-- /.banner-info -->
-                                                <span class="banner-action button">Parcourir</span>
+                                                <span class="banner-action button">{{\App\CPU\translate('parr')}}</span>
                                             </div>
                                             <!-- /.caption -->
                                         </div>
@@ -730,11 +726,11 @@
                                                 <div class="banner-info">
                                                     <h3 class="title">
                                                         <strong>1000 mAh</strong>
-                                                        <br> Banque d'alimentation Pro.</h3>
+                                                        <br> {{\App\CPU\translate('pro')}}.</h3>
                                                 </div>
                                                 <!-- /.banner-info -->
                                                 <span class="price">34.99€</span>
-                                                <span class="banner-action button">Acheter maintenant</span>
+                                                <span class="banner-action button">{{\App\CPU\translate('ach')}}</span>
                                             </div>
                                             <!-- /.caption -->
                                         </div>
@@ -749,7 +745,7 @@
                         <section class="section-landscape-products-carousel 4-column-landscape-carousel"
                                  id="landscape-products-carousel">
                             <header class="section-header">
-                                <h2 class="section-title">Video Cameras & Photography</h2>
+                                <h2 class="section-title">{{\App\CPU\translate('title1')}}</h2>
                                 <nav class="custom-slick-nav"></nav>
                             </header>
                             <div class="products-carousel" data-ride="tm-slick-carousel" data-wrap=".products"
@@ -774,7 +770,7 @@
                                                         </a>
                                                         <div class="media-body">
                                                             <a class="woocommerce-LoopProduct-link "
-                                                               href="#">
+                                                               href="{{route('product.single',['id'=>$product->id])}}">
                                                                                 <span class="price">
                                                                                     <ins>
                                                                                         <span
@@ -827,7 +823,7 @@
                         <section class="stretch-full-width section-products-carousel-with-vertical-tabs">
                             <header class="section-header">
                                 <h2 class="section-title">
-                                    <strong>Gadgets d'aujourd'hui &amp; Mobile </strong> accessoires</h2>
+                                    <strong>{{\App\CPU\translate('title2')}} </strong> {{\App\CPU\translate('title3')}}</h2>
                             </header>
                             <!-- /.section-header -->
 
@@ -864,7 +860,7 @@
                                                                        rel="nofollow"
                                                                        class="add_to_wishlist"> {{\App\CPU\translate('add_to_cart')}}</a>
                                                                 </div>
-                                                                <a href="#"
+                                                                <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                    class="woocommerce-LoopProduct-link">
                                                                     <img src="{{asset($product->photo1)}}"
                                                                          src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"

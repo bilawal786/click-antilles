@@ -55,17 +55,48 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                 <div class="col-full">
                     <ul id="menu-top-bar-left" class="nav justify-content-center">
                         <li class="menu-item animate-dropdown">
-                            <a title="TechMarket eCommerce - Always free delivery" href="#">Termes et conditions</a>
+                            <a title="TechMarket eCommerce - Always free delivery" href="#">{{\App\CPU\translate('terms')}}</a>
                         </li>
                         <li class="menu-item animate-dropdown">
-                            <a title="Quality Guarantee of products" href="#">Garantie de qualité des produits</a>
+                            <a title="Quality Guarantee of products" href="#">{{\App\CPU\translate('quality')}}</a>
                         </li>
                         <li class="menu-item animate-dropdown">
-                            <a title="Fast returnings program" href="#">Programme de retours rapides</a>
+                            <a title="Fast returnings program" href="#">{{\App\CPU\translate('program')}}</a>
                         </li>
                         <li class="menu-item animate-dropdown">
-                            <a title="No additional fees" href="#">Politique de confidentialité</a>
+                            <a title="No additional fees" href="#">{{\App\CPU\translate('condition')}}</a>
                         </li>
+                        @php( $local = \App\CPU\Helpers::default_lang())
+                        <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                            <a title="Dollar (US)" data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                @foreach(json_decode($language['value'],true) as $data)
+                                    @if($data['code']==$local)
+                                        <img class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}" width="20"
+                                             src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                             alt="Eng">
+                                        <span style="text-transform: capitalize">{{$data['name']}}</span>
+                                    @endif
+                                @endforeach
+                            </a>
+                            <ul role="menu" class="dropdown-menu">
+                                @foreach(json_decode($language['value'],true) as $key =>$data)
+                                    @if($data['status']==1)
+                                <li class="menu-item animate-dropdown">
+                                    <a title="AUD" href="{{route('lang',[$data['code']])}}">
+                                        <img style="display: unset!important;" class="{{Session::get('direction') === "rtl" ? 'ml-2' : 'mr-2'}}"
+
+                                             src="{{asset('public/assets/front-end')}}/img/flags/{{$data['code']}}.png"
+                                             alt="{{$data['name']}}"/>
+                                        <span style="text-transform: capitalize">{{$data['name']}}</span>
+                                    </a>
+                                </li>
+                                    @endif
+                                @endforeach
+
+                            </ul>
+                            <!-- .dropdown-menu -->
+                        </li>
+
                     </ul>
                     <!-- .nav -->
                 </div>
@@ -88,32 +119,30 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                  data-nav="flex-menu">
                                 <ul id="menu-primary-menu" class="nav yamm">
                                     <li class="sale-clr yamm-fw menu-item animate-dropdown">
-                                        <a title="Super deals" href="{{route('home')}}">Accuil</a>
+                                        <a title="Super deals" href="{{route('home')}}">{{ \App\CPU\translate('Home')}}</a>
                                     </li>
                                     <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                                        <a title="Mother`s Day" data-toggle="dropdown" aria-haspopup="true" href="#">À
-                                            propos de </a>
+                                        <a title="Mother`s Day" data-toggle="dropdown" aria-haspopup="true" href="#">{{\App\CPU\translate('about_us')}} </a>
 
                                     </li>
                                     <li class="yamm-fw menu-item menu-item-has-children animate-dropdown dropdown">
-                                        <a title="Pages" data-toggle="dropdown" aria-haspopup="true" href="#">Nous
-                                            contacter </a>
+                                        <a title="Pages" data-toggle="dropdown" aria-haspopup="true" href="#">{{\App\CPU\translate('discounted_products')}}</a>
 
                                     </li>
                                     @auth
                                         <li class="menu-item menu-item-has-children animate-dropdown dropdown show">
                                             <a title="Mother`s Day" data-toggle="dropdown" class="dropdown-toggle"
-                                               aria-haspopup="true" href="#" aria-expanded="true">Mon compte <span
+                                               aria-haspopup="true" href="#" aria-expanded="true">{{\App\CPU\translate('Account')}} <span
                                                     class="caret"></span></a>
                                             <ul role="menu" class="dropdown-menu show" x-placement="bottom-start"
                                                 style="position: absolute; transform: translate3d(24px, 23px, 0px); top: 0px; left: 0px; will-change: transform;">
                                                 <li class="menu-item animate-dropdown">
-                                                    <a title="Wishlist" href="#">Profil</a>
+                                                    <a title="Wishlist" href="#">{{\App\CPU\translate('my_profile')}}</a>
                                                 </li>
                                                 <li class="menu-item animate-dropdown">
                                                     <a href="{{route('logout')}}" title="Headphones Sale"
                                                        onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                                        Déconnecter
+                                                        {{\App\CPU\translate('logout')}}
                                                     </a>
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                           style="display: none;">
@@ -127,7 +156,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                         </li>
                                     @else
                                         <li class="menu-item animate-dropdown">
-                                            <a href="#">Connexion</a>
+                                            <a href="{{route('customer.auth.login')}}">{{\App\CPU\translate('Login')}}</a>
                                         </li>
                                     @endauth
 
@@ -147,7 +176,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                 <button class="btn dropdown-toggle btn-block" type="button" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
                                     <i class="tm tm-departments-thin"></i>
-                                    <span>Tous les Catégorie</span>
+                                    <span>{{\App\CPU\translate('category')}}</span>
                                 </button>
 
                                 <ul id="menu-departments-menu" class="dropdown-menu yamm departments-menu-dropdown">
@@ -210,17 +239,16 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                         <!-- .departments-menu -->
 
                         <form class="navbar-search" method="get" action="#">
-                            <label class="sr-only screen-reader-text" for="search">Rechercher:</label>
+                            <label class="sr-only screen-reader-text" for="search">{{\App\CPU\translate('rech')}}:</label>
                             <div class="input-group">
                                 <input type="text" id="search" class="form-control search-field product-search-field"
-                                       dir="ltr" value="" name="s" placeholder="Search for products"/>
+                                       dir="ltr" value="" name="s" placeholder="{{\App\CPU\translate('Search Product Name')}}"/>
                                 <div class="input-group-addon search-categories popover-header">
                                     <select name='product_cat' id='product_cat' class='postform resizeselect'>
-                                        <option value='' selected='selected'>Toutes catégories</option>
+                                        <option value='' selected='selected'>{{\App\CPU\translate('All Categories')}}</option>
                                         @foreach($category as $row )
                                             <option class="level-0" value="{{$row->id}}">{{$row->name}}</option>
                                         @endforeach
-
 
                                     </select>
                                 </div>
@@ -229,7 +257,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                     <input type="hidden" id="search-param" name="post_type" value="product"/>
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-search"></i>
-                                        <span class="search-btn">Chercher</span>
+                                        <span class="search-btn">{{\App\CPU\translate('Search')}}</span>
                                     </button>
                                 </div>
                                 <!-- .input-group-btn -->
@@ -359,7 +387,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                         <span>Menu</span>
                                     </button>
                                     <div class="handheld-navigation-menu">
-                                        <span class="tmhm-close">Close</span>
+                                        <span class="tmhm-close">{{\App\CPU\translate('Close')}}</span>
                                         <ul id="menu-departments-menu-1" class="nav">
                                             <li class="highlight menu-item animate-dropdown">
                                                 <a title="Value of the Day" href="#"></a>Valeur du jour
@@ -942,7 +970,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                 <div class="site-search">
                                     <div class="widget woocommerce widget_product_search">
                                         <form role="search" method="get" class="woocommerce-product-search" action="#">
-                                            <label class="screen-reader-text" for="woocommerce-product-search-field-0">Rechercher:</label>
+                                            <label class="screen-reader-text" for="woocommerce-product-search-field-0">{{\App\CPU\translate('rech')}}:</label>
                                             <input type="search" id="woocommerce-product-search-field-0"
                                                    class="search-field" placeholder="Recherche de produits&hellip;"
                                                    value="" name="s"/>
@@ -981,16 +1009,16 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                     <div class="media-body">
                                         <div class="clearfix">
                                             <div class="newsletter-header">
-                                                <h5 class="newsletter-title">Inscrivez-vous à la newsletter</h5>
-                                                <span class="newsletter-marketing-text">...et recevoir
-                                                    <strong>20 EURO Coupon pour premier achat</strong>
+                                                <h5 class="newsletter-title">{{\App\CPU\translate('newsel')}}</h5>
+                                                <span class="newsletter-marketing-text">...{{\App\CPU\translate('et')}}
+                                                    <strong>{{\App\CPU\translate('20euro')}}</strong>
                                                 </span>
                                             </div>
                                             <!-- .newsletter-header -->
                                             <div class="newsletter-body">
                                                 <form class="newsletter-form">
                                                     <input type="text" placeholder="Enter your email address">
-                                                    <button class="button" type="button">Inscrire</button>
+                                                    <button class="button" type="button">{{\App\CPU\translate('Register')}}</button>
                                                 </form>
                                             </div>
                                             <!-- .newsletter body -->
@@ -1028,12 +1056,11 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                     <!-- .footer-widgets-block -->
                     <div class="site-info">
                         <div class="col-full">
-                            <div class="copyright">Copyright &copy; 2022 <a href="#">Click Antilles</a> Theme. All
-                                rights reserved.
+                            <div class="copyright">{{\App\CPU\translate('copy')}} &copy; 2022 <a href="#">Click Antilles</a> {{\App\CPU\translate('tstt')}}
                             </div>
                             <!-- .copyright -->
-                            <div class="credit">Fabriqué avec
-                                <i class="fa fa-heart"></i> by Click Antilles.
+                            <div class="credit">{{\App\CPU\translate('avc')}}
+                                <i class="fa fa-heart"></i> {{\App\CPU\translate('par')}} Click Antilles.
                             </div>
                             <!-- .credit -->
                         </div>

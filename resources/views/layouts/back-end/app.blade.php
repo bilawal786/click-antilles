@@ -92,7 +92,6 @@
             color: inherit;
             text-decoration: inherit;
         }
-
         .qcont:first-letter {
             text-transform: capitalize
         }
