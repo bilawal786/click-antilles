@@ -23,6 +23,11 @@
             display: block;
             padding: 0px 1em 0px 8px;
         }
+        @if($wishlist)
+         .add-to-wishlist:before {
+            color: red!important;
+        }
+        @endif
 
     </style>
 
@@ -121,7 +126,8 @@
                                 <div class="summary entry-summary">
                                     <div class="single-product-header">
                                         <h1 class="product_title entry-title">{{ $product['name']}}</h1>
-                                        <a class="add-to-wishlist" href="#"> {{\App\CPU\translate('add_to_cart')}}</a>
+
+                                        <a class="add-to-wishlist"   onclick="addWishlist('{{$product['id']}}')"> </a>
                                     </div>
                                     <!-- .single-product-header -->
                                     <div class="single-product-meta">
@@ -293,5 +299,49 @@
     </div>
     <!-- #content -->
 
+<script>
+    function addWishlist(product_id) {
 
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: "{{route('store-wishlist')}}",
+            method: 'POST',
+            data: {
+                product_id: product_id
+            },
+            success: function (data) {
+                if (data.value == 1) {
+                    Swal.fire({
+                        position: 'top-end',
+                        type: 'success',
+                        title: data.success,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                        $('.countWishlist').html(data.count);
+                        $('.countWishlist-' + product_id).text(data.product_count);
+                        $('.tooltip').html('');
+
+
+                } else if (data.value == 2) {
+                    Swal.fire({
+                        type: 'info',
+                        title: 'WishList',
+                        text: data.error
+                    });
+                } else {
+                    Swal.fire({
+                        type: 'error',
+                        title: 'WishList',
+                        text: data.error
+                    });
+                }
+            }
+        });
+    }
+</script>
 @endsection

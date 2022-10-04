@@ -328,7 +328,7 @@
                                                     @php($config=\App\CPU\Helpers::get_business_settings('stripe'))
 
                                                     @if($config['status'])
-                                                    <button href="order-received.html"type="button" id="checkout-button" class="button wc-forward text-center">Place order</button>
+                                                    <button href="order-received.html"type="button" onclick="setLoading(true)" id="checkout-button" class="button wc-forward text-center">Place order</button>
                                                         <script type="text/javascript">
                                                             // Create an instance of the Stripe object with your publishable API
 
@@ -378,3 +378,10 @@
     <!-- .col-full -->
 </div>
 @endsection
+<script>
+    function setLoading(isLoading) {
+        if (isLoading) {
+            document.querySelector("#checkout-button").disabled = true;
+        }
+    }
+</script>

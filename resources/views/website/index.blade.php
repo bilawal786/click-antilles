@@ -321,7 +321,7 @@
                                                                     </div>
                                                                     <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        class="woocommerce-LoopProduct-link">
-                                                                        <img src="{{asset($product->photo1)}}"
+                                                                        <img
                                                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                                                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                                              width="224"
@@ -376,7 +376,7 @@
                                                                     </div>
                                                                     <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        class="woocommerce-LoopProduct-link">
-                                                                        <img src="{{asset($product->photo1)}}"
+                                                                        <img
                                                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                                                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                                              width="224"
@@ -431,7 +431,7 @@
                                                                     </div>
                                                                     <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                        class="woocommerce-LoopProduct-link">
-                                                                        <img src="{{asset($product->photo1)}}"
+                                                                        <img
                                                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                                                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                                              width="224"
@@ -540,7 +540,7 @@
                             <div class="col-full">
                                 <header class="section-header">
                                     <h2 class="section-title">
-                                        <strong>{{\App\CPU\translate('title4')}}</strong>{{\App\CPU\translate('title5')}}
+                                        <strong>{{\App\CPU\translate('title4')}} &amp </strong> {{\App\CPU\translate('title5')}}
                                     </h2>
                                 </header>
                                 <!-- .section-header -->
@@ -560,9 +560,9 @@
                                                                            rel="nofollow"
                                                                            class="add_to_wishlist">{{\App\CPU\translate('add_to_cart')}}</a>
                                                                     </div>
-                                                                    <a class="woocommerce-LoopProduct-link" href="#">
+                                                                    <a class="woocommerce-LoopProduct-link" href="{{route('product.single',['id'=>$product->id])}}">
                                                                         <img class="wp-post-image"
-                                                                             src="{{asset($product->photo1)}}"
+
                                                                              src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                                                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                                              alt="">
@@ -649,7 +649,7 @@
                                                                 </div>
                                                                 <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                    class="woocommerce-LoopProduct-link">
-                                                                    <img src="{{asset($product->photo1)}}"
+                                                                    <img
                                                                          src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                                                          onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                                          width="224"
@@ -763,7 +763,7 @@
                                                         </div>
                                                         <a class="woocommerce-LoopProduct-link" href="#">
                                                             <img class="wp-post-image"
-                                                                 src="{{asset($product->photo1)}}"
+
                                                                  src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                                                  onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                                  alt="">
@@ -862,7 +862,7 @@
                                                                 </div>
                                                                 <a href="{{route('product.single',['id'=>$product->id])}}"
                                                                    class="woocommerce-LoopProduct-link">
-                                                                    <img src="{{asset($product->photo1)}}"
+                                                                    <img
                                                                          src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                                                          onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                                          width="224"

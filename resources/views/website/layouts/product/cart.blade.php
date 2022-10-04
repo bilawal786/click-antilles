@@ -48,8 +48,8 @@
                                                         {{\App\CPU\Helpers::currency_converter($sub_total) ?? 0}}</span>
                     </p>
                     <p class="woocommerce-mini-cart__buttons buttons">
-                        <a href="" class="button wc-forward">{{\App\CPU\translate('basket')}}</a>
-                        <a href="" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
+                        <a href="{{route('product-cart')}}" class="button wc-forward">{{\App\CPU\translate('basket')}}</a>
+                        <a href="{{route('product-checkout')}}" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
                     </p>
                 </div>
                 <!-- .widget_shopping_cart_content -->

@@ -129,31 +129,24 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                         <a title="Pages" data-toggle="dropdown" aria-haspopup="true" href="#">{{\App\CPU\translate('discounted_products')}}</a>
 
                                     </li>
-                                    @auth
-                                        <li class="menu-item menu-item-has-children animate-dropdown dropdown show">
-                                            <a title="Mother`s Day" data-toggle="dropdown" class="dropdown-toggle"
-                                               aria-haspopup="true" href="#" aria-expanded="true">{{\App\CPU\translate('Account')}} <span
-                                                    class="caret"></span></a>
-                                            <ul role="menu" class="dropdown-menu show" x-placement="bottom-start"
-                                                style="position: absolute; transform: translate3d(24px, 23px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    @if(auth('customer')->check())
+                                        <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                            <a title="Mother`s Day" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" href="#">{{\App\CPU\translate('Account')}} <span class="caret"></span></a>
+                                            <ul role="menu" class=" dropdown-menu">
                                                 <li class="menu-item animate-dropdown">
-                                                    <a title="Wishlist" href="#">{{\App\CPU\translate('my_profile')}}</a>
+                                                    <a title="Wishlist" href="{{route('user-accountt')}}">{{\App\CPU\translate('my_profile')}}</a>
                                                 </li>
                                                 <li class="menu-item animate-dropdown">
-                                                    <a href="{{route('logout')}}" title="Headphones Sale"
-                                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                                        {{\App\CPU\translate('logout')}}
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                          style="display: none;">
-                                                        @csrf
-                                                    </form>
-
+                                                    <a title="Wishlist" href="{{route('account-oder')}}">{{\App\CPU\translate('my_order')}}</a>
+                                                </li>
+                                                <li class="menu-item animate-dropdown">
+                                                    <a title="Add to compare" href="{{route('customer.auth.logout')}}"> {{\App\CPU\translate('logout')}}</a>
                                                 </li>
 
                                             </ul>
                                             <!-- .dropdown-menu -->
                                         </li>
+
                                     @else
                                         <li class="menu-item animate-dropdown">
                                             <a href="{{route('customer.auth.login')}}">{{\App\CPU\translate('Login')}}</a>
@@ -267,9 +260,11 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
                         <ul class="header-wishlist nav navbar-nav">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('wishlistss')}}" class="nav-link">
                                     <i class="tm tm-favorites"></i>
-                                    <span id="top-cart-wishlist-count" class="value">3</span>
+                                    <?php $wishlist = \App\Model\Wishlist::where('customer_id', auth('customer')->id())->count();?>
+                                    <span id="top-cart-wishlist-count" class=" value count countWishlist">{{session()->has('wish_list')?count(session('wish_list')):0}}</span>
+
                                 </a>
                             </li>
                         </ul>
@@ -326,7 +321,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                                 </p>
                                                 <p class="woocommerce-mini-cart__buttons buttons">
                                                     <a href="{{route('product-cart')}}" class="button wc-forward">{{\App\CPU\translate('basket')}}</a>
-                                                    <a href="{{route('product-cart')}}" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
+                                                    <a href="{{route('product-checkout')}}" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
                                                 </p>
                                             </div>
                                             <!-- .widget_shopping_cart_content -->
@@ -1099,7 +1094,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
         <script>
             function removeFromCart(key) {
-                   alert(key);
+
                 $.post('{{ route('cart.remove') }}', {_token: '{{ csrf_token() }}', key: key}, function (response) {
                     console.log(response)
                     updateNavCart();
@@ -1346,7 +1341,8 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                     }
                 });
             }
-        </script>
+
+
 
         </body>
 </html>

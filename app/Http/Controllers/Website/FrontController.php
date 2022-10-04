@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Website;
 
 use App\CPU\CartManager;
+use App\CPU\Helpers;
 use App\Http\Controllers\Controller;
 use App\Model\Banner;
 use App\Model\Cart;
 use App\Model\Category;
+use App\Model\Order;
 use App\Model\Product;
+use App\Model\Wishlist;
+use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use function App\CPU\translate;
@@ -26,7 +30,8 @@ class FrontController extends Controller
     {
         $product = Product::find($id);
         $products = Product::where('featured', 1)->get();
-        return view('website.product.single', compact('product', 'products'));
+        $wishlist = Wishlist::where('product_id','=',$id)->where('customer_id','=', auth('customer')->id())->first();
+        return view('website.product.single', compact('product', 'products','wishlist'));
 
     }
 
@@ -53,4 +58,40 @@ class FrontController extends Controller
         Toastr::info(translate('no_items_in_basket'));
         return redirect('/');
     }
+    public function account_oder()
+    {
+        $orders = Order::where('customer_id', auth('customer')->id())->orderBy('id','DESC')->get();
+        return view('website.users-profile.account-orders', compact('orders'));
+    }
+    public function user_account()
+    {
+        if (auth('customer')->check()) {
+            $customerDetail = User::where('id', auth('customer')->id())->first();
+            return view('website.users-profile.account-profile', compact('customerDetail'));
+        } else {
+            return redirect()->route('home');
+        }
+    }
+    public function account_order_details(Request $request)
+    {
+        $order = Order::find($request->id);
+        return view('website.users-profile.account-order-details', compact('order'));
+    }
+    public function generate_invoice($id)
+    {
+        $order = Order::with('seller')->with('shipping')->where('id', $id)->first();
+        $data["email"] = $order->customer["email"];
+        $data["order"] = $order;
+
+        $mpdf_view = \View::make('website.users-profile.layouts.invoice')->with('order', $order);
+        Helpers::gen_mpdf($mpdf_view, 'order_invoice_', $order->id);
+    }
+    public function viewWishlist()
+    {
+        $wishlists = Wishlist::where('customer_id', auth('customer')->id())->get();
+        return view('website.users-profile.account-wishlist', compact('wishlists'));
+    }
+
+
+
 }

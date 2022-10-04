@@ -21,8 +21,15 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode']], func
 });
 
 Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode','customer']], function () {
-//    Route::get('/', 'FrontController@index')->name('front.index');
+
 
     Route::get('/product-checkout', 'FrontController@productCheckout')->name('product-checkout');
     Route::get('/product-cart', 'FrontController@productCart')->name('product-cart');
+
+    Route::get('account-oder', 'FrontController@account_oder')->name('account-oder');
+    Route::get('user-accountt', 'FrontController@user_account')->name('user-accountt');
+    Route::get('account-order-detailss', 'FrontController@account_order_details')->name('account-order-detailss')->middleware('customer');
+    Route::get('generate-invoice/{id}', 'FrontController@generate_invoice')->name('generate-invoice');
+    Route::get('wishlistss', 'FrontController@viewWishlist')->name('wishlistss')->middleware('customer');
+
 });
