@@ -2014,6 +2014,7 @@
     'miee' => "Les mie",
     'previous' => "Précédente",
     'next' => "Suivante",
+
     'tst' => "Fabriqué avec.",
     'tst' => "Fabriqué avec.",
     'tst' => "Fabriqué avec.",
