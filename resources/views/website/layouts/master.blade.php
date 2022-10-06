@@ -36,17 +36,21 @@
     {{--Toastr--}}
     <script src={{asset("public/assets/back-end/js/toastr.js")}}></script>
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/toastr.css"/>
+
     {!! Toastr::message() !!}
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,900" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset('public/web/assets/logo click antilles.png')}}">
+
 </head>
 <?php
 $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)->priority()->paginate(11);
 ?>
 
-@if(request()->is('product/single/*') )
+@if(request()->is('product/single*'))
     <body class="woocommerce-active single-product full-width normal">
+    @elseif(request()->is('all-product*') || request()->is('product/search*'))
+        <body class="woocommerce-active left-sidebar">
     @else
         <body class="woocommerce-active page-template-template-homepage-v1 can-uppercase">
         @endif
@@ -55,16 +59,16 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                 <div class="col-full">
                     <ul id="menu-top-bar-left" class="nav justify-content-center">
                         <li class="menu-item animate-dropdown">
-                            <a title="TechMarket eCommerce - Always free delivery" href="#">{{\App\CPU\translate('terms')}}</a>
+                            <a title="TechMarket eCommerce - Always free delivery" href="{{route('terms-condition')}}">{{\App\CPU\translate('terms')}}</a>
                         </li>
                         <li class="menu-item animate-dropdown">
-                            <a title="Quality Guarantee of products" href="#">{{\App\CPU\translate('quality')}}</a>
+                            <a title="Quality Guarantee of products" href="{{route('all-product')}}">{{\App\CPU\translate('quality')}}</a>
                         </li>
                         <li class="menu-item animate-dropdown">
-                            <a title="Fast returnings program" href="#">{{\App\CPU\translate('program')}}</a>
+                            <a title="Fast returnings program" href="{{route('faq')}}">{{\App\CPU\translate('faq')}}</a>
                         </li>
                         <li class="menu-item animate-dropdown">
-                            <a title="No additional fees" href="#">{{\App\CPU\translate('condition')}}</a>
+                            <a title="No additional fees" href="{{route('privacy')}}">{{\App\CPU\translate('condition')}}</a>
                         </li>
                         @php( $local = \App\CPU\Helpers::default_lang())
                         <li class="menu-item menu-item-has-children animate-dropdown dropdown">
@@ -108,7 +112,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                     <div class="techmarket-sticky-wrap">
                         <div class="row">
                             <div class="site-branding">
-                                <a href="" class="custom-logo-link" rel="home">
+                                <a href="/" class="custom-logo-link" rel="home">
                                     <img src="{{asset('public/web/assets/logo click antilles.png')}}">
                                 </a>
                                 <!-- /.custom-logo-link -->
@@ -118,19 +122,19 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                             <nav id="primary-navigation" class="primary-navigation" aria-label="Primary Navigation"
                                  data-nav="flex-menu">
                                 <ul id="menu-primary-menu" class="nav yamm">
-                                    <li class="sale-clr yamm-fw menu-item animate-dropdown">
+                                    <li class="{{request()->is('/*') ? 'sale-clr': ''}} yamm-fw menu-item animate-dropdown">
                                         <a title="Super deals" href="{{route('home')}}">{{ \App\CPU\translate('Home')}}</a>
                                     </li>
-                                    <li class="menu-item menu-item-has-children animate-dropdown dropdown">
-                                        <a title="Mother`s Day" data-toggle="dropdown" aria-haspopup="true" href="#">{{\App\CPU\translate('about_us')}} </a>
+                                    <li class="menu-item  menu-item-has-children animate-dropdown {{request()->is('about*') ? 'sale-clr': ''}} ">
+                                        <a title="Mother`s Day"  href="{{route('about')}}">{{\App\CPU\translate('about_us')}} </a>
 
                                     </li>
-                                    <li class="yamm-fw menu-item menu-item-has-children animate-dropdown dropdown">
-                                        <a title="Pages" data-toggle="dropdown" aria-haspopup="true" href="#">{{\App\CPU\translate('discounted_products')}}</a>
+                                    <li class="yamm-fw menu-item menu-item-has-children animate-dropdown {{request()->is('all-product*') ? 'sale-clr': ''}}">
+                                        <a title="Pages"  href="{{route('all-product')}}">{{\App\CPU\translate('discounted_products')}}</a>
 
                                     </li>
                                     @if(auth('customer')->check())
-                                        <li class="menu-item menu-item-has-children animate-dropdown dropdown">
+                                        <li class="menu-item menu-item-has-children animate-dropdown dropdown {{request()->is('account-oder*') || request()->is('user-accountt*') || request()->is('wishlistss*') ? 'sale-clr': ''}}">
                                             <a title="Mother`s Day" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" href="#">{{\App\CPU\translate('Account')}} <span class="caret"></span></a>
                                             <ul role="menu" class=" dropdown-menu">
                                                 <li class="menu-item animate-dropdown">
@@ -148,13 +152,12 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                         </li>
 
                                     @else
-                                        <li class="menu-item animate-dropdown">
+                                        <li class="menu-item animate-dropdown {{request()->is('customer/auth/login*') ? 'sale-clr': ''}}">
                                             <a href="{{route('customer.auth.login')}}">{{\App\CPU\translate('Login')}}</a>
                                         </li>
                                     @endauth
 
                                 </ul>
-                                <!-- .nav -->
                             </nav>
 
                         </div>
@@ -177,7 +180,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                     @foreach($category as $cat)
                                         <li class="yamm-tfw menu-item menu-item-has-children animate-dropdown dropdown-submenu">
                                             <a title="{{$cat->name}}" data-toggle="dropdown" class="dropdown-toggle"
-                                               aria-haspopup="true" href="#">{{$cat->name}} <span class="caret"></span></a>
+                                               aria-haspopup="true" href="{{route('all-product',['id'=>$cat->id])}}">{{$cat->name}} <span class="caret"></span></a>
                                             <ul role="menu" class=" dropdown-menu">
                                                 <li class="menu-item menu-item-object-static_block animate-dropdown">
                                                     <div class="yamm-content">
@@ -231,13 +234,14 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
                         <!-- .departments-menu -->
 
-                        <form class="navbar-search" method="get" action="#">
+                        <form class="navbar-search" method="post" action="{{route('product.search')}}">
+                            @csrf
                             <label class="sr-only screen-reader-text" for="search">{{\App\CPU\translate('rech')}}:</label>
                             <div class="input-group">
                                 <input type="text" id="search" class="form-control search-field product-search-field"
-                                       dir="ltr" value="" name="s" placeholder="{{\App\CPU\translate('Search Product Name')}}"/>
+                                       dir="ltr" value="" name="name" placeholder="{{\App\CPU\translate('Search Product Name')}}"/>
                                 <div class="input-group-addon search-categories popover-header">
-                                    <select name='product_cat' id='product_cat' class='postform resizeselect'>
+                                    <select name='category_id' id='product_cat' class='postform resizeselect'>
                                         <option value='' selected='selected'>{{\App\CPU\translate('All Categories')}}</option>
                                         @foreach($category as $row )
                                             <option class="level-0" value="{{$row->id}}">{{$row->name}}</option>
@@ -1047,6 +1051,173 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                         <!-- .col-full -->
                     </div>
                     <!-- .before-footer-wrap -->
+                    <div class="footer-widgets-block">
+                        <div class="row">
+                            <div class="footer-contact">
+                                <div class="footer-logo">
+
+                                        <a href="" class="custom-logo-link" rel="home">
+                                            <img src="{{asset('public/web/assets/logo click antilles.png')}}">
+                                        </a>
+
+                                </div>
+                                <!-- .footer-logo -->
+                                <div class="contact-payment-wrap">
+                                    <div class="footer-contact-info">
+                                        <div class="media">
+                                            <span class="media-left icon media-middle">
+                                                <i class="tm tm-call-us-footer"></i>
+                                            </span>
+                                            <div class="media-body">
+                                                <span class="call-us-title">{{\App\CPU\translate('Got Questions ? Call us')}} 24/7!</span>
+                                                <span class="call-us-text">(800) 8001-8588, (0600) 874 548</span>
+                                                <address class="footer-contact-address">{{\App\CPU\translate('17 Princess Road, London, Greater London NW1 8JR, UK')}}</address>
+                                                <a href="#" class="footer-address-map-link">
+                                                    <i class="tm tm-map-marker"></i>{{\App\CPU\translate('Find us on map')}}</a>
+                                            </div>
+                                            <!-- .media-body -->
+                                        </div>
+                                        <!-- .media -->
+                                    </div>
+                                    <!-- .footer-contact-info -->
+                                    <div class="footer-payment-info">
+                                        <div class="media">
+                                            <span class="media-left icon media-middle">
+                                                <i class="tm tm-safe-payments"></i>
+                                            </span>
+                                            <div class="media-body">
+                                                <h5 class="footer-payment-info-title">{{\App\CPU\translate('We are using safe payments')}}</h5>
+                                                <div class="footer-payment-icons">
+                                                    <ul class="list-payment-icons nav">
+                                                        <li class="nav-item">
+                                                            <img class="payment-icon-image" src="{{asset('public/web/assets/images/credit-cards/mastercard.svg')}}" alt="mastercard" />
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <img class="payment-icon-image" src="{{asset('public/web/assets/images/credit-cards/visa.svg')}}" alt="visa" />
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <img class="payment-icon-image" src="{{asset('public/web/assets/images/credit-cards/paypal.svg')}}" alt="paypal" />
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <img class="payment-icon-image" src="{{asset('public/web/assets/images/credit-cards/maestro.svg')}}" alt="maestro" />
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- .footer-payment-icons -->
+                                                <div class="footer-secure-by-info">
+                                                    <h6 class="footer-secured-by-title">{{\App\CPU\translate('Secured by')}}:</h6>
+                                                    <ul class="footer-secured-by-icons">
+                                                        <li class="nav-item">
+                                                            <img class="secure-icons-image" src="{{asset('public/web/assets/images/secured-by/norton.svg')}}" alt="norton" />
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <img class="secure-icons-image" src="{{asset('public/web/assets/images/secured-by/mcafee.svg')}}" alt="mcafee" />
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- .footer-secure-by-info -->
+                                            </div>
+                                            <!-- .media-body -->
+                                        </div>
+                                        <!-- .media -->
+                                    </div>
+                                    <!-- .footer-payment-info -->
+                                </div>
+                                <!-- .contact-payment-wrap -->
+                            </div>
+                            <!-- .footer-contact -->
+                            <div class="footer-widgets">
+                                <div class="columns">
+                                    <aside class="widget clearfix">
+                                        <div class="body">
+                                            <h4 class="widget-title">{{\App\CPU\translate('Find it Fast')}}</h4>
+                                            <div class="menu-footer-menu-1-container">
+                                                <ul id="menu-footer-menu-1" class="menu">
+                                                    @foreach($category as $key=>$row)
+                                                       @if($key+1<10)
+                                                    <li class="menu-item">
+                                                        <a href="">{{$row->name}}  </a>
+                                                    </li>
+                                                        @endif
+                                                    @endforeach
+
+                                                </ul>
+                                            </div>
+                                            <!-- .menu-footer-menu-1-container -->
+                                        </div>
+                                        <!-- .body -->
+                                    </aside>
+                                    <!-- .widget -->
+                                </div>
+                                <!-- .columns -->
+                                <div class="columns">
+                                    <aside class="widget clearfix">
+                                        <div class="body">
+                                            <h4 class="widget-title">&nbsp;</h4>
+                                            <div class="menu-footer-menu-2-container">
+                                                <ul id="menu-footer-menu-2" class="menu">
+                                                    @foreach($category as $key=>$cat)
+                                                        @if($cat->childes->count()>0)
+                                                            @foreach($cat['childes']  as $check=>$sub)
+                                                                @if($check<1)
+                                                                <li class="menu-item">
+                                                                    <a href="">{{$sub->name}}  </a>
+                                                                </li>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                            <!-- .menu-footer-menu-2-container -->
+                                        </div>
+                                        <!-- .body -->
+                                    </aside>
+                                    <!-- .widget -->
+                                </div>
+                                <!-- .columns -->
+                                <div class="columns">
+                                    <aside class="widget clearfix">
+                                        <div class="body">
+                                            <h4 class="widget-title">{{\App\CPU\translate('Customer Care')}}</h4>
+                                            <div class="menu-footer-menu-3-container">
+                                                <ul id="menu-footer-menu-3" class="menu">
+
+                                                    @if(auth('customer')->check())
+                                                    <li class="menu-item">
+                                                        <a href="#">{{\App\CPU\translate('Account')}}</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="#">{{\App\CPU\translate('track_order')}}</a>
+                                                    </li>
+                                                    @else
+                                                        <li class="menu-item">
+                                                            <a href="{{route('customer.auth.login')}}">{{\App\CPU\translate('Login')}}</a>
+                                                        </li>
+                                                    @endif
+                                                    <li class="menu-item">
+                                                        <a href="#">{{\App\CPU\translate('My Wishlists')}}</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="{{route('about')}}">{{\App\CPU\translate('About Us')}}</a>
+                                                    </li>
+                                                    <li class="menu-item">
+                                                        <a href="{{route('faq')}}">{{\App\CPU\translate('faq')}}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- .menu-footer-menu-3-container -->
+                                        </div>
+                                        <!-- .body -->
+                                    </aside>
+                                    <!-- .widget -->
+                                </div>
+                                <!-- .columns -->
+                            </div>
+                            <!-- .footer-widgets -->
+                        </div>
+                        <!-- .row -->
+                    </div>
 
                     <!-- .footer-widgets-block -->
                     <div class="site-info">
