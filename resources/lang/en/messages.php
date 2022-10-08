@@ -2034,4 +2034,6 @@
   'about1' => 'About1',
   'Availability' => 'Availability',
   'Browse Categories' => 'Browse Categories',
+    'filter2' => 'Filter by price',
+
 );

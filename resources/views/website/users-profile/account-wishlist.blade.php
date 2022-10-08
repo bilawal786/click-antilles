@@ -32,7 +32,7 @@
 @section('content')
     <!-- Page Title-->
     <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-        <div class="row">
+        <div class="row" style="margin-top: 50px;">
             <div class="col-md-3"></div>
             <div class="col-md-9 sidebar_heading">
                 <h1 class="h3  mb-0 float-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} headerTitle">{{\App\CPU\translate('WISHLIST')}}</h1>
@@ -46,8 +46,14 @@
             @include('website.users-profile.layouts.profile-asside')
         <!-- Content  -->
             <section class="col-lg-9 col-md-9 mt-2" id="set-wish-list">
+
+                    <div class="card box-shadow-sm">
+                        <div class="card-header">
                 <!-- Item-->
                 @include('website.users-profile.layouts._wish-list-data',['wishlists'=>$wishlists])
+                        </div>
+                    </div>
+
             </section>
         </div>
     </div>

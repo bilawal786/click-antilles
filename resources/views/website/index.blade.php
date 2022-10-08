@@ -501,7 +501,7 @@
                                         @foreach($category as $key =>$row )
                                             @if($key+1==1)
                                                 <div class="product-category product first">
-                                                    <a href="#">
+                                                    <a href="{{route('all-product',['id'=>$row->id,'position'=>1])}}">
                                                         <img width="224" height="197" alt="All in One PC"
                                                              src="{{asset("storage/app/public/category/$row->icon")}}"
                                                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'">

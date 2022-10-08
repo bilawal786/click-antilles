@@ -4,7 +4,7 @@
         <div class="col-full">
             <div class="row">
                 <nav class="woocommerce-breadcrumb">
-                    <a href="/">{{\App\CPU\translate('HOME')}}</a>
+                    <a href="{{route('home')}}">{{\App\CPU\translate('HOME')}}</a>
                     <span class="delimiter">
                                 <i class="tm tm-breadcrumbs-arrow-right"></i>
                             </span>{{\App\CPU\translate('Products')}}
@@ -52,35 +52,29 @@
                                     </a>
                                 </li>
                             </ul>
-                            <!-- .shop-view-switcher -->
-                            <form class="form-techmarket-wc-ppp" method="POST">
-                                <select class="techmarket-wc-wppp-select c-select" onchange="this.form.submit()"
-                                        name="ppp">
-                                    <option value="20">{{\App\CPU\translate('Show')}} 20</option>
-                                    <option value="40">{{\App\CPU\translate('Show')}} 40</option>
-                                    <option value="-1">{{\App\CPU\translate('Show')}} All</option>
+
+                            <form method="get" class="woocommerce-ordering">
+                                <select class="orderby" name="orderby" onchange="location = this.options[this.selectedIndex].value;">
+                                    <option selected disabled>{{\App\CPU\translate('Choose')}}</option>
+                                    <option value="{{route('app.search.product',['key'=>encrypt('latest')] ) }}">{{\App\CPU\translate('Latest')}}</option>
+                                    <option
+                                        value="{{route('app.search.product',['key'=>encrypt('low-high')] ) }}">{{\App\CPU\translate('Low_to_High')}} {{\App\CPU\translate('Price')}} </option>
+                                    <option
+                                        value="{{route('app.search.product',['key'=>encrypt('high-low')] ) }}">{{\App\CPU\translate('High_to_Low')}} {{\App\CPU\translate('Price')}}</option>
+                                    <option
+                                        value="{{route('app.search.product',['key'=>encrypt('a-z')] ) }}">{{\App\CPU\translate('A_to_Z')}} {{\App\CPU\translate('Order')}}</option>
+                                    <option
+                                        value="{{route('app.search.product',['key'=>encrypt('z-a')] ) }}">{{\App\CPU\translate('Z_to_A')}} {{\App\CPU\translate('Order')}}</option>
                                 </select>
                                 <input type="hidden" value="5" name="shop_columns">
                                 <input type="hidden" value="15" name="shop_per_page">
                                 <input type="hidden" value="right-sidebar" name="shop_layout">
                             </form>
-                            <!-- .form-techmarket-wc-ppp -->
-{{--                            <form method="get" class="woocommerce-ordering">--}}
-{{--                                <select class="orderby" name="orderby">--}}
-{{--                                    <option value="popularity">Sort by popularity</option>--}}
-{{--                                    <option value="rating">Sort by average rating</option>--}}
-{{--                                    <option selected="selected" value="date">Sort by newness</option>--}}
-{{--                                    <option value="price">Sort by price: low to high</option>--}}
-{{--                                    <option value="price-desc">Sort by price: high to low</option>--}}
-{{--                                </select>--}}
-{{--                                <input type="hidden" value="5" name="shop_columns">--}}
-{{--                                <input type="hidden" value="15" name="shop_per_page">--}}
-{{--                                <input type="hidden" value="right-sidebar" name="shop_layout">--}}
-{{--                            </form>--}}
                             <!-- .woocommerce-ordering -->
                             <nav class="techmarket-advanced-pagination">
-                                <form class="form-adv-pagination" method="post">
-                                    <input type="number" value="1" class="form-control" step="1" max="5" min="1"
+                                <form class="form-adv-pagination" method="post" >
+
+                                    <input type="number" value="1"  class="form-control" step="1" max="5" min="1"
                                            size="2" id="goto-page">
                                 </form>
                                 of 5<a href="#" class="next page-numbers">→</a>
@@ -229,20 +223,10 @@
                                                         <!-- .brand -->
                                                         <div class="woocommerce-product-details__short-description">
                                                             <ul>
-                                                                <li>CUJO smart firewall brings business-level Internet
-                                                                    security to protect all of your home devices
+                                                                <li>
+                                                                    {{$product->details}}
                                                                 </li>
-                                                                <li>Internet Security: Guard your network and smart
-                                                                    devices against hacks, malware, and cyber threats
-                                                                </li>
-                                                                <li>Mobile App: Monitor your wired and wireless network
-                                                                    activity with a sleek iPhone or Android app
-                                                                </li>
-                                                                <li>CUJO connects to your wireless router with an
-                                                                    ethernet cable. CUJO is not compatible with Luma and
-                                                                    does not support Google Wifi Mesh. CUJO works with
-                                                                    Eero in Bridge mode.
-                                                                </li>
+
                                                             </ul>
                                                         </div>
                                                         <!-- .woocommerce-product-details__short-description -->
@@ -460,7 +444,7 @@
                                 <ul>
                                    @foreach($category as $row)
                                     <li class="cat-item">
-                                        <a href="#">
+                                        <a href="{{route('all-product',['id'=>$row->id,'position'=>1])}}">
                                                     <span class="child-indicator">
                                                         <i class="fa fa-angle-right"></i>
                                                     </span>{{$row->name}}</a>
@@ -471,54 +455,35 @@
                         </ul>
                     </div>
                     <div id="techmarket_products_filter-3" class="widget widget_techmarket_products_filter">
-                        <span class="gamma widget-title">Filters</span>
+                        <span class="gamma widget-title">{{\App\CPU\translate('filter')}}</span>
+                        <form action="{{route('product.search')}}" method="post">
+                            @csrf
                         <div class="widget woocommerce widget_price_filter" id="woocommerce_price_filter-2">
-                            <p>
-                                <span class="gamma widget-title">Filter by price</span>
-                            <div class="price_slider_amount">
-                                <input id="amount" type="text" placeholder="Min price" data-min="6" value="33"
-                                       name="min_price" style="display: none;">
-                                <button class="button" type="submit">Filter</button>
-                            </div>
-                            <div id="slider-range" class="price_slider"></div>
-                        </div>
 
-                        <div class="widget woocommerce widget_layered_nav maxlist-more" id="woocommerce_layered_nav-3">
-                            <span class="gamma widget-title">Color</span>
-                            <ul>
-                                <li class="wc-layered-nav-term "><a href="#">Black</a>
-                                    <span class="count">(4)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Blue</a>
-                                    <span class="count">(4)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Green</a>
-                                    <span class="count">(5)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Orange</a>
-                                    <span class="count">(5)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Red</a>
-                                    <span class="count">(4)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Yellow</a>
-                                    <span class="count">(5)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Green</a>
-                                    <span class="count">(5)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Orange</a>
-                                    <span class="count">(5)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Red</a>
-                                    <span class="count">(4)</span>
-                                </li>
-                                <li class="wc-layered-nav-term "><a href="#">Yellow</a>
-                                    <span class="count">(5)</span>
-                                </li>
-                            </ul>
+                                <span class="gamma widget-title">{{\App\CPU\translate('filter2')}}</span>
+                               <div class="price_slider_amount">
+                                   <div style="width: 40%">
+                                       <input style="background: #ffffff;"
+                                              class="cz-filter-search form-control form-control-sm appended-form-control"
+                                              type="number" name="min_price" value="0" min="0" max="1000000" id="min_price">
+
+                                   </div>
+                                   <div style="width: 20%; padding-right: 20px;" >
+                                       <h3 style="margin-top:6px;">{{\App\CPU\translate('to')}}</h3>
+                                   </div>
+                                   <div style="width: 40%">
+                                       <input style="background: #ffffff;" value="100" min="100" max="1000000"
+                                              class="cz-filter-search form-control form-control-sm appended-form-control"
+                                              type="number" name="max_price" id="max_price">
+
+                                   </div>
+                                <button class="button" type="submit" style="justify-content: center">{{\App\CPU\translate('filter')}}</button>
+                               </div>
+
                         </div>
-                        <!-- .woocommerce widget_layered_nav -->
+                        </form>
+
+
                     </div>
 
                 </div>

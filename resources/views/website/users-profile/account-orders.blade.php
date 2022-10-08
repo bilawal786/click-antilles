@@ -81,9 +81,9 @@
 @section('content')
 
     <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-        <div class="row">
+        <div class="row" style="margin-top: 50px;">
             <div class="col-md-3"></div>
-            <div class="col-md-9 mt-2 sidebar_heading">
+            <div class="col-md-9 mt-2 sidebar_heading" >
                 <h1 class="h3  mb-0 p-3 float-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} headerTitle">{{\App\CPU\translate('my_order')}}</h1>
             </div>
         </div>

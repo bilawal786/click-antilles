@@ -33,6 +33,10 @@
         font-size: 14px;
         color: #030303;
     }
+    a.remove:before {
+        top: 61px!important;
+        left: 188px!important;
+    }
 
     .wishlist_product_img img {
         margin: 15px;
@@ -82,6 +86,7 @@
         .wishlist_product_img img {
             margin: 8px;
         }
+
     }
 </style>
 @if($wishlists->count()>0)
@@ -93,7 +98,7 @@
                     <div class="card">
                         <div class="row forPadding">
                             <div class="wishlist_product_img col-md-2 col-lg-2 col-sm-2">
-                                <a href="{{route('product',$product->slug)}}">
+                                <a href="{{route('product.single',['id'=>$product->id])}}">
                                     <img
                                         src="{{\App\CPU\ProductManager::product_image_path('thumbnail')}}/{{$product['thumbnail']}}"
                                     >
@@ -101,7 +106,7 @@
                             </div>
                             <div class="wishlist_product_desc col-md-6 mt-4 {{Session::get('direction') === "rtl" ? 'pr-4' : 'pl-4'}}">
                                 <span class="font-name">
-                                    <a href="{{route('product',$product['slug'])}}">{{$product['name']}}</a>
+                                    <a href="{{route('product.single',['id'=>$product->id])}}">{{$product['name']}}</a>
                                 </span>
                                 <br>
                                 <span
@@ -122,7 +127,7 @@
                                 style="color: #92C6FF;">
                                 <a href="javascript:" class="remove" aria-label="Remove this item"
                                    data-product_id="65" data-product_sku=""
-                                   onclick="removeWishlist('{{$product['id']}}')"><b style="color: red">×</b></a>
+                                   onclick="removeWishlist('{{$product['id']}}')">×</a>
 
                             </div>
                         </div>

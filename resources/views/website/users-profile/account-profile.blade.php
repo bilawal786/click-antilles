@@ -113,7 +113,7 @@
 @section('content')
     <!-- Page Title-->
     <div class="container rtl" style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-        <div class="row">
+        <div class="row" style="margin-top: 50px;">
             <div class="col-md-3"></div>
             <div class="col-md-9 sidebar_heading">
                 <h1 class="h3  mb-0 float-{{Session::get('direction') === "rtl" ? 'right' : 'left'}} headerTitle">{{\App\CPU\translate('profile_Info')}}</h1>
@@ -123,7 +123,7 @@
     <!-- Page Content-->
     <div class="container pb-5 mb-2 mb-md-4 mt-3 rtl"
          style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};">
-        <div class="row">
+        <div class="row" >
             <!-- Sidebar-->
             @include('website.users-profile.layouts.profile-asside')
         <!-- Content  -->

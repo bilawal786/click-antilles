@@ -7,11 +7,13 @@
             margin-bottom: 1.533em;
             margin-top: -10px;
         }
-
+        .dropdown-toggle:after {
+            float: right!important;
+        }
         @media (min-width: 1200px)
             .page-template-template-homepage-v1 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v6 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v6 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v6 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v6 .departments-menu > .dropdown-menu {
                 display: none !important;
-            }
+
     </style>
     <meta charset="UTF-8">
     <meta name="_token" content="{{csrf_token()}}">
@@ -49,8 +51,8 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
 @if(request()->is('product/single*'))
     <body class="woocommerce-active single-product full-width normal">
-    @elseif(request()->is('all-product*') || request()->is('product/search*'))
-        <body class="woocommerce-active left-sidebar">
+    @elseif(request()->is('all-product*') || request()->is('product/search*') || request()->is('app/search/product/*'))
+        <body class="woocommerce-active left-sidebar  can-uppercase">
     @else
         <body class="woocommerce-active page-template-template-homepage-v1 can-uppercase">
         @endif
@@ -112,7 +114,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                     <div class="techmarket-sticky-wrap">
                         <div class="row">
                             <div class="site-branding">
-                                <a href="/" class="custom-logo-link" rel="home">
+                                <a href="{{route('home')}}" class="custom-logo-link" rel="home">
                                     <img src="{{asset('public/web/assets/logo click antilles.png')}}">
                                 </a>
                                 <!-- /.custom-logo-link -->
@@ -129,7 +131,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                         <a title="Mother`s Day"  href="{{route('about')}}">{{\App\CPU\translate('about_us')}} </a>
 
                                     </li>
-                                    <li class="yamm-fw menu-item menu-item-has-children animate-dropdown {{request()->is('all-product*') ? 'sale-clr': ''}}">
+                                    <li class="yamm-fw menu-item menu-item-has-children animate-dropdown {{request()->is('all-product*') || request()->is('product/search*') ? 'sale-clr': ''}}">
                                         <a title="Pages"  href="{{route('all-product')}}">{{\App\CPU\translate('discounted_products')}}</a>
 
                                     </li>
@@ -176,11 +178,10 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                 </button>
 
                                 <ul id="menu-departments-menu" class="dropdown-menu yamm departments-menu-dropdown">
-
                                     @foreach($category as $cat)
                                         <li class="yamm-tfw menu-item menu-item-has-children animate-dropdown dropdown-submenu">
-                                            <a title="{{$cat->name}}" data-toggle="dropdown" class="dropdown-toggle"
-                                               aria-haspopup="true" href="{{route('all-product',['id'=>$cat->id])}}">{{$cat->name}} <span class="caret"></span></a>
+                                            <a title="{{$cat->name}}" class="dropdown-toggle"
+                                               aria-haspopup="true" href="{{route('all-product',['id'=>$cat->id,'position'=>1])}}">{{$cat->name}} <span class="caret"></span></a>
                                             <ul role="menu" class=" dropdown-menu">
                                                 <li class="menu-item menu-item-object-static_block animate-dropdown">
                                                     <div class="yamm-content">
@@ -205,7 +206,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                                                         <ul>
                                                                             @if($cat->childes->count()>0)
                                                                                 @foreach($cat['childes']  as $sub)
-                                                                                    <li class="nav-title">{{$sub->name}}</li>
+                                                                                   <a href="{{route('all-product',['id'=>$sub->id,'position'=>2])}}"> <li class="nav-title">{{$sub->name}}</li></a>
                                                                                 @endforeach
                                                                             @endif
 
@@ -224,8 +225,6 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                             </ul>
                                         </li>
                                     @endforeach
-
-
                                 </ul>
                             </div>
                         @else
@@ -345,7 +344,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                     <div class="handheld-header">
                         <div class="row">
                             <div class="site-branding">
-                                <a href="#" class="custom-logo-link" rel="home">
+                                <a href="{{route('home')}}" class="custom-logo-link" rel="home">
                                     <img src="{{asset('public/web/assets/logo click antilles.png')}}">
                                 </a>
                                 <!-- /.custom-logo-link -->
@@ -1056,7 +1055,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                             <div class="footer-contact">
                                 <div class="footer-logo">
 
-                                        <a href="" class="custom-logo-link" rel="home">
+                                        <a href="{{route('home')}}" class="custom-logo-link" rel="home">
                                             <img src="{{asset('public/web/assets/logo click antilles.png')}}">
                                         </a>
 
@@ -1185,7 +1184,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
                                                     @if(auth('customer')->check())
                                                     <li class="menu-item">
-                                                        <a href="#">{{\App\CPU\translate('Account')}}</a>
+                                                        <a href="{{route('user-accountt')}}">{{\App\CPU\translate('Account')}}</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a href="#">{{\App\CPU\translate('track_order')}}</a>
@@ -1196,7 +1195,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                                         </li>
                                                     @endif
                                                     <li class="menu-item">
-                                                        <a href="#">{{\App\CPU\translate('My Wishlists')}}</a>
+                                                        <a href="{{route('wishlistss')}}">{{\App\CPU\translate('My Wishlists')}}</a>
                                                     </li>
                                                     <li class="menu-item">
                                                         <a href="{{route('about')}}">{{\App\CPU\translate('About Us')}}</a>
@@ -1517,3 +1516,9 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
         </body>
 </html>
+            <script>
+                import {App} from "../../../../public/js/app";
+                export default {
+                components: {App}
+            }
+        </script>

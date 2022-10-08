@@ -21,8 +21,9 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode']], func
     Route::get('terms-condition', 'SettingController@termsandCondition')->name('terms-condition');
     Route::get('faq', 'SettingController@helpTopic')->name('faq');
     Route::post('nav-cart', 'FrontController@updateNavCart')->name('nav.cart');
-    Route::get('/all-product/{id?}', 'FrontController@products')->name('all-product');
+    Route::get('/all-product/{id?}/{position?}', 'FrontController@products')->name('all-product');
     Route::post('/product/search', 'FrontController@productSearch')->name('product.search');
+    Route::get('/app/search/product/{key}', 'FrontController@productSearchFilter')->name('app.search.product');
 
 
 });

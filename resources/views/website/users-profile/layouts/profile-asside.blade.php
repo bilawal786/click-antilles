@@ -4,7 +4,8 @@
     }
 
     .footer span {
-        font-size: 12px
+        font-size: 12px;
+        font-style: italic;
     }
 
     .product-qty span {
@@ -50,16 +51,19 @@
         background-color: #0063d1!important;
         color: white!important;
     }
+    .active1{
+        background-color: rgba(0,0,0,.03);
+    }
 
 </style>
 
 <div class="sidebarR col-lg-3 col-md-3">
     <!--Price Sidebar-->
-    <div class="price_sidebar rounded-lg box-shadow-sm" id="shop-sidebar" style="margin-bottom: -10px;background: white">
+    <div class="price_sidebar rounded-lg box-shadow-sm" id="shop-sidebar" style=" margin-bottom: -10px;background: white; height: 615px;border: 2px solid #0063d1; border-radius: 6px;padding: 3px!important;">
         <div class="box-shadow-sm">
 
         </div>
-        <div class="pb-0 {{Request::is('account-oder*') || Request::is('account-order-detailss*') ? 'active' :''}}" style="padding:10px 0px 0px 10px!important;">
+        <div class="pb-0 {{Request::is('account-oder*') || Request::is('account-order-detailss*') ? 'active' :'active1'}}" style="padding:10px 0px 0px 10px!important;">
             <!-- Filter by price-->
             <div class="sidebarL">
                 <h3 class="widget-title btnF" style="font-weight: 700;">
@@ -71,18 +75,8 @@
                 </div>
             </div>
         </div>
-{{--        <div class="pb-0">--}}
-{{--            <!-- Filter by price-->--}}
-{{--            <div class="sidebarL">--}}
-{{--                <h3 class="widget-title btnF" style="font-weight: 700;">--}}
-{{--                    <a class="{{Request::is('track-order*')?'active-menu':''}}" href="{{route('track-order.index') }} ">{{\App\CPU\translate('track_your_order')}}</a>--}}
-{{--                </h3>--}}
-{{--                <div class="divider-role"--}}
-{{--                     style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        <div class="pb-0 {{Request::is('wishlistss*') ? 'active' :''}}"  style="padding:10px 0px 0px 10px!important;">
+
+        <div class="pb-0 {{Request::is('wishlistss*') ? 'active' :'active1'}}"  style="padding:10px 0px 0px 10px!important; ">
             <!-- Filter by price-->
             <div class="sidebarL">
                 <h3 class="widget-title btnF " style="font-weight: 700;">
@@ -93,23 +87,7 @@
             </div>
         </div>
 
-        {{--to do--}}
-{{--        @php($business_mode=\App\CPU\Helpers::get_business_settings('business_mode'))--}}
-{{--        @if ($business_mode == 'multi')--}}
-{{--            <div class="pb-0">--}}
-{{--                <!-- Filter by price-->--}}
-{{--                <div class="sidebarL">--}}
-{{--                    <h3 class="widget-title btnF" style="font-weight: 700;">--}}
-{{--                        <a class="{{Request::is('chat*')?'active-menu':''}}" href="{{route('chat-with-seller')}}">{{\App\CPU\translate('chat_with_seller')}}</a>--}}
-{{--                    </h3>--}}
-{{--                    <div class="divider-role"--}}
-{{--                         style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        @endif--}}
-
-        <div class="pb-0  {{Request::is('user-accountt*') ? 'active' :''}}"  style="padding:10px 0px 0px 10px!important;">
+        <div class="pb-0  {{Request::is('user-accountt*') ? 'active' :'active1'}}"  style="padding:10px 0px 0px 10px!important;">
             <!-- Filter by price-->
             <div class=" sidebarL">
                 <h3 class="widget-title btnF" style="font-weight: 700;">
@@ -122,42 +100,7 @@
                 </div>
             </div>
         </div>
-{{--        <div class="pb-0">--}}
-{{--            <!-- Filter by price-->--}}
-{{--            <div class=" sidebarL">--}}
-{{--                <h3 class="widget-title btnF" style="font-weight: 700;">--}}
-{{--                    <a class="{{Request::is('account-address*')?'active-menu':''}}"--}}
-{{--                       href="{{ route('account-address') }}">{{\App\CPU\translate('address')}} </a>--}}
-{{--                </h3>--}}
-{{--                <div class="divider-role"--}}
-{{--                     style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="pb-0">--}}
-{{--            <!-- Filter by price-->--}}
-{{--            <div class=" sidebarL">--}}
-{{--                <h3 class="widget-title btnF" style="font-weight: 700;">--}}
-{{--                    <a class="{{(Request::is('account-ticket*') || Request::is('support-ticket*'))?'active-menu':''}}"--}}
-{{--                       href="{{ route('account-tickets') }}">{{\App\CPU\translate('support_ticket')}}</a></h3>--}}
-{{--                <div class="divider-role"--}}
-{{--                     style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-        {{--<div class="pb-0" style="padding-top: 12px;">
-            <!-- Filter by price-->
-            <div class="sidebarL ">
-                <h3 class="widget-title btnF" style="font-weight: 700;">
-                    <a class="{{Request::is('account-transaction*')?'active-menu':''}}"
-                       href="{{ route('account-transaction') }}">
-                       {{\App\CPU\translate('tansction_history')}}
-                    </a>
-                </h3>
-                <div class="divider-role"
-                     style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;"></div>
-            </div>
-        </div>--}}
+
     </div>
 </div>
 
