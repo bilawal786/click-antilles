@@ -2026,5 +2026,11 @@
   'History of Beginning' => 'Histoire du début',
   'Availability' => 'Disponibilité',
   'Browse Categories' => 'Parcourir les catégories',
-    'filter2' => 'Filtrer par prix',
+  'filter2' => 'Filtrer par prix',
+  'pro_user' => 'Cliquez Pro',
+  'E-Mail Address' => 'E-Mail Address',
+  'Confirm Password' => 'Confirm Password',
+  'Toggle navigation' => 'Toggle navigation',
+    'dob' => 'Date de naissance',
+
 );

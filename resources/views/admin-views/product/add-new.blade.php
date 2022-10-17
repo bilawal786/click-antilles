@@ -166,6 +166,17 @@
                                             @endforeach
                                         </select>
                                     </div>
+                                    <div class="col-md-6">
+                                        <label for="colors">
+                                            {{\App\CPU\translate('pro_user')}} :
+                                        </label>
+                                        <label class="switch">
+                                            <input type="checkbox" class="status" value="2"
+                                                   name="pro">
+                                            <span class="slider round"></span>
+                                        </label>
+
+                                    </div>
 
 {{--                                    <div class="col-md-6">--}}
 {{--                                        <label for="attributes" style="padding-bottom: 3px">--}}

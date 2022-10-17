@@ -11,6 +11,7 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth;
 
 
 Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode']], function () {
@@ -24,8 +25,12 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode']], func
     Route::get('/all-product/{id?}/{position?}', 'FrontController@products')->name('all-product');
     Route::post('/product/search', 'FrontController@productSearch')->name('product.search');
     Route::get('/app/search/product/{key}', 'FrontController@productSearchFilter')->name('app.search.product');
-
-
+    Route::group(['namespace' => 'ProCustomer','prefix'=>'pro'], function () {
+        Route::get('/register', 'Auth\AuthRegisterController@register')->name('register');
+        Route::post('/register', 'Auth\AuthRegisterController@submit')->name('pro.register');
+        Route::get('/login', 'Auth\AuthRegisterController@login')->name('login');
+        Route::post('/login', 'Auth\AuthRegisterController@submitLogin')->name('pro.login');
+    });
 });
 
 Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode','customer']], function () {

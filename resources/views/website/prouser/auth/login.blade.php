@@ -17,15 +17,15 @@
                             <h2 class="h4 mb-1">{{\App\CPU\translate('sing_in')}}</h2>
                             <hr class="mt-2">
                             {{-- <h3 class="font-size-base pt-4 pb-2">{{\App\CPU\translate('or_using_form_below')}}</h3> --}}
-                            <form class="needs-validation mt-2" autocomplete="off" action="{{route('customer.auth.login')}}"
+                            <form class="needs-validation mt-2" autocomplete="off" action="{{route('pro.login')}}"
                                   method="post" id="form-id">
                                 @csrf
                                 <div class="form-group">
                                     <label for="si-email">{{\App\CPU\translate('email_address')}}
                                         / {{\App\CPU\translate('phone')}}</label>
-                                    <input class="form-control" type="text" name="user_id" id="si-email"
+                                    <input class="form-control" type="text" name="email" id="si-email"
                                            style="text-align: {{Session::get('direction') === "rtl" ? 'right' : 'left'}};"
-                                           value="{{old('user_id')}}"
+                                           value="{{old('email')}}"
                                            placeholder="{{\App\CPU\translate('Enter_email_address_or_phone_number')}}"
                                            required>
                                     <div
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="mb-3 {{Session::get('direction') === "rtl" ? 'ml-2' : ''}} " style="padding: 0px 10px;">
                                         <a class="btn btn-outline-primary"
-                                           href="{{route('customer.auth.register')}}">
+                                           href="{{route('register')}}">
                                             <i class="fa fa-user-circle"></i> {{\App\CPU\translate('sing_up')}}
                                         </a>
                                     </div>

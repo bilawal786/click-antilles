@@ -235,6 +235,9 @@ class ProductController extends BaseController
             $p->meta_description = $request->meta_description;
             $p->meta_image = ImageManager::upload('product/meta/', 'png', $request->meta_image);
 
+            if($request->pro) {
+                $p->pro = $request->pro;
+            }
             $p->save();
 
             $data = [];
@@ -404,7 +407,7 @@ class ProductController extends BaseController
     }
     public function updated_shipping(Request $request)
     {
-    
+
         $product = Product::where(['id' => $request['product_id']])->first();
         if($request->status == 1)
         {
@@ -416,7 +419,7 @@ class ProductController extends BaseController
 
         $product->save();
         return response()->json([
-            
+
         ], 200);
     }
 
@@ -736,7 +739,7 @@ class ProductController extends BaseController
             return back();
         }
 
-        
+
         $data = [];
         $skip = ['youtube_video_url', 'details', 'thumbnail'];
         foreach ($collections as $collection) {

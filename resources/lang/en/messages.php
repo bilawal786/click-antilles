@@ -2035,5 +2035,7 @@
   'Availability' => 'Availability',
   'Browse Categories' => 'Browse Categories',
     'filter2' => 'Filter by price',
+    'pro_user' => 'Click Pro',
+    'dob' => 'Date of Birth',
 
 );
