@@ -400,9 +400,7 @@ class WebController extends Controller
                     return $query->where(['added_by' => 'seller'])
                         ->where('user_id', $id);
                 })
-                ->whereJsonContains('category_ids', [
-                    ['id' => strval($request->category_id)],
-                ])->paginate(12);
+                ->whereJsonContains('category_ids', [['id' => strval($request->category_id)],])->paginate(12);
         }
 
         if ($id == 0) {
