@@ -273,9 +273,33 @@ class ProductController extends BaseController
         $query_param = [];
         $search = $request['search'];
         if ($type == 'in_house') {
-            $pro = Product::where(['added_by' => 'admin']);
+            $pro = Product::where(['added_by' => 'admin'])->where('pro','=',1);
         } else {
-            $pro = Product::where(['added_by' => 'seller'])->where('request_status', $request->status);
+            $pro = Product::where(['added_by' => 'seller'])->where('pro','=',1)->where('request_status', $request->status);
+        }
+
+        if ($request->has('search')) {
+            $key = explode(' ', $request['search']);
+            $pro = $pro->where(function ($q) use ($key) {
+                foreach ($key as $value) {
+                    $q->Where('name', 'like', "%{$value}%");
+                }
+            });
+            $query_param = ['search' => $request['search']];
+        }
+
+        $request_status = $request['status'];
+        $pro = $pro->orderBy('id', 'DESC')->paginate(Helpers::pagination_limit())->appends(['status' => $request['status']])->appends($query_param);
+        return view('admin-views.product.list', compact('pro', 'search', 'request_status'));
+    }
+    function proList(Request $request, $type)
+    {
+        $query_param = [];
+        $search = $request['search'];
+        if ($type == 'in_house') {
+            $pro = Product::where(['added_by' => 'admin'])->where('pro','=',2);
+        } else {
+            $pro = Product::where(['added_by' => 'seller'])->where('pro','=',2)->where('request_status', $request->status);
         }
 
         if ($request->has('search')) {

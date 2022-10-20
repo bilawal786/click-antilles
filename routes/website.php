@@ -38,6 +38,15 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode','custom
         Route::get('/product/{id?}/{position?}', 'ProCustomerController@products')->name('pro-product');
         Route::get('/search/product/{key}', 'ProCustomerController@productSearchFilter')->name('pro.search.product');
         Route::post('/product/search', 'ProCustomerController@productSearch')->name('pro.product.search');
+        Route::get('/subscription', 'ProCustomerController@proSubscription')->name('pro.subscription');
+        Route::get('pay-stripee', 'ProCustomerController@payment_process_4d')->name('pay-stripee');
+        Route::get('/subscriptionn', 'ProCustomerController@success')->name('subscription.successs');
+    });
+    Route::group(['prefix' => 'track-order', 'as' => 'track-order.'], function () {
+        Route::get('', 'FrontController@track_order')->name('create');
+        Route::get('result-view', 'UserProfileController@track_order_result')->name('result-view');
+        Route::get('last', 'UserProfileController@track_last_order')->name('last');
+        Route::any('result', 'FrontController@track_order_result')->name('result');
     });
     Route::get('/product-checkout', 'FrontController@productCheckout')->name('product-checkout');
     Route::get('/product-cart', 'FrontController@productCart')->name('product-cart');

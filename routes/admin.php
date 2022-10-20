@@ -235,6 +235,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::get('remove-image', 'ProductController@remove_image')->name('remove-image');
             Route::post('status-update', 'ProductController@status_update')->name('status-update');
             Route::get('list/{type}', 'ProductController@list')->name('list');
+            Route::get('pro/list/{type}', 'ProductController@proList')->name('pro.list');
             Route::get('stock-limit-list/{type}', 'ProductController@stock_limit_list')->name('stock-limit-list');
             Route::get('get-variations', 'ProductController@get_variations')->name('get-variations');
             Route::post('update-quantity', 'ProductController@update_quantity')->name('update-quantity');
@@ -260,7 +261,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::get('list', 'TransactionController@list')->name('list');
             Route::get('refund-list', 'RefundTransactionController@list')->name('refund-list');
         });
-        
+
 
         Route::group(['prefix' => 'business-settings', 'as' => 'business-settings.','middleware'=>['module:business_settings']], function () {
             Route::get('general-settings', 'BusinessSettingsController@index')->name('general-settings')->middleware('actch');;
@@ -300,7 +301,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
                 Route::get('details/{id}', 'RefundController@details')->name('details');
                 Route::get('inhouse-order-filter', 'RefundController@inhouse_order_filter')->name('inhouse-order-filter');
                 Route::post('refund-status-update', 'RefundController@refund_status_update')->name('refund-status-update');
-            
+
             });
 
             Route::group(['prefix' => 'shipping-method', 'as' => 'shipping-method.','middleware'=>['module:business_settings']], function () {
@@ -316,11 +317,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             });
 
             Route::group(['prefix' => 'shipping-type', 'as' => 'shipping-type.','middleware'=>['module:business_settings']], function () {
-                Route::post('store', 'ShippingTypeController@store')->name('store'); 
+                Route::post('store', 'ShippingTypeController@store')->name('store');
             });
 
             Route::group(['prefix' => 'category-shipping-cost', 'as' => 'category-shipping-cost.','middleware'=>['module:business_settings']], function () {
-                Route::post('store', 'CategoryShippingCostController@store')->name('store'); 
+                Route::post('store', 'CategoryShippingCostController@store')->name('store');
             });
 
             Route::group(['prefix' => 'language', 'as' => 'language.','middleware'=>['module:business_settings']], function () {
@@ -402,7 +403,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::post('update-deliver-info','OrderController@update_deliver_info')->name('update-deliver-info');
             Route::get('add-delivery-man/{order_id}/{d_man_id}', 'OrderController@add_delivery_man')->name('add-delivery-man');
         });
-        
+
         //pos management
         Route::group(['prefix' => 'pos', 'as' => 'pos.','middleware'=>['module:pos_management']], function () {
             Route::get('/', 'POSController@index')->name('index');

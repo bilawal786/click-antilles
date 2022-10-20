@@ -13,7 +13,7 @@
                 <div id="primary" class="content-area">
                     <main id="main" class="site-main">
                         <?php $user = auth('customer')->user();?>
-                       @if($user->subscription==1)
+                       @if($user->subscription==0 || !$user->isSubscription())
                         <div class="shop-archive-header">
                             <div class="jumbotron">
                                 <div class="jumbotron-img">
@@ -24,7 +24,7 @@
                                     <p class="jumbo-subtitle">{{\App\CPU\translate('pro2')}}
                                         <br>
                                         <br>{{\App\CPU\translate('pro3')}}
-                                        <a href="#" class="btn btn-primary" style="width: 30%;color: white;border-radius: 30px;padding: 10px;font-size: 12px;margin-top: 20px;">{{\App\CPU\translate('pro5')}} <i class="tm tm-long-arrow-right"></i></a>
+                                        <a href="{{route('pro.subscription')}}" class="btn btn-primary" style="width: 30%;color: white;border-radius: 30px;padding: 10px;font-size: 12px;margin-top: 20px;">{{\App\CPU\translate('pro5')}} <i class="tm tm-long-arrow-right"></i></a>
                                     </p>
                                 </div>
                                 <!-- .jumbotron-caption -->

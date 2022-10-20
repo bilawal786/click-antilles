@@ -89,10 +89,12 @@ class FrontController extends Controller
         if ($id != null && $position != null) {
             $products = Product::active()
                 ->where('featured', 1)
+                ->whereJsonContains('category_ids', [
+                ['id' => strval($id), 'position' => (int)$position],
+                ])
                 ->paginate(10);
         } else {
             $products = Product::where('featured', 1)->paginate(10);
-
         }
         $category = Category::where('position', 0)->priority()->get();
         return view('website.product.search-product', compact('products', 'category'));
@@ -105,7 +107,9 @@ class FrontController extends Controller
         }
         else {
             $products = Product::where(function ($query) use ($request) {
-                $query->orWhere('name', 'like', "%{$request->name}%");
+                $query->orWhereJsonContains('category_ids', [
+                    ['id' => strval($request->category_id)],
+                ])->orWhere('name', 'like', "%{$request->name}%");
             })->where('featured', 1)
                 ->paginate(10);
         }
@@ -132,5 +136,35 @@ class FrontController extends Controller
         $products = $fetched->paginate(10);
         $category = Category::where('position', 0)->priority()->get();
         return view('website.product.search-product', compact('products', 'category'));
+    }
+    public function track_order()
+    {
+        return view('website.users-profile.order-tracking-page');
+
+    }
+    public function track_order_result(Request $request)
+    {
+        $user =  auth('customer')->user();
+        if(!isset($user)){
+            $user_id = User::where('phone',$request->phone_number)->first()->id;
+            $orderDetails = Order::where('id',$request['order_id'])->whereHas('details',function ($query) use($user_id){
+                $query->where('customer_id',$user_id);
+            })->first();
+
+        }else{
+            if($user->phone == $request->phone_number){
+                $orderDetails = Order::where('id',$request['order_id'])->whereHas('details',function ($query){
+                    $query->where('customer_id',auth('customer')->id());
+                })->first();
+            }
+
+        }
+
+
+        if (isset($orderDetails)){
+            return view('website.users-profile.order-tracking', compact('orderDetails'));
+        }
+
+        return redirect()->back()->with('Error', 'Invalid Order Id or Phone Number');
     }
 }

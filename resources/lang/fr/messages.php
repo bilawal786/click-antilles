@@ -2038,5 +2038,8 @@
   'pro3' => 'Mécène dans les membres des joueurs. Enfants et jeunes. Comme il n\'y a pas de politique de haine, les devoirs ont besoin de rires faciles. Et quand les orques naîtront, les montagnes donneront naissance à des plumes et à de grandes flèches, et une souris ridicule naîtra.',
   'pro4' => 'Lire la suite',
   'pro5' => "S'abonner",
-
+    'subscription1' => 'Abonnement Pro actif!',
+    'subscription2' => "Votre abonnement a été souscrit avec succès ! Date d'expiration de votre abonnement:",
+    'subscription3' => 'Accéder au tableau de bord des produits Pro',
+    'subscription4' => "Frais d'adhésion",
 );

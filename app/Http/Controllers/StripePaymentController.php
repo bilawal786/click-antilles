@@ -68,6 +68,7 @@ class StripePaymentController extends Controller
         return response()->json(['id' => $checkout_session->id]);
     }
 
+
     public function success()
     {
         $unique_id = OrderManager::gen_unique_id();

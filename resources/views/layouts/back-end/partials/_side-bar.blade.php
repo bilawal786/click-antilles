@@ -331,6 +331,12 @@
                                             <span class="text-truncate">{{\App\CPU\translate('Products')}}</span>
                                         </a>
                                     </li>
+                                    <li class="nav-item {{Request::is('admin/product/pro/list/in_house')?'active':''}}">
+                                        <a class="nav-link " href="{{route('admin.product.pro.list',['in_house', ''])}}">
+                                            <span class="tio-circle nav-indicator-icon"></span>
+                                            <span class="text-truncate">{{\App\CPU\translate('pro_product')}}</span>
+                                        </a>
+                                    </li>
                                     <li class="nav-item {{Request::is('admin/product/stock-limit-list/in_house')?'active':''}}">
                                         <a class="nav-link " href="{{route('admin.product.stock-limit-list',['in_house', ''])}}">
                                             <span class="tio-circle nav-indicator-icon"></span>

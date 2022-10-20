@@ -62,5 +62,18 @@ class User extends Authenticatable
     {
         return $this->belongsTo(ShippingAddress::class, 'shipping_address');
     }
+    public function isSubscription()
+    {
+        $date = Subscrption::where('user_id', '=', $this->id)->orderBy('id', 'DESC')->first();
+        $currentDatee = date('Y-m-d');
+        $currentDate = date('Y-m-d', strtotime($currentDatee));
+        $startDate = date('Y-m-d', strtotime($date->start_date ?? '12-2-2021'));
+        $endDate = date('Y-m-d', strtotime($date->end_date ?? '12-2-2021'));
+        if (($currentDate >= $startDate) && ($currentDate <= $endDate)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

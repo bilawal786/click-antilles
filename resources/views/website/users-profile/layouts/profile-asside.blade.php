@@ -75,7 +75,16 @@
                 </div>
             </div>
         </div>
-
+        <div class="pb-0 {{Request::is('wishlistss*') ? 'active' :'active1'}}"  style="padding:10px 0px 0px 10px!important; ">
+            <!-- Filter by price-->
+            <div class="sidebarL">
+                <h3 class="widget-title btnF " style="font-weight: 700;">
+                    <a class="{{Request::is('wishlistss*') ? 'active' :''}}"   href="{{route('track-order.create')}}"> {{\App\CPU\translate('track_order')}}  </a></h3>
+                <div class="divider-role"
+                     style="border: 1px solid whitesmoke; margin-bottom: 14px;  margin-top: -6px;">
+                </div>
+            </div>
+        </div>
         <div class="pb-0 {{Request::is('wishlistss*') ? 'active' :'active1'}}"  style="padding:10px 0px 0px 10px!important; ">
             <!-- Filter by price-->
             <div class="sidebarL">
