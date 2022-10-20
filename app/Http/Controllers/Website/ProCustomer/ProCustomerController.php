@@ -14,9 +14,7 @@ class ProCustomerController extends Controller
     {
         if ($id != null && $position != null) {
 
-            $products = Product::where('pro','=',2)->where('featured', 1)->whereJsonContains('category_ids', [
-                ['id' => strval($id), 'position' => (int)$position],
-            ])
+            $products = Product::where('pro','=',2)->where('featured', 1)
                 ->paginate(10);
         } else {
             $products = Product::where('pro','=',2)->where('featured', 1)->paginate(10);
@@ -53,9 +51,7 @@ class ProCustomerController extends Controller
         }
         else {
             $products = Product::where(function ($query) use ($request) {
-                $query->orWhereJsonContains('category_ids', [
-                    ['id' => strval($request->category_id)],
-                ])->orWhere('name', 'like', "%{$request->name}%");
+                $query->orWhere('name', 'like', "%{$request->name}%");
             })->where('featured', 1)->where('pro','=',2)
                 ->paginate(10);
         }
