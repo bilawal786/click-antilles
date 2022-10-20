@@ -2034,8 +2034,13 @@
   'about1' => 'About1',
   'Availability' => 'Availability',
   'Browse Categories' => 'Browse Categories',
-    'filter2' => 'Filter by price',
-    'pro_user' => 'Click Pro',
-    'dob' => 'Date of Birth',
-
+  'filter2' => 'Filter by price',
+  'pro_user' => 'Click Pro',
+  'dob' => 'Date of Birth',
+  'sourcing_product' => 'Sourcing product',
+    'pro1' => 'Virtual Reality Headsets',
+    'pro2' => 'There is no asset that can be used to make an urn, my author of a ferment. It is becoming a great medical and economic asset. Therefore, the players are expected to use it. Vivamus eleifend porttitor ex sit amet suscepti. Vestibulum at ullamcorper lacus, or facilisis arcus. It was a weekend.',
+    'pro3' => 'Maecenas in the members of the players. Children and young people. As there is no hate policy, homework needs easy laughs. And when the orcs are born, the mountains will give birth to feathers and great arrows, and a ridiculous mouse will be born.',
+    'pro4' => 'read more',
+    'pro5' => 'Subscribe',
 );

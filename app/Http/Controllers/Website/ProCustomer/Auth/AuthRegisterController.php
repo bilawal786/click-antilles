@@ -69,7 +69,7 @@ class AuthRegisterController extends Controller
         }
 
         Toastr::success(translate('registration_success_login_now'));
-        return redirect(route('customer.auth.login'));
+        return redirect(route('all-product'));
     }
     public function login()
     {
@@ -102,7 +102,7 @@ class AuthRegisterController extends Controller
             session()->put('wish_list', Wishlist::where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray());
             Toastr::info('Welcome to ' . Helpers::get_business_settings('company_name') . '!');
             CartManager::cart_to_db();
-            redirect('/');
+            redirect(route('all-product'));
         }
 
         Toastr::error('Credentials do not match or account has been suspended.');

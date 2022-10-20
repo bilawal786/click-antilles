@@ -2031,6 +2031,12 @@
   'E-Mail Address' => 'E-Mail Address',
   'Confirm Password' => 'Confirm Password',
   'Toggle navigation' => 'Toggle navigation',
-    'dob' => 'Date de naissance',
+  'dob' => 'Date de naissance',
+  'sourcing_product' => 'Sourcing Product',
+  'pro1' => 'Casques de réalité virtuelle',
+  'pro2' => 'Il n\'y a aucun atout qui puisse servir à fabriquer une urne, mon auteur d\'un ferment. Il devient un formidable atout médical et économique. Par conséquent, les joueurs sont censés l\'utiliser. Vivamus eleifend porttitor ex sit amet suscepti. Vestibule à ullamcorper lacus, ou facilisis arcus. C\'était un week-end.',
+  'pro3' => 'Mécène dans les membres des joueurs. Enfants et jeunes. Comme il n\'y a pas de politique de haine, les devoirs ont besoin de rires faciles. Et quand les orques naîtront, les montagnes donneront naissance à des plumes et à de grandes flèches, et une souris ridicule naîtra.',
+  'pro4' => 'Lire la suite',
+  'pro5' => "S'abonner",
 
 );

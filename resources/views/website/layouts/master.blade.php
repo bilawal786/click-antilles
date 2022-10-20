@@ -51,7 +51,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
 @if(request()->is('product/single*'))
     <body class="woocommerce-active single-product full-width normal">
-    @elseif(request()->is('all-product*') || request()->is('product/search*') || request()->is('app/search/product/*'))
+    @elseif(request()->is('all-product*') || request()->is('product/search*') || request()->is('app/search/product/*') || request()->is('pro/product*') || request()->is('pro/product/search*') || request()->is('pro/search/product/*'))
         <body class="woocommerce-active left-sidebar  can-uppercase">
     @else
         <body class="woocommerce-active page-template-template-homepage-v1 can-uppercase">
@@ -136,6 +136,12 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
 
                                     </li>
                                     @if(auth('customer')->check())
+                                        @if(auth('customer')->user()->role==2)
+                                        <li class="yamm-fw menu-item menu-item-has-children animate-dropdown {{request()->is('pro/product*')  ? 'sale-clr': ''}}">
+                                            <a title="Pages"  href="{{route('pro-product')}}">{{\App\CPU\translate('sourcing_product')}}</a>
+
+                                        </li>
+                                        @endif
                                         <li class="menu-item menu-item-has-children animate-dropdown dropdown {{request()->is('account-oder*') || request()->is('user-accountt*') || request()->is('wishlistss*') ? 'sale-clr': ''}}">
                                             <a title="Mother`s Day" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" href="#">{{\App\CPU\translate('Account')}} <span class="caret"></span></a>
                                             <ul role="menu" class=" dropdown-menu">

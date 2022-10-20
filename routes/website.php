@@ -34,8 +34,11 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode']], func
 });
 
 Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode','customer']], function () {
-
-
+    Route::group(['namespace' => 'ProCustomer','prefix'=>'pro'], function () {
+        Route::get('/product/{id?}/{position?}', 'ProCustomerController@products')->name('pro-product');
+        Route::get('/search/product/{key}', 'ProCustomerController@productSearchFilter')->name('pro.search.product');
+        Route::post('/product/search', 'ProCustomerController@productSearch')->name('pro.product.search');
+    });
     Route::get('/product-checkout', 'FrontController@productCheckout')->name('product-checkout');
     Route::get('/product-cart', 'FrontController@productCart')->name('product-cart');
     Route::get('account-oder', 'FrontController@account_oder')->name('account-oder');
