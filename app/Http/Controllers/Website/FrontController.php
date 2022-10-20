@@ -91,7 +91,8 @@ class FrontController extends Controller
             $products = Product::query()->where('featured', 1)->whereJsonContains('category_ids', [
                 ['id' => strval($id), 'position' => (int)$position],
                 ])
-                ->paginate(10);
+                ->get();
+            dd($products);
         } else {
             $products = Product::where('featured', 1)->paginate(10);
         }
