@@ -89,9 +89,6 @@ class FrontController extends Controller
         if ($id != null && $position != null) {
             $products = Product::active()
                 ->where('featured', 1)
-                ->whereJsonContains('category_ids', [
-                ['id' => strval($id), 'position' => (int)$position],
-                ])
                 ->paginate(10);
         } else {
             $products = Product::where('featured', 1)->paginate(10);
@@ -108,9 +105,7 @@ class FrontController extends Controller
         }
         else {
             $products = Product::where(function ($query) use ($request) {
-                $query->orWhereJsonContains('category_ids', [
-                    ['id' => strval($request->category_id)],
-                ])->orWhere('name', 'like', "%{$request->name}%");
+                $query->orWhere('name', 'like', "%{$request->name}%");
             })->where('featured', 1)
                 ->paginate(10);
         }
