@@ -95,6 +95,7 @@ class FrontController extends Controller
                 ->paginate(10);
         } else {
             $products = Product::where('featured', 1)->paginate(10);
+
         }
         $category = Category::where('position', 0)->priority()->get();
         return view('website.product.search-product', compact('products', 'category'));
