@@ -86,11 +86,9 @@ class FrontController extends Controller
     }
     public function products($id = null, $position = null)
     {
-        if ($id != null && $position != null) {
+        if ($id != null ) {
 
-            $products = Product::query()->where('featured', 1)->whereJsonContains('category_ids',
-                ['id' => strval($id), 'position' => (int)$position],
-                )
+            $products = Product::query()->where('featured', 1)->whereJsonContains('category_ids', [['id' =>  strval($id)],])
                 ->paginate(10);
         } else {
             $products = Product::where('featured', 1)->paginate(10);
