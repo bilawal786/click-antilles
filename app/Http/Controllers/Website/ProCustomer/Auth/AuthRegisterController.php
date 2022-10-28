@@ -16,6 +16,7 @@ use function App\CPU\translate;
 
 class AuthRegisterController extends Controller
 {
+
     public function register()
     {
         session()->put('keep_return_url', url()->previous());
@@ -43,6 +44,7 @@ class AuthRegisterController extends Controller
             'is_active' => 1,
             'password' => bcrypt($request['password'])
         ]);
+
         $address = [
             'customer_id' => $user->id,
             'contact_person_name' => $user->f_name.' '.$user->l_name,
@@ -58,16 +60,6 @@ class AuthRegisterController extends Controller
             'updated_at' => now(),
         ];
         DB::table('shipping_addresses')->insert($address);
-
-        $phone_verification = Helpers::get_business_settings('phone_verification');
-        $email_verification = Helpers::get_business_settings('email_verification');
-        if ($phone_verification && !$user->is_phone_verified) {
-            return redirect(route('customer.auth.check', [$user->id]));
-        }
-        if ($email_verification && !$user->is_email_verified) {
-            return redirect(route('customer.auth.check', [$user->id]));
-        }
-
         Toastr::success(translate('registration_success_login_now'));
         return redirect(route('all-product'));
     }
@@ -83,29 +75,19 @@ class AuthRegisterController extends Controller
             'password' => 'required|min:8'
         ]);
 
-        $user = User::where(['phone' => $request->email])->orWhere(['email' => $request->email])->first();
-
+        $user = User::where(['phone' => $request->email])->where('role','=',2)->orWhere(['email' => $request->email])->first();
         if (isset($user) == false) {
             Toastr::error('Credentials do not match or account has been suspended.');
             return back()->withInput();
-        }
-
-        $phone_verification = Helpers::get_business_settings('phone_verification');
-        $email_verification = Helpers::get_business_settings('email_verification');
-        if ($phone_verification && !$user->is_phone_verified) {
-            return redirect(route('customer.auth.check', [$user->id]));
-        }
-        if ($email_verification && !$user->is_email_verified) {
-            return redirect(route('customer.auth.check', [$user->id]));
         }
         if (isset($user) && $user->is_active && auth('customer')->attempt(['email' => $user->email, 'password' => $request->password,'role'=>2])) {
             session()->put('wish_list', Wishlist::where('customer_id', auth('customer')->user()->id)->pluck('product_id')->toArray());
             Toastr::info('Welcome to ' . Helpers::get_business_settings('company_name') . '!');
             CartManager::cart_to_db();
-            redirect(route('all-product'));
+            return redirect(route('all-product'));
         }
-
         Toastr::error('Credentials do not match or account has been suspended.');
         return back()->withInput();
+
     }
 }

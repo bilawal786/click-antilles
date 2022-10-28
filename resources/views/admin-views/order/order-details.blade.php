@@ -221,9 +221,12 @@
                                     <div class="col col-md-1 align-self-center">
                                         <p>Q</p>
                                     </div>
-                                    <div class="col col-md-1 align-self-center  p-0 product-name">
-                                        <p> {{\App\CPU\translate('TAX')}}</p>
+                                    <div class="col col-md-3 align-self-center">
+                                        <p>{{\App\CPU\translate('product_type')}}</p>
                                     </div>
+                                    {{--                                    <div class="col col-md-1 align-self-center  p-0 product-name">--}}
+                                    {{--                                        <p> {{\App\CPU\translate('TAX')}}</p>--}}
+                                    {{--                                    </div>--}}
                                     <div class="col col-md-2 align-self-center  p-0 product-name">
                                         <p> {{\App\CPU\translate('Discount')}}</p>
                                     </div>
@@ -259,21 +262,22 @@
                                         </div>
                                     @else
 
-                                    @php($shop = \App\Model\Shop::where('seller_id','=',$detail->seller_id)->first())
+                                        @php($shop = \App\Model\Shop::where('seller_id','=',$detail->seller_id)->first())
                                         @if (isset($shop))
                                             <div class="row">
                                                 <img
-                                                    class="avatar-img" style="width: 55px;height: 55px; border-radius: 50%;"
+                                                    class="avatar-img"
+                                                    style="width: 55px;height: 55px; border-radius: 50%;"
                                                     onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'"
                                                     src="{{asset('storage/app/public/shop/'.$shop->image)}}"
                                                     alt="Image">
                                                 <p class="sellerName">
                                                     <a style="color: black;"
-                                                    href="{{route('admin.sellers.view',$detail->seller_id)}}">{{ $shop->name}}</a>
+                                                       href="{{route('admin.sellers.view',$detail->seller_id)}}">{{ $shop->name}}</a>
                                                     <i class="tio tio-info-outined ml-4" data-toggle="collapse"
-                                                    style="font-size: 20px; cursor: pointer"
-                                                    data-target="#sellerInfoCollapse-{{ $detail->id }}"
-                                                    aria-expanded="false"></i>
+                                                       style="font-size: 20px; cursor: pointer"
+                                                       data-target="#sellerInfoCollapse-{{ $detail->id }}"
+                                                       aria-expanded="false"></i>
                                                 </p>
                                             </div>
                                         @endif
@@ -307,7 +311,7 @@
                                         @endif
                                     @endif
                                 @endif
-                            <!-- Media -->
+                                <!-- Media -->
                                 <div class="media">
                                     <div class="avatar avatar-xl mr-3">
                                         <img class="img-fluid"
@@ -337,10 +341,17 @@
 
                                                 <h5>{{$detail->qty}}</h5>
                                             </div>
-                                            <div class="col col-md-1 align-self-center  p-0 product-name">
-
-                                                <h5>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($detail['tax']))}}</h5>
+                                            <div class="col col-md-3 align-self-center  p-0 product-name">
+                                                @if($detail->pro==2)
+                                                    <h5>{{\App\CPU\translate('pro_product')}}</h5>
+                                                @else
+                                                    <h5>{{\App\CPU\translate('Products')}}</h5>
+                                                @endif
                                             </div>
+                                            {{--                                            <div class="col col-md-1 align-self-center  p-0 product-name">--}}
+
+                                            {{--                                                <h5>{{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($detail['tax']))}}</h5>--}}
+                                            {{--                                            </div>--}}
                                             <div class="col col-md-2 align-self-center  p-0 product-name">
 
                                                 <h5>
@@ -360,7 +371,7 @@
                                 @php($discount+=$detail['discount'])
                                 @php($tax+=$detail['tax'])
                                 @php($total+=$subtotal)
-                            <!-- End Media -->
+                                <!-- End Media -->
                                 <hr>
                             @endif
                             @php($sellerId=$detail->seller_id)
@@ -412,23 +423,26 @@
                                 </h6>
                             </li>
                             @if ($order->shipping_type == 'order_wise')
-                            <li>
-                                <h6 class="" style="color: #8a8a8a;">
-                                    {{\App\CPU\translate('shipping')}} {{\App\CPU\translate('method')}}
-                                    : {{$order->shipping ? $order->shipping->title :'No shipping method selected'}}
-                                </h6>
-                            </li>
+                                <li>
+                                    <h6 class="" style="color: #8a8a8a;">
+                                        {{\App\CPU\translate('shipping')}} {{\App\CPU\translate('method')}}
+                                        : {{$order->shipping ? $order->shipping->title :'No shipping method selected'}}
+                                    </h6>
+                                </li>
                             @endif
                             <li>
-                                <select class="form-control text-capitalize" name="delivery_type" onchange="choose_delivery_type(this.value)">
+                                <select class="form-control text-capitalize" name="delivery_type"
+                                        onchange="choose_delivery_type(this.value)">
                                     <option value="0">
                                         {{\App\CPU\translate('choose_delivery_type')}}
                                     </option>
-                                    
-                                    <option value="self_delivery" {{$order->delivery_type=='self_delivery'?'selected':''}}>
+
+                                    <option
+                                        value="self_delivery" {{$order->delivery_type=='self_delivery'?'selected':''}}>
                                         {{\App\CPU\translate('by_self_delivery_man')}}
                                     </option>
-                                    <option value="third_party_delivery" {{$order->delivery_type=='third_party_delivery'?'selected':''}} >
+                                    <option
+                                        value="third_party_delivery" {{$order->delivery_type=='third_party_delivery'?'selected':''}} >
                                         {{\App\CPU\translate('by_third_party_delivery_service')}}
                                     </option>
                                 </select>
@@ -437,7 +451,8 @@
                                 <label for="">
                                     {{\App\CPU\translate('choose_delivery_man')}}
                                 </label>
-                                <select class="form-control text-capitalize js-select2-custom" name="delivery_man_id" onchange="addDeliveryMan(this.value)">
+                                <select class="form-control text-capitalize js-select2-custom" name="delivery_man_id"
+                                        onchange="addDeliveryMan(this.value)">
                                     <option
                                         value="0">{{\App\CPU\translate('select')}}</option>
                                     @foreach($delivery_men as $deliveryMan)
@@ -539,7 +554,7 @@
 
                             <span class="d-block">{{\App\CPU\translate('Name')}} :
                                 <strong>{{$shipping_address? $shipping_address->contact_person_name : \App\CPU\translate('empty')}}</strong><br>
-                                 
+
                                 {{\App\CPU\translate('City')}}:
                                 <strong>{{$shipping_address ? $shipping_address->city : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('zip_code')}} :
@@ -565,7 +580,7 @@
 
                             <span class="d-block">{{\App\CPU\translate('Name')}} :
                                 <strong>{{$billing? $billing->contact_person_name : \App\CPU\translate('empty')}}</strong><br>
-                                
+
                                 {{\App\CPU\translate('City')}}:
                                 <strong>{{$billing ? $billing->city : \App\CPU\translate('empty')}}</strong><br>
                                 {{\App\CPU\translate('zip_code')}} :
@@ -576,14 +591,14 @@
                                 <strong>{{$billing ? $billing->phone  : \App\CPU\translate('empty')}}</strong>
                             </span>
                         </div>
-                @else
+                    @else
                         <div class="card-body">
                             <div class="media align-items-center">
                                 <span>{{\App\CPU\translate('no_customer_found')}}</span>
                             </div>
                         </div>
-                @endif
-                <!-- End Body -->
+                    @endif
+                    <!-- End Body -->
                 </div>
                 <!-- End Card -->
             </div>
@@ -615,13 +630,13 @@
     <!-- End Modal -->
 
     <!--Show delivery info Modal -->
-    <div class="modal" id="shipping_chose" role="dialog" tabindex="-1" >
+    <div class="modal" id="shipping_chose" role="dialog" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">{{\App\CPU\translate('update_third_party_delivery_info')}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -633,19 +648,23 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="">{{\App\CPU\translate('delivery_service_name')}}</label>
-                                        <input class="form-control" type="text" name="delivery_service_name" value="{{$order['delivery_service_name']}}" id="" required>
+                                        <input class="form-control" type="text" name="delivery_service_name"
+                                               value="{{$order['delivery_service_name']}}" id="" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">{{\App\CPU\translate('tracking_id')}} ({{\App\CPU\translate('optional')}})</label>
-                                        <input class="form-control" type="text" name="third_party_delivery_tracking_id" value="{{$order['third_party_delivery_tracking_id']}}" id="">
+                                        <label for="">{{\App\CPU\translate('tracking_id')}}
+                                            ({{\App\CPU\translate('optional')}})</label>
+                                        <input class="form-control" type="text" name="third_party_delivery_tracking_id"
+                                               value="{{$order['third_party_delivery_tracking_id']}}" id="">
                                     </div>
-                                    <button class="btn btn-primary" type="submit">{{\App\CPU\translate('update')}}</button>
+                                    <button class="btn btn-primary"
+                                            type="submit">{{\App\CPU\translate('update')}}</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                        
-                    
+
+
                 </div>
             </div>
         </div>
@@ -762,43 +781,40 @@
             @endif
         }
     </script>
-<script>
-    $( document ).ready(function() {
-        let delivery_type = '{{$order->delivery_type}}';
+    <script>
+        $(document).ready(function () {
+            let delivery_type = '{{$order->delivery_type}}';
 
-        
-        if(delivery_type === 'self_delivery'){
-            $('#choose_delivery_man').show();
-            $('#by_third_party_delivery_service_info').hide();
-        }else if(delivery_type === 'third_party_delivery')
-        {
-            $('#choose_delivery_man').hide();
-            $('#by_third_party_delivery_service_info').show();
-        }else{
-            $('#choose_delivery_man').hide();
-            $('#by_third_party_delivery_service_info').hide();
-        }
-    });
-</script>
-<script>
-    function choose_delivery_type(val)
-    {
 
-        if(val==='self_delivery')
-        {
-            $('#choose_delivery_man').show();
-            $('#by_third_party_delivery_service_info').hide();
-        }else if(val==='third_party_delivery'){
-            $('#choose_delivery_man').hide();
-            $('#by_third_party_delivery_service_info').show();
-            $('#shipping_chose').modal("show");
-        }else{
-            $('#choose_delivery_man').hide();
-            $('#by_third_party_delivery_service_info').hide();
+            if (delivery_type === 'self_delivery') {
+                $('#choose_delivery_man').show();
+                $('#by_third_party_delivery_service_info').hide();
+            } else if (delivery_type === 'third_party_delivery') {
+                $('#choose_delivery_man').hide();
+                $('#by_third_party_delivery_service_info').show();
+            } else {
+                $('#choose_delivery_man').hide();
+                $('#by_third_party_delivery_service_info').hide();
+            }
+        });
+    </script>
+    <script>
+        function choose_delivery_type(val) {
+
+            if (val === 'self_delivery') {
+                $('#choose_delivery_man').show();
+                $('#by_third_party_delivery_service_info').hide();
+            } else if (val === 'third_party_delivery') {
+                $('#choose_delivery_man').hide();
+                $('#by_third_party_delivery_service_info').show();
+                $('#shipping_chose').modal("show");
+            } else {
+                $('#choose_delivery_man').hide();
+                $('#by_third_party_delivery_service_info').hide();
+            }
+
         }
-        
-    }
-</script>
+    </script>
     <script>
         function addDeliveryMan(id) {
             $.ajax({

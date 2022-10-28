@@ -286,7 +286,7 @@ class OrderManager
                 $shipping_type = isset($seller_shipping)==true? $seller_shipping->shipping_type:'order_wise';
             }
         }
-        
+
         $or = [
             'id' => $order_id,
             'verification_code' => rand(100000, 999999),
@@ -303,7 +303,7 @@ class OrderManager
             'discount_type' => $discount == 0 ? null : 'coupon_discount',
             'coupon_code' => $coupon_code,
             'order_amount' => CartManager::cart_grand_total($cart_group_id) - $discount,
-            'shipping_address' => $address_id,
+            'shipping_address' => $address_id ?? 1,
             'shipping_address_data' => ShippingAddress::find($address_id),
             'billing_address' => $billing_address_id,
             'billing_address_data' => ShippingAddress::find($billing_address_id),
@@ -332,6 +332,7 @@ class OrderManager
                 'variant' => $c['variant'],
                 'variation' => $c['variations'],
                 'delivery_status' => 'pending',
+                'pro'=>$product->pro,
                 'shipping_method_id' => null,
                 'payment_status' => 'unpaid',
                 'created_at' => now(),
@@ -425,7 +426,7 @@ class OrderManager
                 Helpers::send_push_notif_to_device($fcm_token, $data);
                 Helpers::send_push_notif_to_device($seller_fcm_token, $data);
             }
-            
+
             Mail::to($user->email)->send(new \App\Mail\OrderPlaced($order_id));
             // if ($order['seller_is'] == 'seller') {
             //     $seller = Seller::where(['id' => $seller_data->seller_id])->first();

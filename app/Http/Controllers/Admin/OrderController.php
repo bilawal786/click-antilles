@@ -50,7 +50,7 @@ class OrderController extends Controller
             }
         }
         Order::where(['checked' => 0])->update(['checked' => 1]);
-        
+
         if ($request->has('search')) {
             $key = explode(' ', $request['search']);
             $orders = $orders->where(function ($q) use ($key) {
@@ -70,7 +70,7 @@ class OrderController extends Controller
     public function details($id)
     {
         $order = Order::with('details', 'shipping', 'seller')->where(['id' => $id])->first();
-        
+
         $linked_orders = Order::where(['order_group_id' => $order['order_group_id']])
             ->whereNotIn('order_group_id', ['def-order-group'])
             ->whereNotIn('id', [$order['id']])
@@ -92,7 +92,7 @@ class OrderController extends Controller
         }else{
             return view('admin-views.pos.order.order-details', compact('order'));
         }
-        
+
     }
 
     public function add_delivery_man($order_id, $delivery_man_id)

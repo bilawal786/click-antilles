@@ -79,7 +79,7 @@
                             </span>
                         @endif
 
-                        
+
                     </div>
                     <div class="col-md-6 mt-2">
                         <a class="text-body mr-3" target="_blank"
@@ -88,7 +88,7 @@
                         </a>
                     </div>
 
-                    
+
                     <!-- End Unfold -->
                 </div>
             </div>
@@ -112,7 +112,7 @@
                             </div>
 
                             <div class="col-6 pt-2">
-                                
+
                             </div>
                             <div class="col-6 pt-2">
                                 <div class="text-right">
@@ -175,7 +175,7 @@
                         @foreach($order->details as $key=>$detail)
 
                             @if($detail->product)
-                                
+
                             <!-- Media -->
                                 <div class="media">
                                     <div class="avatar avatar-xl mr-3">
@@ -194,7 +194,7 @@
 
                                                 <div class="font-size-sm text-body">
 
-                                                    <span class="font-weight-bold">{{$detail['variant']}}</span>
+                                                    <span class="font-weight-bold">{{$detail['variant']}} </span>
                                                 </div>
                                             </div>
 
@@ -204,7 +204,7 @@
 
                                             <div class="col col-md-1 align-self-center">
 
-                                                <h5>{{$detail->qty}}</h5>
+                                                <h5>  {{$detail->qty}}</h5>
                                             </div>
                                             <div class="col col-md-1 align-self-center  p-0 product-name">
 
@@ -236,7 +236,7 @@
                             @php($sellerId=$detail->seller_id)
                         @endforeach
                         @php($shipping=$order['shipping_cost'])
-                        
+
                         <?php
                             if ($order['extra_discount_type'] == 'percent') {
                                 $extra_discount = ($total_product_price / 100) * $order['extra_discount'];
@@ -250,7 +250,7 @@
                         <div class="row justify-content-md-end mb-3">
                             <div class="col-md-9 col-lg-8">
                                 <dl class="row text-sm-right">
-                                    
+
                                     <dt class="col-sm-6">{{\App\CPU\translate('extra_discount')}}</dt>
                                     <dd class="col-sm-6 border-bottom">
                                         <strong>- {{\App\CPU\BackEndHelper::set_symbol(\App\CPU\BackEndHelper::usd_to_currency($extra_discount))}}</strong>
@@ -338,7 +338,7 @@
                             </ul>
 
                             <hr>
-                            
+
                         </div>
                     @else
                         <div class="card-body">
@@ -538,5 +538,5 @@
             });
         }
     </script>
-    
+
 @endpush

@@ -13,6 +13,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth;
 
+Route::group(['namespace' => 'Website\ProCustomer','prefix'=>'pro'], function () {
+    Route::get('/register', 'Auth\AuthRegisterController@register')->name('register');
+    Route::post('/register', 'Auth\AuthRegisterController@submit')->name('pro.register');
+    Route::get('/login', 'Auth\AuthRegisterController@login')->name('login');
+    Route::post('/login', 'Auth\AuthRegisterController@submitLogin')->name('pro.login');
+});
+
+
 
 Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode']], function () {
 //    Route::get('/', 'FrontController@index')->name('front.index');
@@ -25,16 +33,11 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode']], func
     Route::get('/all-product/{id?}/{position?}', 'FrontController@products')->name('all-product');
     Route::post('/product/search', 'FrontController@productSearch')->name('product.search');
     Route::get('/app/search/product/{key}', 'FrontController@productSearchFilter')->name('app.search.product');
-    Route::group(['namespace' => 'ProCustomer','prefix'=>'pro'], function () {
-        Route::get('/register', 'Auth\AuthRegisterController@register')->name('register');
-        Route::post('/register', 'Auth\AuthRegisterController@submit')->name('pro.register');
-        Route::get('/login', 'Auth\AuthRegisterController@login')->name('login');
-        Route::post('/login', 'Auth\AuthRegisterController@submitLogin')->name('pro.login');
-    });
+
 });
 
 Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode','customer']], function () {
-    Route::group(['namespace' => 'ProCustomer','prefix'=>'pro'], function () {
+    Route::group(['namespace' => 'ProCustomer','prefix'=>'pro' ], function () {
         Route::get('/product/{id?}/{position?}', 'ProCustomerController@products')->name('pro-product');
         Route::get('/search/product/{key}', 'ProCustomerController@productSearchFilter')->name('pro.search.product');
         Route::post('/product/search', 'ProCustomerController@productSearch')->name('pro.product.search');
@@ -42,6 +45,7 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode','custom
         Route::get('pay-stripee', 'ProCustomerController@payment_process_4d')->name('pay-stripee');
         Route::get('/subscriptionn', 'ProCustomerController@success')->name('subscription.successs');
     });
+
     Route::group(['prefix' => 'track-order', 'as' => 'track-order.'], function () {
         Route::get('', 'FrontController@track_order')->name('create');
         Route::get('result-view', 'UserProfileController@track_order_result')->name('result-view');
