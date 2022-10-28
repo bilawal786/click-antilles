@@ -163,7 +163,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                         <li class="menu-item animate-dropdown {{request()->is('customer/auth/login*') ? 'sale-clr': ''}}">
                                             <a href="{{route('customer.auth.login')}}">{{\App\CPU\translate('Login')}}</a>
                                         </li>
-                                        <li class="menu-item animate-dropdown {{request()->is('/login*') ? 'sale-clr': ''}}">
+                                        <li class="menu-item animate-dropdown {{request()->is('/pro/login*') ? 'sale-clr': ''}}">
                                             <a href="{{route('login')}}">{{\App\CPU\translate('pro_user')}}</a>
                                         </li>
                                     @endauth
