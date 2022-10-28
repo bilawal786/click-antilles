@@ -61,7 +61,7 @@ class AuthRegisterController extends Controller
         ];
         DB::table('shipping_addresses')->insert($address);
         Toastr::success(translate('registration_success_login_now'));
-        return redirect(route('all-product'));
+        return view('website.prouser.auth.login');
     }
     public function login()
     {

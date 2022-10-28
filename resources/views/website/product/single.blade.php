@@ -219,11 +219,11 @@
                                                     style=" background: #FFA825 !important; color: #ffffff;margin: 0px 10px;">
                                                     <span class="string-limit">{{\App\CPU\translate('buy_now')}}</span>
                                                 </button>
-                                                <button
-                                                    type="button"
-                                                    style=" background: #FFA825 !important; color: #ffffff;margin: 0px 10px;">
-                                                    <span class="string-limit">Customize</span>
-                                                </button>
+{{--                                                <button--}}
+{{--                                                    type="button"--}}
+{{--                                                    style=" background: #FFA825 !important; color: #ffffff;margin: 0px 10px;">--}}
+{{--                                                    <span class="string-limit">Customize</span>--}}
+{{--                                                </button>--}}
                                             </form>
                                             <!-- .cart -->
 
