@@ -257,7 +257,7 @@
     </div>
 
     <div class="col-6">
-        <a href="{{route('product-checkout')}}" style="color: white"
+        <a href="{{route('product-ship')}}" style="color: white"
            class="btn btn-primary pull-{{Session::get('direction') === "rtl" ? 'left' : 'right'}}">
             {{\App\CPU\translate('checkout')}}
             <i class="fa fa-{{Session::get('direction') === "rtl" ? 'backward' : 'forward'}} px-1"></i>

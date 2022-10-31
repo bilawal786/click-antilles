@@ -333,7 +333,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                                 </p>
                                                 <p class="woocommerce-mini-cart__buttons buttons">
                                                     <a href="{{route('product-cart')}}" class="button wc-forward">{{\App\CPU\translate('basket')}}</a>
-                                                    <a href="{{route('product-checkout')}}" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
+                                                    <a href="{{route('product-ship')}}" class="button checkout wc-forward">{{\App\CPU\translate('check')}}</a>
                                                 </p>
                                             </div>
                                             <!-- .widget_shopping_cart_content -->

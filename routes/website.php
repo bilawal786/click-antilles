@@ -53,6 +53,7 @@ Route::group(['namespace' => 'Website','middleware'=>['maintenance_mode','custom
         Route::any('result', 'FrontController@track_order_result')->name('result');
     });
     Route::get('/product-checkout', 'FrontController@productCheckout')->name('product-checkout');
+    Route::get('/product-ship', 'FrontController@productShip')->name('product-ship');
     Route::get('/product-cart', 'FrontController@productCart')->name('product-cart');
     Route::get('account-oder', 'FrontController@account_oder')->name('account-oder');
     Route::get('user-accountt', 'FrontController@user_account')->name('user-accountt');

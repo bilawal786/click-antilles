@@ -162,4 +162,15 @@ class FrontController extends Controller
 
         return redirect()->back()->with('Error', 'Invalid Order Id or Phone Number');
     }
+    public function productShip()
+    {
+        $cart_group_ids = CartManager::get_cart_group_ids();
+        $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
+        $products = Product::all();
+        if (count($cart_group_ids) > 0) {
+            return view('website.product.ship', compact('carts','products'));
+        }
+        Toastr::info(translate('You Cart Empty'));
+        return redirect()->back();
+    }
 }
