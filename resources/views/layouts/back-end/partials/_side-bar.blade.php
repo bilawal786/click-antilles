@@ -533,6 +533,7 @@
                                 <small class="nav-subtitle" title="">{{\App\CPU\translate('user_section')}}</small>
                                 <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
+                            @if(auth()->guard('admin')->user()->admin_role_id!=7)
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/seller*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -568,6 +569,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            @endif
 
 
                             <li class="nav-item {{Request::is('admin/customer/list')?'active':''}}">
@@ -1079,6 +1081,3 @@
         </div>
     </aside>
 </div>
-
-
-

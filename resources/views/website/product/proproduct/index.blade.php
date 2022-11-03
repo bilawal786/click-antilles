@@ -32,23 +32,23 @@
                             <!-- .jumbotron -->
                         </div>
                         @else
-                                <div class="shop-archive-header">
-                                    <div class="jumbotron">
-                                        <div class="jumbotron-img">
-                                            <img width="416" height="283" alt="" src="{{asset('public/assets/jumbo.jpg')}}" class="jumbo-image alignright">
-                                        </div>
-                                        <div class="jumbotron-caption">
-                                            <h3 class="jumbo-title">{{\App\CPU\translate('pro1')}}</h3>
-                                            <p class="jumbo-subtitle">{{\App\CPU\translate('pro2')}}
-                                                <br>
-                                                <br>{{\App\CPU\translate('pro3')}}
-                                                <a href="#">{{\App\CPU\translate('pro4')}} <i class="tm tm-long-arrow-right"></i></a>
-                                            </p>
-                                        </div>
-                                        <!-- .jumbotron-caption -->
-                                    </div>
-                                    <!-- .jumbotron -->
-                                </div>
+{{--                                <div class="shop-archive-header">--}}
+{{--                                    <div class="jumbotron">--}}
+{{--                                        <div class="jumbotron-img">--}}
+{{--                                            <img width="416" height="283" alt="" src="{{asset('public/assets/jumbo.jpg')}}" class="jumbo-image alignright">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="jumbotron-caption">--}}
+{{--                                            <h3 class="jumbo-title">{{\App\CPU\translate('pro1')}}</h3>--}}
+{{--                                            <p class="jumbo-subtitle">{{\App\CPU\translate('pro2')}}--}}
+{{--                                                <br>--}}
+{{--                                                <br>{{\App\CPU\translate('pro3')}}--}}
+{{--                                                <a href="#">{{\App\CPU\translate('pro4')}} <i class="tm tm-long-arrow-right"></i></a>--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                        <!-- .jumbotron-caption -->--}}
+{{--                                    </div>--}}
+{{--                                    <!-- .jumbotron -->--}}
+{{--                                </div>--}}
 
                         <div class="shop-control-bar">
                             <div class="handheld-sidebar-toggle">

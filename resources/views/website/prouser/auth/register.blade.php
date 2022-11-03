@@ -25,6 +25,11 @@
                 <div class="col-md-8">
                     <div class="card border-0 box-shadow">
                         <div class="card-body">
+                            @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div>{{$error}}</div>
+                                @endforeach
+                            @endif
                             {{--                            <h2 class="h4 mb-1">{{\App\CPU\translate('no_account')}}</h2>--}}
                             <h3  class="h4 mb-1">{{\App\CPU\translate('register_control_your_order')}}
                                 .</h3>
@@ -302,6 +307,3 @@
     </script>
 
 @endsection
-
-
-

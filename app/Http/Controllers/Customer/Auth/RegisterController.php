@@ -51,17 +51,24 @@ class RegisterController extends Controller
             'password' => bcrypt($request['password'])
         ]);
 
-        $phone_verification = Helpers::get_business_settings('phone_verification');
-        $email_verification = Helpers::get_business_settings('email_verification');
-        if ($phone_verification && !$user->is_phone_verified) {
-            return redirect(route('customer.auth.check', [$user->id]));
+        if (auth('customer')->attempt(['email' => $request['email'], 'password' => $request['password']], true)) {
+            session()->put('wish_list', Wishlist::where('customer_id', $user->id)->pluck('product_id')->toArray());
+            $company_name = BusinessSetting::where('type', 'company_name')->first();
+            Toastr::info('Welcome to ' . Helpers::get_business_settings('company_name') . '!');
+            CartManager::cart_to_db();
+            return redirect(session('keep_return_url'));
         }
-        if ($email_verification && !$user->is_email_verified) {
-            return redirect(route('customer.auth.check', [$user->id]));
-        }
+//        $phone_verification = Helpers::get_business_settings('phone_verification');
+//        $email_verification = Helpers::get_business_settings('email_verification');
+//        if ($phone_verification && !$user->is_phone_verified) {
+//            return redirect(route('customer.auth.check', [$user->id]));
+//        }
+//        if ($email_verification && !$user->is_email_verified) {
+//            return redirect(route('customer.auth.check', [$user->id]));
+//        }
 
-        Toastr::success(translate('registration_success_login_now'));
-        return redirect(route('customer.auth.login'));
+//        Toastr::success(translate('registration_success_login_now'));
+        return redirect('/');
     }
 
     public static function check($id)

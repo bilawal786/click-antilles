@@ -9,6 +9,7 @@ use App\Model\Wishlist;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use phpDocumentor\Reflection\Types\True_;
@@ -24,7 +25,6 @@ class AuthRegisterController extends Controller
     }
     public function submit(Request  $request)
     {
-
         $request->validate([
             'f_name' => 'required',
             'email' => 'required|email|unique:users',
@@ -60,8 +60,9 @@ class AuthRegisterController extends Controller
             'updated_at' => now(),
         ];
         DB::table('shipping_addresses')->insert($address);
+        auth('customer')->attempt(['email' => $request['email'], 'password' => $request['password'],'role'=>2]);
         Toastr::success(translate('registration_success_login_now'));
-        return view('website.prouser.auth.login');
+        return redirect(route('pro-product'));
     }
     public function login()
     {

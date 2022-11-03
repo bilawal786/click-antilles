@@ -20,6 +20,7 @@ class CustomerController extends Controller
         if ($request->has('search')) {
             $key = explode(' ', $request['search']);
             $customers = User::with(['orders'])
+                ->where('role', 1)
                 ->where(function ($q) use ($key) {
                     foreach ($key as $value) {
                         $q->orWhere('f_name', 'like', "%{$value}%")
@@ -30,7 +31,7 @@ class CustomerController extends Controller
                 });
             $query_param = ['search' => $request['search']];
         } else {
-            $customers = User::with(['orders']);
+            $customers = User::with(['orders'])->where('role', 1);
         }
         $customers = $customers->latest()->paginate(Helpers::pagination_limit())->appends($query_param);
         return view('admin-views.customer.list', compact('customers', 'search'));
@@ -82,7 +83,7 @@ class CustomerController extends Controller
         $search = $request['search'];
         if ($request->has('search')) {
             $subscription_list = Subscription::where('email','like', "%{$search}%");
-            
+
             $query_param = ['search' => $request['search']];
         } else {
         $subscription_list = new Subscription;

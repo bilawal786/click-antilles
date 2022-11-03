@@ -2,7 +2,6 @@
 <html lang="en-US" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 <head>
     <style>
-
         .site-header .site-branding {
             margin-bottom: 1.533em;
             margin-top: -10px;
@@ -43,7 +42,11 @@
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,900" rel="stylesheet">
     <link rel="shortcut icon" href="{{asset('public/web/assets/logo click antilles.png')}}">
-
+    <style>
+        .border-0 {
+            border: 2px solid #d7d7d7 !important;
+        }
+    </style>
 </head>
 <?php
 $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)->priority()->paginate(11);
