@@ -96,9 +96,24 @@ class FrontController extends Controller
         $category = Category::where('position', 0)->priority()->get();
         return view('website.product.search-product', compact('products', 'category'));
     }
+    public function categoryProducts($id = null, $position = null){
+        if ($id != null && $position != null) {
+            $all_products = Product::all();
+            $product_ids = [];
+            foreach($all_products as $product){
+                foreach(json_decode($product['category_ids'],true) as $category){
+                    if($category['id'] == $id && $category['position'] == $position){
+                        array_push($product_ids, $product['id']);
+                    }
+                }
+            }
+            $products = Product::active()->whereIn('id', $product_ids)->paginate(10);
+            $category = Category::where('position', 0)->priority()->get();
+            return view('website.product.search-product', compact('products', 'category'));
+        }
+    }
     public function productSearch(Request $request)
     {
-
         if ($request->min_price != null || $request->max_price != null) {
             $products = Product::where('featured', 1)->whereBetween('unit_price', [Helpers::convert_currency_to_usd($request['min_price']), Helpers::convert_currency_to_usd($request['max_price'])])->paginate(10);
         }

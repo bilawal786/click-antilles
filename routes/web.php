@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 
-  Route::get('/test1', 'Web\WebController@home');
+  Route::get('/old/website', 'Web\WebController@home');
 
 //for maintenance mode
 Route::get('maintenance-mode', 'Web\WebController@maintenance_mode')->name('maintenance-mode');
@@ -109,7 +109,7 @@ Route::group(['namespace' => 'Web','middleware'=>['maintenance_mode']], function
     Route::post('review', 'ReviewController@store')->name('review.store');
 
     Route::group(['prefix' => 'track-order', 'as' => 'track-order.'], function () {
-        Route::get('', 'UserProfileController@track_order')->name('index');
+        Route::get('track-order', 'UserProfileController@track_order')->name('index');
         Route::get('result-view', 'UserProfileController@track_order_result')->name('result-view');
         Route::get('last', 'UserProfileController@track_last_order')->name('last');
         Route::any('result', 'UserProfileController@track_order_result')->name('result');

@@ -2046,8 +2046,9 @@
   'subscription1' => ' Pro Subscription Active!',
   'subscription2' => 'Your Subscription has been Subscribe successfully! Your Subscription Expire Date:',
   'subscription3' => 'Go to Pro Product Dashboard',
-    'subscription4' => 'MemberShip Fees',
-    'track1' => 'To track your order please enter your Order ID in the box below and press the "Track" button. This was given to you on your receipt and in the confirmation email you should have received',
-    'pro_product' => 'Pro Product',
-    'product_type' => 'Product Type',
-    );
+  'subscription4' => 'MemberShip Fees',
+  'track1' => 'To track your order please enter your Order ID in the box below and press the "Track" button. This was given to you on your receipt and in the confirmation email you should have received',
+  'pro_product' => 'Pro Product',
+  'product_type' => 'Product Type',
+  'Browse Categorie' => 'Browse Categorie',
+);

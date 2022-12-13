@@ -9,9 +9,6 @@
         .dropdown-toggle:after {
             float: right!important;
         }
-        @media (min-width: 1200px)
-            .page-template-template-homepage-v1 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v1 .header-v6 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v2 .header-v6 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v1 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v4 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v3 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v5 .header-v6 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v5 .departments-menu > .dropdown-menu, .page-template-template-homepage-v6 .header-v6 .departments-menu > .dropdown-menu {
-                display: none !important;
 
     </style>
     <meta charset="UTF-8">
@@ -252,12 +249,11 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                 <input type="text" id="search" class="form-control search-field product-search-field"
                                        dir="ltr" value="" name="name" placeholder="{{\App\CPU\translate('Search Product Name')}}"/>
                                 <div class="input-group-addon search-categories popover-header">
-                                    <select name='category_id' id='product_cat' class='postform resizeselect'>
-                                        <option value='' selected='selected'>{{\App\CPU\translate('All Categories')}}</option>
+                                    <select name='category_id' id='product_cat' onchange="location = this.value;" class='postform resizeselect'>
+                                        <option value="#" selected='selected'>{{\App\CPU\translate('All Categories')}}</option>
                                         @foreach($category as $row )
-                                            <option class="level-0" value="{{$row->id}}">{{$row->name}}</option>
+                                            <option class="level-0" value="{{route('category.product',['id'=>$row->id,'position'=>1])}}">{{$row->name}}</option>
                                         @endforeach
-
                                     </select>
                                 </div>
                                 <!-- .input-group-addon -->

@@ -444,7 +444,7 @@
                                 <ul>
                                    @foreach($category as $row)
                                     <li class="cat-item">
-                                        <a href="{{route('all-product',['id'=>$row->id,'position'=>1])}}">
+                                        <a href="{{route('category.product',['id'=>$row->id,'position'=>1])}}">
                                                     <span class="child-indicator">
                                                         <i class="fa fa-angle-right"></i>
                                                     </span>{{$row->name}}</a>
