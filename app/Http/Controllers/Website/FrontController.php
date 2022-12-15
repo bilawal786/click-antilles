@@ -8,6 +8,7 @@ use App\Model\Cart;
 use App\Model\Category;
 use App\Model\Order;
 use App\Model\Product;
+use App\Model\ShipmentOption;
 use App\Model\Wishlist;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
@@ -34,12 +35,16 @@ class FrontController extends Controller
     {
         return response()->json(['data' => view('website.layouts.product.cart')->render()]);
     }
-    public function productCheckout()
+    public function productCheckout(Request $request)
     {
+        $shippingPrice = $request->shippingPrice;
+        if (auth('customer')->check()) {
+            $customerDetail = User::where('id', auth('customer')->id())->first(); }
+
         $cart_group_ids = CartManager::get_cart_group_ids();
         $carts = Cart::whereIn('cart_group_id', $cart_group_ids)->get();
         if (count($cart_group_ids) > 0) {
-            return view('website.product.checkout', compact('carts'));
+            return view('website.product.checkout', compact('carts','shippingPrice','customerDetail'));
         }
         Toastr::info(translate('You Cart Empty'));
         return redirect()->back();

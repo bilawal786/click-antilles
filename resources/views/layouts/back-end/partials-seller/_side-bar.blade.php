@@ -1,7 +1,7 @@
 <style>
     .navbar-vertical .nav-link {
         color: #041562;
-        
+
     }
 
     .navbar .nav-link:hover {
@@ -114,10 +114,10 @@
                                                 </span>
                                             </span>
                                             </a>
-                                        </li> 
+                                        </li>
                                     </ul>
-                                </li> 
-                            @endif                      
+                                </li>
+                            @endif
                         @endif
 
                         <!-- End POS -->
@@ -135,7 +135,7 @@
                                     {{\App\CPU\translate('orders')}}
                                 </span>
                             </a>
-                            
+
                             <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
                                 style="display: {{Request::is('seller/order*')?'block':'none'}}">
 
@@ -313,7 +313,7 @@
                                         </span>
                                     </a>
                                 </li>
-                                
+
                                 <li class="nav-item {{Request::is('seller/refund/list/approved')?'active':''}}">
                                     <a class="nav-link"
                                        href="{{route('seller.refund.list',['approved'])}}">

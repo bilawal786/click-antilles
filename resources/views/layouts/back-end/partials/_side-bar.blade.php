@@ -241,13 +241,6 @@
                     <!--order management ends-->
 
                         @if(\App\CPU\Helpers::module_permission_check('product_management'))
-                            <li class="nav-item {{(Request::is('admin/brand*') || Request::is('admin/category*') || Request::is('admin/sub*') || Request::is('admin/attribute*') || Request::is('admin/product*'))?'scroll-here':''}}">
-                                <small class="nav-subtitle"
-                                       title="">{{\App\CPU\translate('product_management')}}</small>
-                                <small class="tio-more-horizontal nav-subtitle-replacer"></small>
-                            </li>
-                            <!-- Pages -->
-
                             <li class="navbar-vertical-aside-has-menu {{Request::is('admin/brand*')?'active':''}}">
                                 <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
                                    href="javascript:">
@@ -270,6 +263,13 @@
                                         </a>
                                     </li>
                                 </ul>
+                            </li>
+                            <!-- Pages -->
+
+                            <li class="nav-item {{(Request::is('admin/brand*') || Request::is('admin/category*') || Request::is('admin/sub*') || Request::is('admin/attribute*') || Request::is('admin/product*'))?'scroll-here':''}}">
+                                <small class="nav-subtitle"
+                                       title="">{{\App\CPU\translate('product_management')}}</small>
+                                <small class="tio-more-horizontal nav-subtitle-replacer"></small>
                             </li>
 
                             <li class="navbar-vertical-aside-has-menu {{(Request::is('admin/category*') ||Request::is('admin/sub*')) ?'active':''}}">
@@ -409,6 +409,30 @@
                             </li>
                             @endif
                         @endif
+
+                        <li class="navbar-vertical-aside-has-menu {{Request::is('admin/shipmentOption*')?'active':''}}">
+                            <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle"
+                               href="javascript:">
+                                <i class="tio-apple nav-icon"></i>
+                                <span
+                                    class="navbar-vertical-aside-mini-mode-hidden-elements text-truncate">{{\App\CPU\translate('Shipment')}}</span>
+                            </a>
+                            <ul class="js-navbar-vertical-aside-submenu nav nav-sub"
+                                style="display: {{Request::is('admin/shipmentOptions*')?'block':'none'}}">
+                                <li class="nav-item {{Request::is('admin/shipmentOption/add-new')?'active':''}}">
+                                    <a class="nav-link " href="{{route('admin.shippingOption.add-new')}}">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">{{\App\CPU\translate('add_new')}}</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item {{Request::is('admin/shipmentOption/list')?'active':''}}">
+                                    <a class="nav-link " href="{{route('admin.shippingOption.list')}}">
+                                        <span class="tio-circle nav-indicator-icon"></span>
+                                        <span class="text-truncate">{{\App\CPU\translate('List')}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     <!--product management ends-->
 
                         @if(\App\CPU\Helpers::module_permission_check('marketing_section'))

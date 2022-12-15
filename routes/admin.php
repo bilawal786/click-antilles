@@ -127,6 +127,15 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
             Route::post('delete', 'BrandController@delete')->name('delete');
         });
 
+        Route::group(['prefix' => 'shippingOption', 'as' => 'shippingOption.'], function(){
+            Route::get('list','ShippingOptionController@list')->name('list');
+            Route::get('add-new','ShippingOptionController@create')->name('add-new');
+            Route::post('add-new','ShippingOptionController@store')->name('store');
+            Route::get('edit/{id}', 'ShippingOptionController@edit')->name('edit');
+            Route::post('update/{id}', 'ShippingOptionController@update')->name('update');
+            Route::post('delete', 'ShippingOptionController@delete')->name('delete');
+        });
+
         Route::group(['prefix' => 'banner', 'as' => 'banner.','middleware'=>['module:marketing_section']], function () {
             Route::post('add-new', 'BannerController@store')->name('store');
             Route::get('list', 'BannerController@list')->name('list');

@@ -137,7 +137,7 @@ $category = \App\Model\Category::with(['childes.childes'])->where('position', 0)
                                     </li>
                                     @if(auth('customer')->check())
                                         @if(auth('customer')->user()->role==2)
-                                        <li class="yamm-fw menu-item menu-item-has-children animate-dropdown {{request()->is('pro/product/*')  ? 'sale-clr': ''}}">
+                                        <li class="yamm-fw menu-item menu-item-has-children animate-dropdown {{request()->is('pro/product*')  ? 'sale-clr': ''}}">
                                             <a title="Pages"  href="{{route('pro-product')}}">{{\App\CPU\translate('sourcing_product')}}</a>
 
                                         </li>

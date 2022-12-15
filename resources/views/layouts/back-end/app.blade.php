@@ -18,6 +18,16 @@
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/custom.css">
 
 
+{{--    <!-- include libraries(jQuery, bootstrap) -->--}}
+{{--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">--}}
+{{--    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>--}}
+{{--    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>--}}
+
+{{--    <!-- include summernote css/js -->--}}
+{{--    <script src="{{asset('summernote/summernote.min.css')}}" rel="stylesheet"></script>--}}
+{{--    <script src="{{asset('summernote/summernote.min.js')}}"></script>--}}
+
+
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/vendor/icon-set/style.css">
     <!-- CSS Front Template -->
     <link rel="stylesheet" href="{{asset('public/assets/back-end')}}/css/theme.minc619.css?v=1.0">
@@ -470,6 +480,11 @@
     /*$(function() {
         $('nav a[href^="/' + location.pathname.split("/")[1] + '"]').addClass('active');
     });*/
+</script>
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote();
+    });
 </script>
 </body>
 </html>

@@ -501,7 +501,7 @@
                                         @foreach($category as $key =>$row )
                                             @if($key+1==1)
                                                 <div class="product-category product first">
-                                                    <a href="{{route('all-product',['id'=>$row->id,'position'=>1])}}">
+                                                    <a href="{{route('category.product',['id'=>$row->id,'position'=>1])}}">
                                                         <img width="224" height="197" alt="All in One PC"
                                                              src="{{asset("storage/app/public/category/$row->icon")}}"
                                                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'">
@@ -513,7 +513,7 @@
                                             @else
                                                 <!-- .product-category -->
                                                 <div class="product-category product">
-                                                    <a href="#">
+                                                    <a href="{{route('category.product',['id'=>$row->id,'position'=>1])}}">
                                                         <img width="224" height="197" alt="Audio &amp; Music"
                                                              src="{{asset("storage/app/public/category/$row->icon")}}"
                                                              onerror="this.src='{{asset('public/assets/front-end/img/image-place-holder.png')}}'">

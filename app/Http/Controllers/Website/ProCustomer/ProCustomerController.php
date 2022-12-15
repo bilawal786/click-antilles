@@ -23,18 +23,37 @@ class ProCustomerController extends Controller
     {
         if ($id != null && $position != null) {
 
-            $products = Product::where('pro','=',2)->where('featured', 1)
+            $products = Product::where('pro', '=', 2)->where('featured', 1)
                 ->paginate(10);
         } else {
-            $products = Product::where('pro','=',2)->where('featured', 1)->paginate(10);
+            $products = Product::where('pro', '=', 2)->where('featured', 1)->paginate(10);
         }
         $category = Category::where('position', 0)->priority()->get();
         return view('website.product.proproduct.index', compact('products', 'category'));
     }
+
+    public function categoryProducts($id = null, $position = null)
+    {
+        if ($id != null && $position != null) {
+            $all_products = Product::where('pro', '=', 2)->where('featured', 1)->get();
+            $product_ids = [];
+            foreach($all_products as $product){
+                foreach(json_decode($product['category_ids'],true) as $category){
+                    if($category['id'] == $id && $category['position'] == $position){
+                        array_push($product_ids, $product['id']);
+                    }
+                }
+            }
+            $products = Product::active()->whereIn('id', $product_ids)->paginate(10);
+            $category = Category::where('position', 0)->priority()->get();
+            return view('website.product.proproduct.index', compact('products', 'category'));
+        }
+    }
+
     public function productSearchFilter($key)
     {
         $slug = decrypt($key);
-        $query = Product::where('featured', 1)->where('pro','=',2);
+        $query = Product::where('featured', 1)->where('pro', '=', 2);
         if ($slug == 'latest') {
             $fetched = $query->latest();
         } elseif ($slug == 'low-high') {
@@ -52,26 +71,28 @@ class ProCustomerController extends Controller
         $category = Category::where('position', 0)->priority()->get();
         return view('website.product.proproduct.index', compact('products', 'category'));
     }
+
     public function productSearch(Request $request)
     {
 
         if ($request->min_price != null || $request->max_price != null) {
-            $products = Product::where('featured', 1)->where('pro','=',2)->whereBetween('unit_price', [Helpers::convert_currency_to_usd($request['min_price']), Helpers::convert_currency_to_usd($request['max_price'])])->paginate(10);
-        }
-        else {
+            $products = Product::where('featured', 1)->where('pro', '=', 2)->whereBetween('unit_price', [Helpers::convert_currency_to_usd($request['min_price']), Helpers::convert_currency_to_usd($request['max_price'])])->paginate(10);
+        } else {
             $products = Product::where(function ($query) use ($request) {
                 $query->orWhere('name', 'like', "%{$request->name}%");
-            })->where('featured', 1)->where('pro','=',2)
+            })->where('featured', 1)->where('pro', '=', 2)
                 ->paginate(10);
         }
         $category = Category::where('position', 0)->priority()->get();
         return view('website.product.proproduct.index', compact('products', 'category'));
     }
+
     public function proSubscription()
     {
         $user = auth('customer')->user();
-         return view('website.users-profile.subscription.checkout',compact('user'));
+        return view('website.users-profile.subscription.checkout', compact('user'));
     }
+
     public function payment_process_4d()
     {
 
@@ -109,6 +130,7 @@ class ProCustomerController extends Controller
         ]);
         return response()->json(['id' => $checkout_session->id]);
     }
+
     public function success()
     {
 
@@ -125,8 +147,8 @@ class ProCustomerController extends Controller
         $user->save();
         if (auth('customer')->check()) {
             Toastr::success('Payment success.');
-            return view('website.users-profile.subscription.checkout-complete',compact('subscription'));
+            return view('website.users-profile.subscription.checkout-complete', compact('subscription'));
         }
         return response()->json(['message' => 'Payment succeeded'], 200);
     }
-    }
+}

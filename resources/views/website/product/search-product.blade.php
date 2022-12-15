@@ -466,7 +466,6 @@
                                        <input style="background: #ffffff;"
                                               class="cz-filter-search form-control form-control-sm appended-form-control"
                                               type="number" name="min_price" value="0" min="0" max="1000000" id="min_price">
-
                                    </div>
                                    <div style="width: 20%; padding-right: 20px;" >
                                        <h3 style="margin-top:6px;">{{\App\CPU\translate('to')}}</h3>
@@ -475,17 +474,12 @@
                                        <input style="background: #ffffff;" value="100" min="100" max="1000000"
                                               class="cz-filter-search form-control form-control-sm appended-form-control"
                                               type="number" name="max_price" id="max_price">
-
                                    </div>
                                 <button class="button" type="submit" style="justify-content: center">{{\App\CPU\translate('filter')}}</button>
                                </div>
-
                         </div>
                         </form>
-
-
                     </div>
-
                 </div>
                 <!-- #secondary -->
             </div>
